@@ -1,6 +1,6 @@
-import './App.scss';
+import './Home.scss';
 
-function App() {
+function Home() {
   return (
     <>
       <div>
@@ -13,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
