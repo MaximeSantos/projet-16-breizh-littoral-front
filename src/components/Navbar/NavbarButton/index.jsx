@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-import './style.scss';
-
 function NavbarButton({ route, icon }) {
   return (
     <NavLink className="navbar-button" to={route}>

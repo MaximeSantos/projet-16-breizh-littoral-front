@@ -5,7 +5,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-  background-color: vars.$primary-color;
+  background: vars.$primary-color;
+  background: linear-gradient(180deg, vars.$primary-color 70%, vars.$main-color 100%); 
 
   &-left {
     margin-left: 1rem;
@@ -13,10 +14,27 @@
     aspect-ratio: 16/9;
   }
 
+  &-middle {
+    display: flex;
+    align-items: center;
+
+    &-button {
+      background-color: vars.$secondary-color;
+      margin: 0 1rem;
+      padding: 1rem;
+      border-radius: 10%;
+  
+      &-map {
+        font-size: 2rem;
+      }
+    }
+  }
+
   &-button {
     margin-right: 1rem;
 
     &-darkmode {
+      margin-left: 10rem; // temp
       margin-right: 1rem;
       background: none;
       border: none;
