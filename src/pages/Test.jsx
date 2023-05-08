@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import Footer from '../components/Footer';
 import { setDummyValue } from '../slices/dummySlice';
 
 function Test() {
@@ -10,21 +11,23 @@ function Test() {
   };
 
   return (
-    <div>
+    <>
+      <main>
+        <button type="button" onClick={handleButtonClick}> Test de RTK </button>
 
-      <button type="button" onClick={handleButtonClick}> Test de RTK </button>
+        <h1>Page de test</h1>
 
-      <h1>Page de test</h1>
+        <p>
+          Test Test Test Test Test Test Test Test Test Test Test Test Test
+          Test Test Test Test Test Test Test Test Test Test Test Test Test
+        </p>
 
-      <p>
-        Test Test Test Test Test Test Test Test Test Test Test Test Test
-        Test Test Test Test Test Test Test Test Test Test Test Test Test
-      </p>
+        {displayTest
+        && <p>Test de RTK</p>}
 
-      {displayTest
-      && <p>Test de RTK</p>}
-
-    </div>
+      </main>
+      <Footer />
+    </>
   );
 }
 
