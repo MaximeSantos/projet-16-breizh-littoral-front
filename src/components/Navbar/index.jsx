@@ -37,7 +37,7 @@ function Navbar() {
         <NavbarButton className="navbar-button" route="/sports" icon="src/assets/icons/navbarButton-sports.svg" />
         <NavbarButton className="navbar-button" route="/meteo" icon="src/assets/icons/navbarButton-meteo.svg" />
         <NavbarButton className="navbar-button" route="/conseils" icon="src/assets/icons/navbarButton-conseils.svg" />
-        <button type="button" className="navbar-button-darkmode">
+        <button type="button" className="navbar-darkmode_button">
           <img src="src/assets/icons/navbarButton-darkmode.svg" alt="Bouton mode sombre/clair" />
         </button>
       </div>
