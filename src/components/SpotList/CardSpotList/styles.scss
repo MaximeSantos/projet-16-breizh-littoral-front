@@ -1,7 +1,5 @@
 @use '../../../styles/vars';
 
-// Colors
-$color-primary-white: rgb(0, 0, 0);
 
 main {
 
@@ -20,7 +18,7 @@ main {
   overflow: hidden;
   cursor: pointer;
   position: relative;
-  color: $color-primary-white;
+  color: vars.$stroke-color;
   box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
  
   img {
