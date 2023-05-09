@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
 import Navbar from '../components/Navbar';
+import SpotCardHome from '../components/SpotCardHome';
+import SpotList from '../components/SpotList';
 import './Home.scss';
 
 function Home() {
@@ -9,6 +11,8 @@ function Home() {
   return (
     <div>
       <Navbar />
+      <SpotCardHome />
+      <SpotList />
       <h1>Hello</h1>
       <p>
         Test Test Test Test Test Test Test Test Test Test Test Test Test
