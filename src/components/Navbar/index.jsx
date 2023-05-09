@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setDisplayMainMapModal } from '../../slices/mainMapModalSlice';
+import { toggleDisplayMainMapModal } from '../../slices/mainMapModalSlice';
 import { setDisplayProfileModal } from '../../slices/profileModalSlice';
 
 import NavbarButton from './NavbarButton';
@@ -11,7 +11,7 @@ function Navbar() {
   const dispatch = useDispatch();
 
   const handleDisplayMainMapModal = () => {
-    dispatch(setDisplayMainMapModal());
+    dispatch(toggleDisplayMainMapModal());
   };
 
   const handleDisplayProfileModal = () => {

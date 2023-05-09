@@ -13,10 +13,7 @@ body {
   color: vars.$stroke-color;
   font-family: 'Andika', sans-serif;
   min-height: 100vh;
-<<<<<<< Updated upstream
-=======
   line-height: 1.7rem;
->>>>>>> Stashed changes
 }
 
 #root {
@@ -27,6 +24,7 @@ body {
 
 main {
   flex: 1;
+  margin: 1rem 2rem;
 }
 
 h1 {
@@ -34,6 +32,11 @@ h1 {
   font-weight: bold;
   font-family: 'Fraiche', sans-serif;
   margin: 1rem 0;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 p {
