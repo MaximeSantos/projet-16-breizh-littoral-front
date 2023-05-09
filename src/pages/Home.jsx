@@ -1,5 +1,9 @@
 import { useSelector } from 'react-redux';
+
 import Navbar from '../components/Navbar';
+import MainMapModal from '../components/MainMapModal';
+import Footer from '../components/Footer';
+
 import './Home.scss';
 
 function Home() {
@@ -7,18 +11,21 @@ function Home() {
   const displayProfileModal = useSelector((state) => state.profileModal.displayProfileModal);
 
   return (
-    <div>
+    <>
       <Navbar />
-      <h1>Hello</h1>
-      <p>
-        Test Test Test Test Test Test Test Test Test Test Test Test Test
-        Test Test Test Test Test Test Test Test Test Test Test Test Test
-      </p>
-      {displayMainMapModal
-      && <p>Display Main Map</p>}
-      {displayProfileModal
-      && <p>Display Profile Modal</p>}
-    </div>
+      <main>
+        <h1>Hello</h1>
+        <p>
+          Test Test Test Test Test Test Test Test Test Test Test Test Test
+          Test Test Test Test Test Test Test Test Test Test Test Test Test
+        </p>
+        {displayMainMapModal
+        && <MainMapModal />}
+        {displayProfileModal
+        && <p>Display Profile Modal</p>}
+      </main>
+      <Footer />
+    </>
   );
 }
 

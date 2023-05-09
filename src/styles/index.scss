@@ -6,6 +6,7 @@ body {
   color: vars.$stroke-color;
   font-family: sans-serif;
   min-height: 100vh;
+  line-height: 1.4;
 }
 
 #root {
@@ -16,10 +17,16 @@ body {
 
 main {
   flex: 1;
+  margin: 1rem 2rem;
 }
 
 h1 {
   font-size: 3rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5em;
   font-weight: bold;
 }
 

@@ -9,12 +9,12 @@ export const mainMapModalSlice = createSlice({
   name: 'mainMapModal',
   initialState,
   reducers: {
-    setDisplayMainMapModal: (state) => {
+    toggleDisplayMainMapModal: (state) => {
       state.displayMainMapModal = !state.displayMainMapModal;
     },
   },
 });
 
-export const { setDisplayMainMapModal } = mainMapModalSlice.actions;
+export const { toggleDisplayMainMapModal } = mainMapModalSlice.actions;
 
 export default mainMapModalSlice.reducer;
