@@ -3,6 +3,8 @@
 import { useDispatch } from 'react-redux';
 import { toggleDisplayMainMapModal } from '../../slices/mainMapModalSlice';
 
+import MainMapLeaflet from './MainMapLeaflet';
+
 import './style.scss';
 
 function MainMapModal() {
@@ -16,15 +18,8 @@ function MainMapModal() {
     <div className="modal">
       <div onClick={handleDisplayMainMapModal} className="modal-overlay" />
       <div className="modal-content">
-        <h2 className="modal-title">Liste sur carte</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-          perferendis suscipit officia recusandae, eveniet quaerat assumenda
-          id fugit, dignissimos maxime non natus placeat illo iusto!
-          Sapiente dolorum id maiores dolores? Illum pariatur possimus
-          quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt
-          placeat tempora vitae enim incidunt porro fuga ea.
-        </p>
+        <h2 className="modal-title">Carte des spots</h2>
+        <MainMapLeaflet />
         <button type="button" className="modal-close" onClick={handleDisplayMainMapModal}>
           X
         </button>
