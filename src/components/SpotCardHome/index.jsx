@@ -1,6 +1,6 @@
 import './styles.scss';
 
-function SpotCard() {
+function SpotCardHome() {
   return (
     <header className="spotcard">
       <div className="spotcard-left">
@@ -24,4 +24,4 @@ function SpotCard() {
   );
 }
 
-export default SpotCard;
+export default SpotCardHome;
