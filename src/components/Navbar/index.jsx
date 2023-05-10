@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggleDisplayMainMapModal } from '../../slices/mainMapModalSlice';
 import { setDisplayProfileModal } from '../../slices/profileModalSlice';
-import UserNavbar from '../UserNavbar';
+import UserNavbar from './UserNavbar';
 
 import NavbarButton from './NavbarButton';
 
@@ -46,7 +46,7 @@ function Navbar() {
       </div>
 
       {displayProfileModal
-        && <UserNavbar />}
+        && <UserNavbar /> }
     </header>
   );
 }

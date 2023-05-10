@@ -1,0 +1,21 @@
+@use 'src/styles/vars';
+
+
+.modal-content.profile_modal-content {
+    width: 100vw;
+    height: 24%;
+    top: 24%;
+    
+
+}
+
+.modal.profile_modal {
+    position: absolute;
+    align-items: center;
+}
+
+.modal-overlay.profile_modal-overlay {
+    opacity: 0.2;
+
+} 
+

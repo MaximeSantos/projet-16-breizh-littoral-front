@@ -1,12 +1,11 @@
 @use 'src/styles/vars';
 
-
-
 .usermodal {
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-height: 1;
 
     &-h2 {
         color: vars.$stroke-color;

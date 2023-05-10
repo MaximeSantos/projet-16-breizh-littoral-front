@@ -3,13 +3,13 @@
 
 import './style.scss';
 import { useDispatch } from 'react-redux';
-import { setDisplayProfileModal } from '../../slices/profileModalSlice';
-import UserModal from './UserModal';
+import { setDisplayProfileModal } from '../../../slices/profileModalSlice';
+import UserModal from './profil & disconnect';
 
 function UserNavbar() {
   const dispatch = useDispatch();
   const handleDisplayProfileModal = () => {
-    dispatch(setDisplayProfileModal);
+    dispatch(setDisplayProfileModal());
   };
 
   return (
