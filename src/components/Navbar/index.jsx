@@ -1,7 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggleDisplayMainMapModal } from '../../slices/mainMapModalSlice';
 import { setDisplayProfileModal } from '../../slices/profileModalSlice';
+import UserNavbar from './UserNavbar';
 
 import NavbarButton from './NavbarButton';
 
@@ -9,6 +10,8 @@ import './style.scss';
 
 function Navbar() {
   const dispatch = useDispatch();
+
+  const displayProfileModal = useSelector((state) => state.profileModal.displayProfileModal);
 
   const handleDisplayMainMapModal = () => {
     dispatch(toggleDisplayMainMapModal());
@@ -42,6 +45,8 @@ function Navbar() {
         </button>
       </div>
 
+      {displayProfileModal
+        && <UserNavbar /> }
     </header>
   );
 }
