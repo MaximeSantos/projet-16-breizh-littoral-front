@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import Insta from '../../assets/images/instagram.svg';
 // import Facebook from '../../assets/images/facebook.svg';
 
-import './styles.scss';
+import './style.scss';
 
 function Footer() {
   return (
