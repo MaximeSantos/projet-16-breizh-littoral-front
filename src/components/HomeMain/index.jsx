@@ -4,10 +4,10 @@ import './style.scss';
 
 function HomeMain() {
   return (
-    <>
+    <main>
       <MainBanner />
       <MainSpots />
-    </>
+    </main>
   );
 }
 

@@ -1,22 +1,36 @@
 @use 'src/styles/vars';
 
 .navbar {
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: vars.$primary-color;
-  background: linear-gradient(180deg, vars.$primary-color 70%, vars.$main-color 100%); 
+  background: linear-gradient(180deg, vars.$primary-color 70%, vars.$main-color 100%);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  &-container {
+    width: 30%;
+    height: 100%;
+  }
 
   &-left {
     margin-left: 1rem;
-    height: 100px;
-    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
   }
 
   &-logo {
+    height: 100%;
+
     &:hover {
-      // translate: -2px -2px;
       filter: drop-shadow(5px 5px 5px darken(vars.$secondary-color, 20%));
+    }
+
+    &-image {
+      height: 100%;
     }
   }
 
@@ -43,6 +57,12 @@
     }
   }
 
+  &-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &-button,
   &-darkmode_button {
     margin-right: 1rem;
@@ -59,12 +79,7 @@
     }
   }
 
-  &-darkmode_button {
-    margin-left: 10rem; // temp
-  }
+  // &-darkmode_button {
+  // }
 }
 
-.modal-position {
-
-  position: fixed;
-}
