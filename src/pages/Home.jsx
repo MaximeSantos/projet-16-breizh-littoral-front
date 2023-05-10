@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux';
 import Navbar from '../components/Navbar';
 import MainMapModal from '../components/MainMapModal';
 import Footer from '../components/Footer';
-import SpotCardHome from '../components/SpotCardHome';
-import SpotList from '../components/SpotList';
+import HomeMain from '../components/HomeMain';
 
 import './Home.scss';
 
@@ -16,15 +15,11 @@ function Home() {
     <>
       <Navbar />
       <main>
-        <SpotCardHome />
-        <SpotList />
-        <h1>Hello</h1>
-        <p>
-          Test Test Test Test Test Test Test Test Test Test Test Test Test
-          Test Test Test Test Test Test Test Test Test Test Test Test Test
-        </p>
+        <HomeMain />
+
         {displayMainMapModal
         && <MainMapModal />}
+
         {displayProfileModal
         && <p>Display Profile Modal</p>}
       </main>

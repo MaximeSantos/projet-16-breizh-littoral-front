@@ -2,11 +2,12 @@
 @use 'vars';
 
 @font-face {
-  font-family: "Fraiche";   /*Can be any text*/
-  src: local("Fraiche"),
-    url("../assets/fonts/fraiche.otf") format("truetype");
+  font-family: "Fraiche";
+  src:
+    local("Fraiche"),
+    url("../assets/fonts/fraiche.otf")
+    format("truetype");
 }
-
 
 body {
   background-color: vars.$main-color;
@@ -31,7 +32,6 @@ h1 {
   font-size: 3rem;
   font-weight: bold;
   font-family: 'Fraiche', sans-serif;
-  margin: 1rem 0;
 }
 
 h2 {
@@ -41,4 +41,10 @@ h2 {
 
 p {
   font-size: 1rem;
+}
+
+h1,
+h2,
+p {
+  margin: 1rem 0;
 }

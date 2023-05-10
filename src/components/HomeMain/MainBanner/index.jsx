@@ -1,11 +1,11 @@
-import './styles.scss';
+import './style.scss';
 
-function SpotCardHome() {
+function MainBanner() {
   return (
-    <header className="spotcard">
-      <div className="spotcard-left">
-        <h2 className="spotcard-title"> description </h2>
-        <p className="spotcard-description">
+    <div className="banner">
+      <div className="banner-left">
+        <h2 className="banner-title"> Description </h2>
+        <p className="banner-description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique elit vitae
           purus suscipit dapibus. Etiam et consequat sem. Vestibulum pellentesque ligula lacus.
           Nam fermentum id dolor in auctor. Mauris luctus nisl lorem, vitae tempor mi condimentum a.
@@ -16,12 +16,12 @@ function SpotCardHome() {
           Sed quis felis ut orci convallis rhoncus sed iaculis diam. Donec nec.
         </p>
       </div>
-      <div className="spotcard-right">
-        <p className="spotcard-p">Le spot phare du mois !</p>
-        <div className="spotcard-rectangle"><p className="spotcard-cache">rectangle</p></div>
+      <div className="banner-right">
+        <h2 className="banner-title">Le spot phare du mois !</h2>
+        <div className="banner-rectangle" />
       </div>
-    </header>
+    </div>
   );
 }
 
-export default SpotCardHome;
+export default MainBanner;

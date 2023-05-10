@@ -1,0 +1,29 @@
+@use 'src/styles/vars';
+
+.banner {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+
+  &-left {
+    max-width: 40%;
+    margin-right: 2rem;
+  }
+
+  &-right  {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-title {
+    align-self: flex-end;
+  }
+    
+  &-rectangle {
+    width: 700px;
+    aspect-ratio: 16/9;
+    background-color: vars.$stroke-color;
+  }
+}
+
+
