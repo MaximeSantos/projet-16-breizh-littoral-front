@@ -9,7 +9,6 @@ import './Home.scss';
 
 function Home() {
   const displayMainMapModal = useSelector((state) => state.mainMapModal.displayMainMapModal);
-  const displayProfileModal = useSelector((state) => state.profileModal.displayProfileModal);
 
   return (
     <>
@@ -19,9 +18,6 @@ function Home() {
 
         {displayMainMapModal
         && <MainMapModal />}
-
-        {displayProfileModal
-        && <p>Display Profile Modal</p>}
       </main>
       <Footer />
     </>
