@@ -8,7 +8,7 @@ import {
   useMapEvents,
 } from 'react-leaflet';
 
-import { spots, startPosition } from '../../../utils/mapData';
+import { spots, startPosition } from '../../../../utils/mapData';
 
 import './style.scss';
 
@@ -40,7 +40,7 @@ function CustomMarker() {
 
 function MainMapLeaflet() {
   const listOfSpots = spots.map((spot) => (
-    <Marker position={spot.position}>
+    <Marker key={spot.position[0] + spot.position[1]} position={spot.position}>
       <Popup>
         {spot.name}
         <br />

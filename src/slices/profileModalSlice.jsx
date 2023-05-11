@@ -9,12 +9,12 @@ export const profileModalSlice = createSlice({
   name: 'profileModal',
   initialState,
   reducers: {
-    setDisplayProfileModal: (state) => {
+    toggleDisplayProfileModal: (state) => {
       state.displayProfileModal = !state.displayProfileModal;
     },
   },
 });
 
-export const { setDisplayProfileModal } = profileModalSlice.actions;
+export const { toggleDisplayProfileModal } = profileModalSlice.actions;
 
 export default profileModalSlice.reducer;

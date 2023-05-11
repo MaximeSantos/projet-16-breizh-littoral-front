@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useDispatch } from 'react-redux';
 // import { useGetSpotsQuery } from '../../api/spotsApi';
-import { toggleDisplayMainMapModal } from '../../slices/mainMapModalSlice';
+import { toggleDisplayMainMapModal } from '../../../slices/mainMapModalSlice';
 
 import MainMapLeaflet from './MainMapLeaflet';
 

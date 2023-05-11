@@ -30,6 +30,12 @@
   cursor: pointer;
   color: vars.$stroke-color;
   box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease-out;
+
+  &:hover {
+    translate: -2px -2px;
+    filter: drop-shadow(5px 5px 5px vars.$stroke-color);
+  }
 
   &-placeholder {
     width: 100%;
