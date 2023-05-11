@@ -24,4 +24,5 @@ function MainBanner() {
   );
 }
 
+// eslint-disable-next-line eol-last
 export default MainBanner;
