@@ -1,4 +1,5 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
 import { useState } from 'react';
 import {
   MapContainer,
@@ -8,7 +9,7 @@ import {
   useMapEvents,
 } from 'react-leaflet';
 
-import { spots, startPosition } from '../../../../utils/mapData';
+import { startPosition } from '../../../../utils/mapData';
 
 import './style.scss';
 
@@ -18,8 +19,6 @@ function CustomMarker() {
   useMapEvents({
     click(e) {
       setCustomPosition([e.latlng.lat, e.latlng.lng]);
-      // console.log(e.latlng.lat);
-      // console.log(e.latlng.lng);
     },
   });
 
@@ -38,15 +37,17 @@ function CustomMarker() {
   );
 }
 
-function MainMapLeaflet() {
+function MainMapLeaflet({ spots }) {
   const listOfSpots = spots.map((spot) => (
-    <Marker key={spot.position[0] + spot.position[1]} position={spot.position}>
+    <Marker key={spot.id} position={spot.coordinates}>
       <Popup>
         {spot.name}
         <br />
-        {spot.position[0]}
+        {spot.coordinates[0]}
         <br />
-        {spot.position[1]}
+        {spot.coordinates[1]}
+        <br />
+        {spot.description}
       </Popup>
     </Marker>
   ));
@@ -64,21 +65,21 @@ function MainMapLeaflet() {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {/* <Marker position={startPosition}>
-        <Popup>
-          A pretty CSS3 popup.
-          <br />
-          Easily customizable.
-        </Popup>
-      </Marker> */}
       {listOfSpots}
       <CustomMarker />
     </MapContainer>
   );
 }
 
-// MainMapLeaflet.propTypes = {
-
-// };
+MainMapLeaflet.propTypes = {
+  spots: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      coordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
+      description: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
 
 export default MainMapLeaflet;

@@ -3,11 +3,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const spotsApi = createApi({
   reducerPath: 'spotsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://breizh-littoral/api', // ! temp
+    baseUrl: 'http://localhost:3001/', // ! temp
   }),
   tagTypes: ['Spots'],
   endpoints: (builder) => ({
-    getSposts: builder.query({
+    getSpots: builder.query({
       query: () => ({
         url: '/spots',
         method: 'GET',
