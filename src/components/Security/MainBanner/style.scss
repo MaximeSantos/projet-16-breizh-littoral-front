@@ -1,0 +1,8 @@
+@use 'src/styles/vars';
+
+.mainBanner {
+
+    width: 60rem;
+    aspect-ratio: 16/4;
+    background-color: vars.$stroke-color;
+}
