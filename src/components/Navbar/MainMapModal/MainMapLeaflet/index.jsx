@@ -39,13 +39,13 @@ function CustomMarker() {
 
 function MainMapLeaflet({ spots }) {
   const listOfSpots = spots.map((spot) => (
-    <Marker key={spot.id} position={spot.coordinates}>
+    <Marker key={spot.id} position={spot.gps_coordinates}>
       <Popup>
         {spot.name}
         <br />
-        {spot.coordinates[0]}
+        {spot.gps_coordinates[0]}
         <br />
-        {spot.coordinates[1]}
+        {spot.gps_coordinates[1]}
         <br />
         {spot.description}
       </Popup>
@@ -76,7 +76,7 @@ MainMapLeaflet.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      coordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
+      gps_coordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
       description: PropTypes.string.isRequired,
     }),
   ).isRequired,
