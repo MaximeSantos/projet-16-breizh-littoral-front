@@ -1,5 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import bzlLogoBlackBig from '../../assets/logos/BZL-logo_black.svg';
+import iconConseils from '../../assets/icons/navbarButton-conseils.svg';
+import iconDarkmode from '../../assets/icons/navbarButton-darkmode.svg';
+import iconFavoris from '../../assets/icons/navbarButton-favoris.svg';
+import iconMeteo from '../../assets/icons/navbarButton-meteo.svg';
+import iconSports from '../../assets/icons/navbarButton-sports.svg';
+
 import { toggleDisplayMainMapModal } from '../../slices/mainMapModalSlice';
 import { toggleDisplayProfileModal } from '../../slices/profileModalSlice';
 
@@ -27,7 +35,7 @@ function Navbar() {
     <header className="navbar">
       <div className="navbar-container navbar-left">
         <Link className="navbar-logo" to="/">
-          <img className="navbar-logo-image" src="src/assets/logos/BZL-logo_black.svg" alt="Logo principal Breizh Littoral" />
+          <img className="navbar-logo-image" src={bzlLogoBlackBig} alt="Logo principal Breizh Littoral" />
         </Link>
       </div>
 
@@ -39,16 +47,16 @@ function Navbar() {
 
       <div className="navbar-container navbar-right">
         <div>
-          <NavbarButton className="navbar-button" route="/favoris" icon="src/assets/icons/navbarButton-favoris.svg" />
+          <NavbarButton className="navbar-button" route="/favoris" icon={iconFavoris} />
         </div>
         <div>
-          <NavbarButton className="navbar-button" route="/sports" icon="src/assets/icons/navbarButton-sports.svg" />
-          <NavbarButton className="navbar-button" route="/meteo" icon="src/assets/icons/navbarButton-meteo.svg" />
-          <NavbarButton className="navbar-button" route="/conseils" icon="src/assets/icons/navbarButton-conseils.svg" />
+          <NavbarButton className="navbar-button" route="/sports" icon={iconSports} />
+          <NavbarButton className="navbar-button" route="/meteo" icon={iconMeteo} />
+          <NavbarButton className="navbar-button" route="/conseils" icon={iconConseils} />
         </div>
         <div>
           <button type="button" className="navbar-darkmode_button">
-            <img src="src/assets/icons/navbarButton-darkmode.svg" alt="Bouton mode sombre/clair" />
+            <img src={iconDarkmode} alt="Bouton mode sombre/clair" />
           </button>
         </div>
       </div>
