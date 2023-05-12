@@ -1,3 +1,5 @@
+import iconFavoris from '../../../../assets/icons/navbarButton-favoris.svg';
+
 import './style.scss';
 
 function SpotCard() {
@@ -13,7 +15,7 @@ function SpotCard() {
         </div>
         <div className="card-footer-right">
           <button type="button" className="card-footer-right-button">
-            <img src="src/assets/icons/navbarButton-favoris.svg" alt="Bouton ajouter aux favoris" />
+            <img src={iconFavoris} alt="Bouton ajouter aux favoris" />
           </button>
         </div>
       </div>
