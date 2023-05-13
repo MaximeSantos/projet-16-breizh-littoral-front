@@ -55,7 +55,7 @@ function Navbar() {
           <NavbarButton className="navbar-button" route="/conseils" icon={iconConseils} />
         </div>
         <div>
-          <button type="button" className="navbar-darkmode_button">
+          <button type="button" className="navbar-button navbar-button--darkmode">
             <img src={iconDarkmode} alt="Bouton mode sombre/clair" />
           </button>
         </div>

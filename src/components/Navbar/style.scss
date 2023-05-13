@@ -37,6 +37,7 @@
   &-middle {
     display: flex;
     align-items: center;
+    justify-content: center;
 
     &-button {
       background-color: vars.$secondary-color;
@@ -46,8 +47,6 @@
 
       &:hover {
         background-color: vars.$highlight-color;
-        translate: -2px -2px;
-        filter: drop-shadow(5px 5px 5px darken(vars.$secondary-color, 20%));
       }
   
       &-map {
@@ -63,19 +62,16 @@
     align-items: center;
   }
 
-  &-button,
-  &-darkmode_button {
+  &-button {
     margin-right: 1rem;
 
     &:hover {
-      // translate: -2px -2px;
       filter:
       invert(0.5)
       sepia(1)
       hue-rotate(10deg)
       saturate(10)
       brightness(1.2)
-      drop-shadow(5px 5px 5px vars.$stroke-color);
     }
   }
 
