@@ -1,5 +1,15 @@
 @use 'src/styles/vars';
 
+.active {
+  border-bottom: 5px solid vars.$highlight-color;
+  filter:
+  invert(0.5)
+  sepia(1)
+  hue-rotate(10deg)
+  saturate(10)
+  brightness(1.2)
+}
+
 .navbar {
   height: 10vh;
   display: flex;
@@ -12,7 +22,6 @@
   z-index: 1;
 
   &-container {
-    width: 30%;
     height: 100%;
   }
 
@@ -20,6 +29,7 @@
     margin-left: 1rem;
     display: flex;
     align-items: center;
+    flex: 1;
   }
 
   &-logo {
@@ -37,6 +47,7 @@
   &-middle {
     display: flex;
     align-items: center;
+    justify-content: center;
 
     &-button {
       background-color: vars.$secondary-color;
@@ -46,8 +57,6 @@
 
       &:hover {
         background-color: vars.$highlight-color;
-        translate: -2px -2px;
-        filter: drop-shadow(5px 5px 5px darken(vars.$secondary-color, 20%));
       }
   
       &-map {
@@ -61,21 +70,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex: 1;
   }
 
-  &-button,
-  &-darkmode_button {
+  &-button {
     margin-right: 1rem;
 
     &:hover {
-      // translate: -2px -2px;
       filter:
       invert(0.5)
       sepia(1)
       hue-rotate(10deg)
       saturate(10)
       brightness(1.2)
-      drop-shadow(5px 5px 5px vars.$stroke-color);
     }
   }
 
