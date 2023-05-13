@@ -1,5 +1,15 @@
 @use 'src/styles/vars';
 
+.active {
+  border-bottom: 5px solid vars.$highlight-color;
+  filter:
+  invert(0.5)
+  sepia(1)
+  hue-rotate(10deg)
+  saturate(10)
+  brightness(1.2)
+}
+
 .navbar {
   height: 10vh;
   display: flex;
@@ -12,7 +22,6 @@
   z-index: 1;
 
   &-container {
-    width: 30%;
     height: 100%;
   }
 
@@ -20,6 +29,7 @@
     margin-left: 1rem;
     display: flex;
     align-items: center;
+    flex: 1;
   }
 
   &-logo {
@@ -60,6 +70,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex: 1;
   }
 
   &-button {
