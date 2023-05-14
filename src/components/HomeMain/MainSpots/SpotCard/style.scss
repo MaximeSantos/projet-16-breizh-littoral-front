@@ -1,117 +1,68 @@
 @use 'src/styles/vars';
 
-// main {
-//   display: grid;
-//   grid-template-columns: repeat(4, 1fr);
-//   grid-gap: 25px;
-//   padding: 100px;
-//   margin-left: 70px;
-// }
-
-// img {
-//   position: absolute;
-//   object-fit: cover;
-//   width: 100%;
-//   height: 100%;
-//   top: 0;
-//   left: 0;
-//   opacity: 0.9;
-//   transition: opacity .2s ease-out;
-// }
-
 .card {
   width: 20%;
   aspect-ratio: 2/3;
   border-radius: 10px;
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
   overflow: hidden;
   cursor: pointer;
   color: vars.$stroke-color;
-  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px 5px transparentize(vars.$stroke-color, 0.7);
   transition: all 0.1s;
 
   &:hover {
     translate: -2px -2px;
-  }
-
-  &-placeholder {
-    width: 100%;
-    aspect-ratio: 1;
-    background-color: vars.$stroke-color;
-
-    &--small {
-      width: 90px;
-      height: 15px; // ! temp
-      border-radius: 10px;
-      background-color: vars.$stroke-color;
-    }
-  }
-
-  &-title {
-    margin-left: 1rem;
-  }
- 
-  &-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &-left {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-left: 1rem;
-    }
-
-    &-right {
-      margin-right: 1rem;
-
-      &-button {
-        &:hover {
-          filter:
-          invert(0.5)
-          sepia(1)
-          hue-rotate(10deg)
-          saturate(10)
-          brightness(1.2)
-        }
+    
+    .card-header-button {
+      display: inline;
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+  
+      filter:
+      invert(1)
+      // sepia(1)
+      // hue-rotate(10deg)
+      saturate(10)
+      brightness(1.2);
+      
+      &:hover {
+        filter:
+        invert(0.5)
+        sepia(1)
+        hue-rotate(10deg)
+        saturate(10)
+        brightness(1.2);
       }
     }
   }
-  
-  // &-p, a {
-  //   position: absolute;
-  //   opacity: 0;
-  //   max-width: 80%;
-  //   transition: opacity .3s ease-out;
-  // }
-  
-  // p {
-  //   inset: auto auto 80px 30px;
-  // }
-  
-  // a {
-  //   inset: auto auto 40px 30px;
-  //   color: inherit;
-  //   text-decoration: none;
-  // }
-  
-  // &:hover h2 {
-  //   inset: auto auto 220px 30px;
-  //   transition: inset .3s ease-out;
-  // }
-  
-  // &:hover p, &:hover a {
-  //   opacity: 1;
-  //   transition: opacity .5s .1s ease-in;
-  // }
-  
-  // &:hover img {
-  //   transition: opacity .3s ease-in;
-  //   opacity: 1;
-  // }
 
+  &-header {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    background-color: vars.$stroke-color;
+
+    &-button {
+      display: none;
+    }
+
+    &-picture {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-main {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    margin: 0 1rem;
+  }
+
+  &-description {
+    margin: 0;
+  }
 }
