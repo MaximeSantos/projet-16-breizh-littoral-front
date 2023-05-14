@@ -11,24 +11,12 @@ import './style.scss';
 function MainMapModal() {
   const dispatch = useDispatch();
 
-  // A voir quand l'API du back sera opérationnelle
   const {
     data: spots,
     isFetching,
     isError,
     error,
   } = useGetSpotsQuery();
-
-  // if (isFetching) {
-  //   console.log('fetching');
-  //   content = <p>Loading ...</p>;
-  // } else if (isError) {
-  //   console.log('error');
-  //   content = <p>{error}</p>;
-  // } else {
-  //   content = spots;
-  //   console.log('OK');
-  // }
 
   const handleDisplayMainMapModal = () => {
     dispatch(toggleDisplayMainMapModal());

@@ -4,16 +4,16 @@ function MainBanner() {
   return (
     <div className="banner">
       <div className="banner-left">
-        <h2 className="banner-title"> Description </h2>
+        <h2 className="banner-title"> Bienvenue sur Breizh Littoral </h2>
         <p className="banner-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique elit vitae
-          purus suscipit dapibus. Etiam et consequat sem. Vestibulum pellentesque ligula lacus.
-          Nam fermentum id dolor in auctor. Mauris luctus nisl lorem, vitae tempor mi condimentum a.
-          Sed quis felis ut orci convallis rhoncus sed iaculis diam. Donec nec.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique elit vitae
-          purus suscipit dapibus. Etiam et consequat sem. Vestibulum pellentesque ligula lacus.
-          Nam fermentum id dolor in auctor. Mauris luctus nisl lorem, vitae tempor mi condimentum a.
-          Sed quis felis ut orci convallis rhoncus sed iaculis diam. Donec nec.
+          Que l&#39;on soit adepte de surf, paddle, bodyboard, longboard, wakeboard, kitesurf,
+          planche à voile, longe-côte, chasse sous-marine ou simplement de passage en bord de mer,
+          Breizh Littoral recense les spots de sports nautiques en Bretagne, en apportant des
+          indications sur la localisation géographique et les moyens d&#39;accès, mais aussi sur
+          les bonnes pratiques environnementales ou les conditions météos.
+        </p>
+        <p>
+          Rejoignez-nous pour partager vos spots préférés !
         </p>
       </div>
       <div className="banner-right">
