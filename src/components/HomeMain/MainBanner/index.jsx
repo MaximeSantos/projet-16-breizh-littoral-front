@@ -18,7 +18,7 @@ function MainBanner() {
       </div>
       <div className="banner-right">
         <h2 className="banner-title">Le spot phare du mois !</h2>
-        <div className="banner-rectangle" />
+        <img className="banner-picture" src="https://cdn.pixabay.com/photo/2020/06/17/18/27/sea-5310657_960_720.jpg" alt="Spot phare du mois" />
       </div>
     </div>
   );

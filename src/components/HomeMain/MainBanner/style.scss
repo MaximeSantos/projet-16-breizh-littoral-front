@@ -19,9 +19,10 @@
     align-self: flex-end;
   }
     
-  &-rectangle {
+  &-picture {
     width: 700px;
     aspect-ratio: 16/9;
     background-color: vars.$stroke-color;
+    box-shadow: 0 10px 30px 5px transparentize(vars.$stroke-color, 0.7);
   }
 };

@@ -8,7 +8,7 @@ function SpotCard({ spot }) {
   return (
     <div className="card">
       <div className="card-header">
-        {/* <img className="card-header-picture" src="#" alt={`Spot ${spot.name}`} /> */}
+        <img className="card-header-picture" src={spot.picture} alt={`Spot ${spot.name}`} />
         <button type="button" className="card-header-button">
           <img src={iconFavoris} alt="Bouton ajouter aux favoris" />
         </button>

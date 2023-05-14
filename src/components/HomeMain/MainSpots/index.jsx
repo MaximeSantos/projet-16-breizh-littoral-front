@@ -23,7 +23,7 @@ function MainSpots() {
 
   return (
     <>
-      <h2 className="cards-title">Liste des cartes</h2>
+      <h2 className="cards-title">Liste des spots</h2>
       <div className="cards-container">
         {isFetching
         && <p>Loading...</p>}
