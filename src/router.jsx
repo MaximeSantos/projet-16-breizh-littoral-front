@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import Test from './pages/Test';
 import Error404 from './pages/Error404';
 import HomeSport from './components/HomeSport';
-import SecurityPage from './pages/SecurityPage';
 
 const router = createBrowserRouter([
   {
@@ -18,10 +17,6 @@ const router = createBrowserRouter([
   {
     path: '/sports',
     element: <HomeSport />,
-  },
-  {
-    path: '/conseils',
-    element: <SecurityPage />,
   },
   {
     path: '*',
