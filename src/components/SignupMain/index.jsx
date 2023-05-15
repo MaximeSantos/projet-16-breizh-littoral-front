@@ -6,18 +6,20 @@ import { usePostNewUserMutation } from '../../api/usersApi';
 import './style.scss';
 
 function SignupMain() {
+  // Hook de react-hook-form pour créer le formulaire
   const {
     register,
     handleSubmit,
   } = useForm();
 
+  // Mutation de RTK Query pour permettre de gérer la requête en POST
   const [postNewUser, {
     isLoading,
     isError,
     isSuccess,
   }] = usePostNewUserMutation();
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  // Lorsque le formulaire est soumis, on déclenche l'appel API avec les données soumises
   const onSubmit = (data) => postNewUser(JSON.stringify(data));
 
   return (
@@ -59,15 +61,18 @@ function SignupMain() {
             <input className="signup-form-button" type="submit" value="S'inscrire" />
           </form>
         )}
+
         {isLoading
         && <p>Loading ...</p>}
+
         {isError
         && <p>Erreur lors de l&apos;inscription</p>}
+
         {isSuccess
         && (
           <>
             <p>Félicitation, vous êtes inscrit !</p>
-            <Link className="" to="/connexion">
+            <Link className="signup-success-connection" to="/connexion">
               Connectez-vous !
             </Link>
           </>

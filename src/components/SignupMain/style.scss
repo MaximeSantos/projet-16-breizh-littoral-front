@@ -10,15 +10,33 @@
   }
 
   &-form_container {
-
+    margin: 1rem 0;
   }
 
   &-form {
-   
-    &-button {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+    & div {
+      margin: 0.5rem;
+      & input {
+        font-size: 1.2rem;
+        font-family: 'Andika', sans-serif;
+        background-color: transparentize(vars.$primary-color, 0.5);
+        border-radius: 10px;
+        padding: 0.5rem;
+      }
+    }
+
+    &-button,
+    .signup-success-connection {
       background-color: vars.$secondary-color;
       border-radius: 10px;
       padding: 0.5rem;
+      margin: 1rem 0;
+      font-size: 1.2rem;
+
 
       &:hover {
         background-color: vars.$highlight-color;

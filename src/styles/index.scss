@@ -48,3 +48,8 @@ h2,
 p {
   margin: 1rem 0;
 }
+
+button:focus,
+input:focus {
+  border: 1px solid vars.$stroke-color;
+}
