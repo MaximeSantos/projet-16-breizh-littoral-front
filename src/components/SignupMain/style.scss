@@ -1,0 +1,28 @@
+@use 'src/styles/vars';
+
+.signup {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  &-title {
+    text-align: center;
+  }
+
+  &-form_container {
+
+  }
+
+  &-form {
+   
+    &-button {
+      background-color: vars.$secondary-color;
+      border-radius: 10px;
+      padding: 0.5rem;
+
+      &:hover {
+        background-color: vars.$highlight-color;
+      }
+    }
+  }
+}
