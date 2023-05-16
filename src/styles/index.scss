@@ -1,2 +1,50 @@
 @use 'reset';
 @use 'vars';
+
+@font-face {
+  font-family: "Fraiche";
+  src:
+    local("Fraiche"),
+    url("../assets/fonts/fraiche.otf")
+    format("truetype");
+}
+
+body {
+  background-color: vars.$main-color;
+  color: vars.$stroke-color;
+  font-family: 'Andika', sans-serif;
+  min-height: 100vh;
+  line-height: 1.7rem;
+}
+
+#root {
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  margin: 1rem 2rem;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: 'Fraiche', sans-serif;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1rem;
+}
+
+h1,
+h2,
+p {
+  margin: 1rem 0;
+}

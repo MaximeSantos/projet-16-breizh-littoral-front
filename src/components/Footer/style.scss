@@ -1,0 +1,57 @@
+@use '../../styles/vars';
+
+
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: vars.$primary-color;
+  background: vars.$primary-color;
+  background: linear-gradient(0deg, vars.$primary-color 60%, vars.$main-color 100%); 
+  padding-bottom: 1rem;
+
+  &-title {
+    padding: 1rem 0;
+  }
+
+  &-left {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // &-middle {
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: center;
+  // }
+  
+  &-right {
+    width: 25%;
+    flex-direction: column;
+
+    &-ul {
+      &-li {
+        margin-bottom: 1rem;
+
+        &:hover {
+          text-decoration: underline;
+          translate: -2px -2px;
+        }
+      }
+    }
+  }
+
+// &-logo {
+//   width: 100px;
+//   height: 100px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   &-rs {
+//       padding-bottom: 0.5em;
+//   }
+// }
+}
+
+

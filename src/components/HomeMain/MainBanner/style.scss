@@ -1,0 +1,28 @@
+@use 'src/styles/vars';
+
+.banner {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+
+  &-left {
+    max-width: 40%;
+    margin-right: 2rem;
+  }
+
+  &-right  {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-title {
+    align-self: flex-end;
+  }
+    
+  &-picture {
+    width: 700px;
+    aspect-ratio: 16/9;
+    background-color: vars.$stroke-color;
+    // box-shadow: 0 10px 30px 5px transparentize(vars.$stroke-color, 0.7);
+  }
+};

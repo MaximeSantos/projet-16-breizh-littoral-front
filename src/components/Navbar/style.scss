@@ -1,0 +1,92 @@
+@use 'src/styles/vars';
+
+.active {
+  border-bottom: 5px solid vars.$highlight-color;
+  filter:
+  invert(0.5)
+  sepia(1)
+  hue-rotate(10deg)
+  saturate(10)
+  brightness(1.2)
+}
+
+.navbar {
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: vars.$primary-color;
+  background: linear-gradient(180deg, vars.$primary-color 70%, vars.$main-color 100%);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  &-container {
+    height: 100%;
+  }
+
+  &-left {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  &-logo {
+    height: 100%;
+
+    &:hover {
+      filter: drop-shadow(5px 5px 5px darken(vars.$secondary-color, 20%));
+    }
+
+    &-image {
+      height: 100%;
+    }
+  }
+
+  &-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-button {
+      background-color: vars.$secondary-color;
+      margin: 0 1rem;
+      padding: 1rem;
+      border-radius: 10%;
+
+      &:hover {
+        background-color: vars.$highlight-color;
+      }
+  
+      &-map {
+        font-size: 2rem;
+        font-family: 'Fraiche';
+      }
+    }
+  }
+
+  &-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+  }
+
+  &-button {
+    margin-right: 1rem;
+
+    &:hover {
+      filter:
+      invert(0.5)
+      sepia(1)
+      hue-rotate(10deg)
+      saturate(10)
+      brightness(1.2)
+    }
+  }
+
+  // &-darkmode_button {
+  // }
+}
+
