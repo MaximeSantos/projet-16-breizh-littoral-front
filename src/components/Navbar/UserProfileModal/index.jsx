@@ -19,12 +19,10 @@ function UserNavbar() {
       <div className="modal-content profile_modal-content">
         {/* if user is logged in */}
         <NavLink className="profile_modal-navlink" to="/profil">Profil</NavLink>
-        {/* Ceci ne sera pas un navlink quand le système d'auth sera mis en place */}
         <NavLink className="profile_modal-navlink" to="/deconnexion">Déconnexion </NavLink>
-        {/* if user is an admin */}
-        <NavLink className="profile_modal-navlink" to="/admin">Back-Office </NavLink>
-        {/* if user is logged out */}
+        {/* if user is not logged in */}
         <NavLink className="profile_modal-navlink" to="/inscription">Inscription </NavLink>
+        <NavLink className="profile_modal-navlink" to="/connexion">Connexion</NavLink>
       </div>
     </div>
   );

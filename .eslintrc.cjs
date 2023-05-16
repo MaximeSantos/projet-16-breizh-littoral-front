@@ -13,5 +13,8 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
+    'jsx-a11y/label-has-associated-control': ['error', {
+      some: ['nesting', 'id'],
+    }],
   },
 };
