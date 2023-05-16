@@ -5,6 +5,7 @@ import Test from './pages/Test';
 import Error404 from './pages/Error404';
 import HomeSport from './components/HomeSport';
 import Signup from './pages/Signup';
+import TestRoute from './pages/TestRoute';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: '/inscription',
     element: <Signup />,
+  },
+  {
+    path: '/sports/:slug',
+    element: <TestRoute />,
   },
   {
     path: '*',
