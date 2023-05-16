@@ -1,8 +1,9 @@
 @use 'src/styles/vars';
+.card-header-picture {
+    width: 30rem;
+    aspect-ratio: 16/9;
+}
 
-.sport-card {
-
-    width: 25rem;
-    aspect-ratio: 16/5;
-    background-color: vars.$stroke-color;
+.sport-description {
+    // max-width: 25rem;
 }
