@@ -21,7 +21,7 @@ SportCard.propTypes = {
   sport: PropTypes.shape({
     picture: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
 };
 

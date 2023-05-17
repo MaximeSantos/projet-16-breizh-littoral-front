@@ -7,7 +7,6 @@ function Sport() {
   const {
     data: sport,
   } = useGetSportQuery(sportId);
-  console.log(sport);
 
   return (
     <div>

@@ -7,6 +7,7 @@ import HomeSport from './components/HomeSport';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import SportPage from './pages/SportPage';
+import AddNewSpot from './pages/AddNewSpot';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: '/sports/:sportId',
     element: <SportPage />,
+  },
+  {
+    path: '/ajouter',
+    element: <AddNewSpot />,
   },
   {
     path: '*',
