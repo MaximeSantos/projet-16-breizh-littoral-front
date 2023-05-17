@@ -6,9 +6,10 @@
     justify-content: center;
 }
 .sport-banner {
-
+    
+    display: flex;
     margin-top: 2%;
     width: 80rem;
     aspect-ratio: 16/5;
-    background-color: vars.$stroke-color;
+    justify-content: center;
 }

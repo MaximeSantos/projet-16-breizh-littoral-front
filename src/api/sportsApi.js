@@ -15,10 +15,16 @@ export const sportsApi = createApi({
         method: 'GET',
       }),
     }),
+    getSport: builder.query({
+      query: (sportId) => ({
+        url: `/sports/${sportId}`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
 export const {
   useGetSportsQuery,
-  // useAddNewSpotMutation,
+  useGetSportQuery,
 } = sportsApi;

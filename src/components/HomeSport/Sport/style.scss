@@ -1,0 +1,21 @@
+.left-sport {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    &-picture {
+        max-width: 60rem;
+    }
+    
+    &-h1 {
+        font-size: 5rem;
+        margin-bottom: 2rem;
+    }
+    
+    &-h2 {
+        font-size: 2.5rem;
+    }
+    &-p {
+        font-size: 1.25rem;
+    }
+}
