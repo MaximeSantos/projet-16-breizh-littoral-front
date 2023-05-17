@@ -7,16 +7,14 @@ import HomeSport from './components/HomeSport';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import SportPage from './pages/SportPage';
+import PrivateRoutes from './utils/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
   },
-  {
-    path: '/test',
-    element: <Test />,
-  },
+
   {
     path: '/sports',
     element: <HomeSport />,
@@ -36,6 +34,15 @@ const router = createBrowserRouter([
   {
     path: '*',
     element: <Error404 />,
+  },
+  {
+    element: <PrivateRoutes />,
+    children: [
+      {
+        path: '/test',
+        element: <Test />,
+      },
+    ],
   },
 ]);
 
