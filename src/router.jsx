@@ -5,6 +5,7 @@ import Test from './pages/Test';
 import Error404 from './pages/Error404';
 import HomeSport from './components/HomeSport';
 import Signup from './pages/Signup';
+import Login from './pages/Login';
 import SportPage from './pages/SportPage';
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/inscription',
     element: <Signup />,
+  },
+  {
+    path: '/connexion',
+    element: <Login />,
   },
   {
     path: '/sports/:sportId',

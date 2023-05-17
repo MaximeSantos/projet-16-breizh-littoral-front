@@ -22,10 +22,21 @@ export const usersApi = createApi({
         body: newUser,
       }),
     }),
+    postLogin: builder.mutation({
+      query: (user) => ({
+        url: '/login_check',
+        method: 'POST',
+        body: user,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }),
+    }),
   }),
 });
 
 export const {
-  // useGetUsersQuery,
+  // useGetUserQuery,
   usePostNewUserMutation,
+  usePostLoginMutation,
 } = usersApi;

@@ -30,9 +30,9 @@ function SignupMain() {
       <div className="signup-form_container">
         {!isSuccess
         && (
-          <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
-            <div className="signup-form-email">
-              <input {...register('email')} type="email" placeholder="Email" />
+          <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
+            <div>
+              <input className="signup-form-email" {...register('email')} type="email" placeholder="Email" />
             </div>
             <div className="signup-form-password">
               <input {...register('password')} type="password" placeholder="Mot de passe" />
