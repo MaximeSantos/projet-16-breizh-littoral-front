@@ -1,9 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { usePostLoginMutation } from '../../api/usersApi';
+import { setUserAsLoggedIn } from '../../slices/authSlice';
 import './style.scss';
 
 function LoginMain() {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -14,11 +19,21 @@ function LoginMain() {
     isError,
     isSuccess,
     error,
+    data: userData,
   }] = usePostLoginMutation();
 
   const onSubmit = (data) => {
     postLogin(data);
   };
+
+  // lorsque la connexion est réussie, on rajoute les informations de l'utilisateur au state de RTK
+  // et on stocke le JWT dans le localstorage
+  useEffect(() => {
+    if (isSuccess && userData) {
+      dispatch(setUserAsLoggedIn(userData));
+      localStorage.setItem('userJWToken', userData.token);
+    }
+  }, [dispatch, isSuccess, userData]);
 
   return (
     <main className="login">
