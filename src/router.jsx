@@ -6,6 +6,7 @@ import Error404 from './pages/Error404';
 import HomeSport from './components/HomeSport';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import SportPage from './pages/SportPage';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: '/connexion',
     element: <Login />,
+  },
+  {
+    path: '/sports/:sportId',
+    element: <SportPage />,
   },
   {
     path: '*',
