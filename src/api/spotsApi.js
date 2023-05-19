@@ -9,7 +9,7 @@ export const spotsApi = createApi({
     prepareHeaders: (headers) => {
       // const token = getState().auth.token
       // eslint-disable-next-line max-len
-      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODQzMzQyODEsImV4cCI6MTY4NDQyMDY4MSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiY29vbEBjb29sLmNvbSJ9.qc2wEc1ukJxejug8Xw7cqxDffPQUsOT_XdTLynwE0gts7hvIbij7RAj_CjxZSYWmdmbOtZ7YhWSGjn0P28JdqrhgEOJKjS0CV7cDi-zfUBMtfcglvYrtWrJilt-QU66TTG5RnmaQICLTNYHhhloBKxnS5utOkLZ8tNSSXGBRXoYvjwC8vGUUNbe0KBqbJ8I4geTaE9S2fnPex7EFpDqSU8LuvPBePrphdvpmJjqmt74QmVkiBbc94InE-7jyV35xNECJfsK_CrOyLirfSt3zMd0RzTzI4tYIIe5i-9n_t6B3-PXjwknUVUTYJZl0ZNbMKjhEeTR4utraIi0gSjdhhQ';
+      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODQ0ODA5OTMsImV4cCI6MTY4NDU2NzM5Mywicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiY29vbEBjb29sLmNvbSJ9.guEILL4htF8cw6nKRTdhX-25hoiZtoBsXGPslqgb17Q70rzNtrrAnVRkPL9uhXja0v3UrQK_k1mCRoSDaEz3YIypvGcjqq_krcXcgTqCqKYQhaTGIo0M2ra-daLpZcNyM6c7tpz0RIaH875cP5o0bTrH5ML890l6HNqFo6a94r7CDG8nVTEPhf3CZfYvBIK02aBac59JURvs01BYkEZHnW7nlK9gnw3WNsCr6SDdA2LSZ0oEVvUzS8NMEvspQmeKi9d8igOaIXbIxbKlCDLJaX5IIMIOsKp6WorfgMIRLFIeqNUif7NmVFIQvn-L88xbIoA0Tawyfg93-WiBf02tiA';
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
       }
@@ -29,9 +29,13 @@ export const spotsApi = createApi({
       query: (newSpot) => ({
         url: '/spots',
         method: 'POST',
-        body: {
-          newSpot,
-        },
+        body: newSpot,
+      }),
+    }),
+    GetSpot: builder.query({
+      query: (spotId) => ({
+        url: `/spots/${spotId}`,
+        method: 'GET',
       }),
     }),
   }),
@@ -39,5 +43,6 @@ export const spotsApi = createApi({
 
 export const {
   useGetSpotsQuery,
+  useGetSpotQuery,
   usePostNewSpotMutation,
 } = spotsApi;

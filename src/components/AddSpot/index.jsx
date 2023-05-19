@@ -66,11 +66,6 @@ function AddSpot() {
             <h2> Localisation </h2>
             <input className="spotAdd-form-localisation" {...register('location')} placeholder="Localisation" />
           </div>
-          {/* <div>
-            <select {...register('sport_id')}>
-              {sports && listOfSportsSelect}
-            </select>
-          </div> */}
           <div>
             <select {...register('difficulty_id')} type="number">
               {difficulties && listOfDifficulties}
@@ -89,10 +84,18 @@ function AddSpot() {
           </div> */}
           <div>
             <h2> Photo</h2>
-            <input className="spotAdd-form-photo" {...register('picture')} placeholder="photo" />
+            <input className="spotAdd-form-photo" {...register('picture')} type="file" placeholder="photo" />
           </div>
           <input className="signup-form-button" type="submit" value="Valider" />
         </form>
+        )}
+
+        {isSuccess
+        && (
+          <>
+            <p>Votre spot a été ajouté !</p>
+            <p> </p>
+          </>
         )}
       </div>
     </main>

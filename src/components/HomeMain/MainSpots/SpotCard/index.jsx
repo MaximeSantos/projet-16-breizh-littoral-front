@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import iconFavoris from '../../../../assets/icons/navbarButton-favoris.svg';
 
@@ -6,7 +7,7 @@ import './style.scss';
 
 function SpotCard({ spot }) {
   return (
-    <div className="card">
+    <Link className="card" to={`/spot/${spot.id}`}>
       <div className="card-header">
         <img className="card-header-picture" src={spot.picture} alt={`Spot ${spot.name}`} />
         <button type="button" className="card-header-button">
@@ -19,7 +20,7 @@ function SpotCard({ spot }) {
           {spot.description}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
 SpotCard.propTypes = {
@@ -28,6 +29,7 @@ SpotCard.propTypes = {
     picture: PropTypes.string.isRequired,
     gps_coordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
     description: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
   }).isRequired,
 };
 

@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import SportPage from './pages/SportPage';
 import AddNewSpot from './pages/AddNewSpot';
+import SpotPage from './pages/SpotPage';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: '/sports/:sportId',
     element: <SportPage />,
+  },
+  {
+    path: '/spot/:spotId',
+    element: <SpotPage />,
   },
   {
     path: '/ajouter',
