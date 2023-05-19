@@ -1,13 +1,11 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import { checkIfLoggedIn } from './JWT';
 
 function PrivateRoutes() {
-  let auth = { userJWToken: '' };
-  if (localStorage.getItem('userJWToken')) {
-    auth = { userJWToken: localStorage.getItem('userJWToken') };
+  if (checkIfLoggedIn()) {
+    return <Outlet />;
   }
-  return (
-    auth.userJWToken ? <Outlet /> : <Navigate to="/connexion" />
-  );
+  return <Navigate to="/connexion" />;
 }
 
 export default PrivateRoutes;
