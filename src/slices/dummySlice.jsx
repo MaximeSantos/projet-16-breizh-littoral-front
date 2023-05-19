@@ -1,5 +1,5 @@
 /* RTK nous permet d'écrire des logiques de mutation dans nos reducers sans que le state
-soit réellement muté */
+soit réellement muté grâce à ImmerJS */
 /* eslint-disable no-param-reassign */
 
 // Ceci est un "dummy Slice" qui nous servira de références pour nos futurs slices
