@@ -1,0 +1,26 @@
+@use 'src/styles/vars';
+
+.spot {
+display: flex;
+    &-top {
+        width: 50%;
+        &-banner {
+            margin-top: 2rem;
+            width: 50rem;
+            aspect-ratio: 16/8;
+        }
+        
+    }
+
+    &-right {
+        display: flex;
+        flex-direction: column;
+        &-comments {
+
+        }
+    }
+}
+
+.signup-form-button {
+    margin-left: 2rem;
+}
