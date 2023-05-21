@@ -7,16 +7,14 @@ export const spotsApi = createApi({
   reducerPath: 'spotsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
-    // prepareHeaders: (headers) => {
-    //   // const token = getState().auth.token
-    //   // eslint-disable-next-line max-len
-    //   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
-    //   if (token) {
-    //     headers.set('authorization', `Bearer ${token}`);
-    //   }
-    //   console.log('headers !!!!!!!!!', headers);
-    //   return headers;
-    // },
+    // Si on a un token valide, on le rajoute dans le header de nos requêtes concernant les spots
+    prepareHeaders: (headers, { getState }) => {
+      const { token } = getState().auth;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   tagTypes: ['Spots'],
   endpoints: (builder) => ({

@@ -8,6 +8,14 @@ export const checkIfLoggedIn = () => {
   return false;
 };
 
+export const getJWTFromLocalStorage = () => {
+  if (checkIfLoggedIn()) {
+    const JWT = localStorage.getItem('BZLuserJWToken');
+    return JWT;
+  }
+  return null;
+};
+
 export const getUserIdFromJWT = () => {
   if (checkIfLoggedIn()) {
     const JWT = localStorage.getItem('BZLuserJWToken');

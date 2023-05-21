@@ -16,7 +16,6 @@ const router = createBrowserRouter([
     path: '/',
     element: <Home />,
   },
-
   {
     path: '/sports',
     element: <HomeSport />,
@@ -38,19 +37,21 @@ const router = createBrowserRouter([
     element: <SpotPage />,
   },
   {
-    path: '/ajouter',
-    element: <AddNewSpot />,
-  },
-  {
     path: '*',
     element: <Error404 />,
   },
+  // On ne pourra accéder à ces routes que si l'on est connecté,
+  // Sinon on est renvoyé vers une page de connexion
   {
     element: <PrivateRoutes />,
     children: [
       {
         path: '/test',
         element: <Test />,
+      },
+      {
+        path: '/ajouter',
+        element: <AddNewSpot />,
       },
     ],
   },
