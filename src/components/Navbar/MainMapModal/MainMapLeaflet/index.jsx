@@ -1,56 +1,34 @@
 import PropTypes from 'prop-types';
 
-import { useState } from 'react';
 import {
   MapContainer,
   Marker,
   Popup,
   TileLayer,
-  useMapEvents,
 } from 'react-leaflet';
 
 import { startPosition } from '../../../../utils/mapData';
+import CustomMarker from '../../../Leaflet/CustomMarker';
 
 import './style.scss';
 
-function CustomMarker() {
-  const [customPosition, setCustomPosition] = useState(null);
-
-  useMapEvents({
-    click(e) {
-      setCustomPosition([e.latlng.lat, e.latlng.lng]);
-    },
-  });
-
-  return customPosition === null ? null : (
-    <Marker position={customPosition}>
-      <Popup>
-        You clicked here :
-        <br />
-        latitude&nbsp;
-        {customPosition[0]}
-        <br />
-        longitude&nbsp;
-        {customPosition[1]}
-      </Popup>
-    </Marker>
-  );
-}
-
-function MainMapLeaflet({ spots }) {
-  const listOfSpots = spots.map((spot) => (
-    <Marker key={spot.id} position={spot.gps_coordinates}>
-      <Popup>
-        {spot.name}
-        <br />
-        {spot.gps_coordinates[0]}
-        <br />
-        {spot.gps_coordinates[1]}
-        <br />
-        {spot.description}
-      </Popup>
-    </Marker>
-  ));
+function MainMapLeaflet({ spots, canPinCustomMarker }) {
+  let listOfSpots;
+  if (spots) {
+    listOfSpots = spots.map((spot) => (
+      <Marker key={spot.id} position={spot.gps_coordinates}>
+        <Popup>
+          {spot.name}
+          <br />
+          {spot.gps_coordinates[0]}
+          <br />
+          {spot.gps_coordinates[1]}
+          <br />
+          {spot.description}
+        </Popup>
+      </Marker>
+    ));
+  }
 
   return (
     <MapContainer
@@ -66,7 +44,8 @@ function MainMapLeaflet({ spots }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {listOfSpots}
-      <CustomMarker />
+      {canPinCustomMarker
+      && <CustomMarker />}
     </MapContainer>
   );
 }
@@ -79,7 +58,12 @@ MainMapLeaflet.propTypes = {
       gps_coordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
       description: PropTypes.string.isRequired,
     }),
-  ).isRequired,
+  ),
+  canPinCustomMarker: PropTypes.bool.isRequired,
+};
+
+MainMapLeaflet.defaultProps = {
+  spots: [],
 };
 
 export default MainMapLeaflet;

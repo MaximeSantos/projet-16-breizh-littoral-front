@@ -1,10 +1,15 @@
+// Notre backend n'utilise pas de camelcase en BDD, nous désactivons cette règle ici pour le moment
+/* eslint-disable camelcase */
+// Nous avons besoin de désactiver cette règle pour react-hook-form
 /* eslint-disable react/jsx-props-no-spreading */
+import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { usePostNewSpotMutation } from '../../api/spotsApi';
 // import { useGetSportsQuery } from '../../api/sportsApi';
 import { useGetDifficultesQuery } from '../../api/difficultesApi';
 import './style.scss';
 import { getUserIdFromJWT } from '../../utils/JWT';
+import MainMapLeaflet from '../Navbar/MainMapModal/MainMapLeaflet';
 
 function AddSpot() {
   // const {
@@ -16,6 +21,8 @@ function AddSpot() {
   //     <option key={sport.id} value={sport.id}>{sport.name}</option>
   //   ));
   // }
+
+  const gps_coordinates = useSelector((state) => state.leaflet.customMarkerCoordinates);
 
   const {
     data: difficulties,
@@ -34,29 +41,31 @@ function AddSpot() {
 
   const [postNewSpot, {
     isSuccess,
+    isError,
   }] = usePostNewSpotMutation();
 
   const onSubmit = (data) => {
     const dataToSend = {
       ...data,
       user_id: getUserIdFromJWT(),
-      gps_coordinates: [48.10688151413752, -4.284942408712835],
+      gps_coordinates,
       // sport_id: parseInt(data.sport_id, 10),
-      difficulty_id: parseInt(data.difficulty_id, 10),
+      difficulty_id: Number(data.difficulty_id),
     };
 
+    console.log('DataToSend', dataToSend);
     postNewSpot(dataToSend);
   };
 
   return (
     <main className="addSpot">
-      <h1 className="addSpot-title">
-        Création d&apos;un nouveau spot
-      </h1>
-      <div className="signup-form_container">
-        {!isSuccess
-        && (
+      {!isSuccess
+      && (
+      <>
         <form className="spotAdd-form" onSubmit={handleSubmit(onSubmit)}>
+          <h1 className="addSpot-title">
+            Création d&apos;un nouveau spot
+          </h1>
           <div>
             <h2> Nom </h2>
             <input className="spotAdd-form-name" {...register('name')} placeholder="Nom" />
@@ -76,27 +85,22 @@ function AddSpot() {
               <input className="spotAdd-form-description" {...register('description')} placeholder="Description" type="textarea" />
             </div>
           </div>
-          {/* <div>
-            <h2> Données GPS</h2>
-            <input className="spotAdd-form-GPS"
-            {...register('gps_coordinates')} placeholder="GPS" />
-          </div> */}
           <div>
             <h2> Photo</h2>
             <input className="spotAdd-form-photo" {...register('picture')} placeholder="photo" />
           </div>
           <input className="signup-form-button" type="submit" value="Valider" />
+          {isError
+          && <p>Erreur lors de l&apos;ajout du spot</p>}
         </form>
-        )}
+        <div className="addSpot-map">
+          <MainMapLeaflet canPinCustomMarker />
+        </div>
+      </>
+      )}
 
-        {isSuccess
-        && (
-          <>
-            <p>Votre spot a été ajouté !</p>
-            <p> </p>
-          </>
-        )}
-      </div>
+      {isSuccess
+      && (<p>Votre spot a bien été ajouté !</p>)}
     </main>
   );
 }
