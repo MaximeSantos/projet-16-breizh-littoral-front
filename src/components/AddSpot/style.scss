@@ -1,6 +1,16 @@
 .addSpot {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
 
-    &-title {
-       text-align: center;
+    &-form {
+        width: 30vw;
+    }
+
+    &-map {
+        width: 30vw;
+        height: 400px;
+        z-index: 0;
     }
 }
