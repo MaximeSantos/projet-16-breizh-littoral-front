@@ -18,7 +18,6 @@ function Spot() {
 
   // Mutation de RTK Query pour permettre de gérer la requête en POST
   const [postNewUser, {
-
     isSuccess,
   }] = usePostNewUserMutation();
 

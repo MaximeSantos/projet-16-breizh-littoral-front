@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const API_URL = import.meta.env.VITE_URL_API;
@@ -6,16 +7,16 @@ export const spotsApi = createApi({
   reducerPath: 'spotsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
-    prepareHeaders: (headers) => {
-      // const token = getState().auth.token
-      // eslint-disable-next-line max-len
-      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODQ0ODA5OTMsImV4cCI6MTY4NDU2NzM5Mywicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiY29vbEBjb29sLmNvbSJ9.guEILL4htF8cw6nKRTdhX-25hoiZtoBsXGPslqgb17Q70rzNtrrAnVRkPL9uhXja0v3UrQK_k1mCRoSDaEz3YIypvGcjqq_krcXcgTqCqKYQhaTGIo0M2ra-daLpZcNyM6c7tpz0RIaH875cP5o0bTrH5ML890l6HNqFo6a94r7CDG8nVTEPhf3CZfYvBIK02aBac59JURvs01BYkEZHnW7nlK9gnw3WNsCr6SDdA2LSZ0oEVvUzS8NMEvspQmeKi9d8igOaIXbIxbKlCDLJaX5IIMIOsKp6WorfgMIRLFIeqNUif7NmVFIQvn-L88xbIoA0Tawyfg93-WiBf02tiA';
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`);
-      }
-      console.log('headers !!!!!!!!!', headers);
-      return headers;
-    },
+    // prepareHeaders: (headers) => {
+    //   // const token = getState().auth.token
+    //   // eslint-disable-next-line max-len
+    //   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+    //   if (token) {
+    //     headers.set('authorization', `Bearer ${token}`);
+    //   }
+    //   console.log('headers !!!!!!!!!', headers);
+    //   return headers;
+    // },
   }),
   tagTypes: ['Spots'],
   endpoints: (builder) => ({
