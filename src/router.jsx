@@ -11,7 +11,6 @@ import AddNewSpot from './pages/AddNewSpot';
 import SpotPage from './pages/SpotPage';
 import PrivateRoutes from './utils/PrivateRoutes';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
