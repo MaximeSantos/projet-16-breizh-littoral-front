@@ -53,7 +53,6 @@ function AddSpot() {
       difficulty_id: Number(data.difficulty_id),
     };
 
-    console.log('DataToSend', dataToSend);
     postNewSpot(dataToSend);
   };
 
