@@ -37,7 +37,7 @@ function MainMapModal() {
         </>
         )}
         {spots
-        && <MainMapLeaflet spots={spots} />}
+        && <MainMapLeaflet spots={spots} canPinCustomMarker={false} />}
         <button type="button" className="modal-close" onClick={handleDisplayMainMapModal}>
           X
         </button>
