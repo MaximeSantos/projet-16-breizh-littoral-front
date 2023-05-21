@@ -29,7 +29,7 @@ SpotCard.propTypes = {
     picture: PropTypes.string.isRequired,
     gps_coordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
     description: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
 };
 

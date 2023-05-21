@@ -1,11 +1,12 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { checkIfLoggedIn } from '../utils/JWT';
+import { checkIfLoggedIn, getJWTFromLocalStorage } from '../utils/JWT';
 
 const isJWTInLocalStorage = checkIfLoggedIn();
 
 const initialState = {
   isLoggedIn: isJWTInLocalStorage,
+  token: getJWTFromLocalStorage(),
 };
 
 export const authSlice = createSlice({
@@ -14,9 +15,11 @@ export const authSlice = createSlice({
   reducers: {
     setUserAsLoggedIn: (state) => {
       state.isLoggedIn = true;
+      state.token = getJWTFromLocalStorage();
     },
     setUserAsLoggedOut: (state) => {
       state.isLoggedIn = false;
+      state.token = null;
     },
   },
 });

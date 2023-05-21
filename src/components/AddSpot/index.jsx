@@ -4,6 +4,7 @@ import { usePostNewSpotMutation } from '../../api/spotsApi';
 // import { useGetSportsQuery } from '../../api/sportsApi';
 import { useGetDifficultesQuery } from '../../api/difficultesApi';
 import './style.scss';
+import { getUserIdFromJWT } from '../../utils/JWT';
 
 function AddSpot() {
   // const {
@@ -38,15 +39,13 @@ function AddSpot() {
   const onSubmit = (data) => {
     const dataToSend = {
       ...data,
-      user_id: 1,
+      user_id: getUserIdFromJWT(),
       gps_coordinates: [48.10688151413752, -4.284942408712835],
       // sport_id: parseInt(data.sport_id, 10),
       difficulty_id: parseInt(data.difficulty_id, 10),
     };
 
-    console.log('dataToSend', dataToSend);
-    console.log('dataToSend Stringified', JSON.stringify(dataToSend));
-    postNewSpot(JSON.stringify(dataToSend));
+    postNewSpot(dataToSend);
   };
 
   return (
@@ -74,7 +73,7 @@ function AddSpot() {
           <div>
             <div className="spotAdd-description">
               <h2> Description </h2>
-              <input className="spotAdd-form-description" {...register('description')} type="textarea" />
+              <input className="spotAdd-form-description" {...register('description')} placeholder="Description" type="textarea" />
             </div>
           </div>
           {/* <div>
@@ -84,7 +83,7 @@ function AddSpot() {
           </div> */}
           <div>
             <h2> Photo</h2>
-            <input className="spotAdd-form-photo" {...register('picture')} type="file" placeholder="photo" />
+            <input className="spotAdd-form-photo" {...register('picture')} placeholder="photo" />
           </div>
           <input className="signup-form-button" type="submit" value="Valider" />
         </form>

@@ -20,7 +20,7 @@ function SignupMain() {
   }] = usePostNewUserMutation();
 
   // Lorsque le formulaire est soumis, on déclenche l'appel API avec les données soumises
-  const onSubmit = (data) => postNewUser(JSON.stringify(data));
+  const onSubmit = (data) => postNewUser(data);
 
   return (
     <main className="signup">
