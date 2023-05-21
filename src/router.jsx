@@ -9,16 +9,15 @@ import Login from './pages/Login';
 import SportPage from './pages/SportPage';
 import AddNewSpot from './pages/AddNewSpot';
 import SpotPage from './pages/SpotPage';
+import PrivateRoutes from './utils/PrivateRoutes';
+
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
   },
-  {
-    path: '/test',
-    element: <Test />,
-  },
+
   {
     path: '/sports',
     element: <HomeSport />,
@@ -46,6 +45,15 @@ const router = createBrowserRouter([
   {
     path: '*',
     element: <Error404 />,
+  },
+  {
+    element: <PrivateRoutes />,
+    children: [
+      {
+        path: '/test',
+        element: <Test />,
+      },
+    ],
   },
 ]);
 
