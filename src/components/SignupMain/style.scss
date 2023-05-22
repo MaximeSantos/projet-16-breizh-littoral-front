@@ -22,8 +22,7 @@
       margin: 0.5rem 0;
     }
 
-    &-button,
-    .signup-success-connection {
+    &-button {
       background-color: vars.$secondary-color;
       border-radius: 10px;
       padding: 0.5rem;
@@ -34,5 +33,21 @@
         background-color: vars.$highlight-color;
       }
     }
+
+    &-button {
+      align-self: center;
+    }
+  }
+}
+
+.signup-success-connection {
+  background-color: vars.$secondary-color;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+
+  &:hover {
+    background-color: vars.$highlight-color;
   }
 }

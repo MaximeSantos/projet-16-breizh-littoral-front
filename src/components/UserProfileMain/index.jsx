@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import { useRef } from 'react';
 import { useGetUserQuery } from '../../api/usersApi';
 import { getUserIdFromJWT } from '../../utils/JWT';
@@ -5,21 +6,13 @@ import './style.scss';
 
 function UserProfileMain() {
   const userId = useRef(getUserIdFromJWT());
+
   const {
     data: user,
     isFetching,
     isError,
     error,
   } = useGetUserQuery(userId.current);
-  console.log(user);
-
-  // let listOfFavSpots;
-
-  // if (user.spot_fav) {
-  //   listOfFavSpots = user.spot_fav.map((spot) => (
-  //     <SpotCard key={spot.id} spot={spot} />
-  //   ));
-  // }
 
   return (
     <main className="user_profile">
@@ -38,18 +31,14 @@ function UserProfileMain() {
         && (
         <>
           <div className="user_profile-information">
-            <h2>Vos informations personnelles</h2>
-            {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-            <img src={user.profil_picture} alt="Photo de Profil" />
+            <h2>Informations personnelles</h2>
+
+            {(user.profil_picture && user.profil_picture.length !== 0)
+            && <img className="user_profile-information-picture" src={user.profil_picture} alt="Photo de Profil" />}
             <p>
-              Prénom :
+              Nom d&apos;utilisateur :
               <br />
-              {user.firstname}
-            </p>
-            <p>
-              Nom :
-              <br />
-              {user.lastname}
+              {user.nickname}
             </p>
             <p>
               Email :
@@ -58,7 +47,7 @@ function UserProfileMain() {
             </p>
           </div>
           <div className="user_profile-sports">
-            <h2>Vos sports pratiqués</h2>
+            <h2>Sports pratiqués</h2>
             <ul>
               <li>
                 - Kayak
@@ -78,8 +67,8 @@ function UserProfileMain() {
             && <p>Pas de spot favoris pour le moment</p>}
           </div> */}
           <div className="user_profile-spots">
-            <h2>Vos spots ajoutés</h2>
-            <p>Ici une liste bientôt, peut être jamais, des spots créés par VOUS</p>
+            <h2>Spots ajoutés</h2>
+            <p>Ici bientôt une liste des spots que VOUS avez ajoutés</p>
           </div>
         </>
         )}

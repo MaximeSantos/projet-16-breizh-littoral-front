@@ -2,4 +2,13 @@
   display: flex;
   flex-flow: column;
   align-items: center;
+
+    &-information {
+      display: flex;
+      flex-flow: column;
+      &-picture {
+        height: 200px;
+        align-self: center;
+    }
+  }
 }

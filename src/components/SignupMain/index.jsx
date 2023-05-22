@@ -17,6 +17,7 @@ function SignupMain() {
     isLoading,
     isError,
     isSuccess,
+    result,
   }] = usePostNewUserMutation();
 
   // Lorsque le formulaire est soumis, on déclenche l'appel API avec les données soumises
@@ -31,29 +32,20 @@ function SignupMain() {
         {!isSuccess
         && (
           <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <input className="signup-form-email" {...register('email')} type="email" placeholder="Email" />
-            </div>
-            <div className="signup-form-password">
-              <input {...register('password')} type="password" placeholder="Mot de passe" />
-            </div>
             <div className="signup-form-picture">
               <input {...register('profil_picture')} placeholder="Photo de profil" />
             </div>
             <div className="signup-form-username">
-              <input {...register('username')} placeholder="Nom d'utilisateur" />
+              <input {...register('nickname')} placeholder="Nom d'utilisateur" />
+              *
             </div>
-            <div className="signup-form-firstname">
-              <input {...register('firstname')} placeholder="Prénom" />
+            <div>
+              <input className="signup-form-email" {...register('email')} type="email" placeholder="Email" />
+              *
             </div>
-            <div className="signup-form-lastname">
-              <input {...register('lastname')} placeholder="Nom de famille" />
-            </div>
-            <div className="signup-form-location">
-              <input {...register('location')} placeholder="Ville" />
-            </div>
-            <div className="signup-form-birthdate">
-              <input {...register('birth_date')} type="date" placeholder="Date de naissance" />
+            <div className="signup-form-password">
+              <input {...register('password')} type="password" placeholder="Mot de passe" />
+              *
             </div>
             <div className="signup-form-description">
               <input {...register('description')} type="textarea" placeholder="Description" />
@@ -67,6 +59,8 @@ function SignupMain() {
 
         {isError
         && <p>Erreur lors de l&apos;inscription</p>}
+
+        {result}
 
         {isSuccess
         && (
