@@ -35,8 +35,10 @@ function FavoritesMain() {
           {/* <p>{error.data}</p> */}
         </>
         )}
-        {spots
-        && listOfSpots}
+        <div className="cards-container">
+          {spots
+          && listOfSpots}
+        </div>
       </div>
     </main>
   );
