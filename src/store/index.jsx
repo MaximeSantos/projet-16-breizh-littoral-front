@@ -8,6 +8,7 @@ import { spotsApi } from '../api/spotsApi';
 import { usersApi } from '../api/usersApi';
 import { sportsApi } from '../api/sportsApi';
 import { difficultesApi } from '../api/difficultesApi';
+import { favoritesApi } from '../api/favoritesApi';
 import { commentsApi } from '../api/commentsApi';
 
 const store = configureStore({
@@ -21,6 +22,7 @@ const store = configureStore({
     [usersApi.reducerPath]: usersApi.reducer,
     [sportsApi.reducerPath]: sportsApi.reducer,
     [difficultesApi.reducerPath]: difficultesApi.reducer,
+    [favoritesApi.reducerPath]: favoritesApi.reducer,
     [commentsApi.reducerPath]: commentsApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
@@ -28,6 +30,7 @@ const store = configureStore({
     usersApi.middleware,
     sportsApi.middleware,
     difficultesApi.middleware,
+    favoritesApi.middleware,
     commentsApi.middleware,
   ),
 });

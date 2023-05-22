@@ -11,6 +11,7 @@ import AddNewSpot from './pages/AddNewSpot';
 import SpotPage from './pages/SpotPage';
 import PrivateRoutes from './utils/PrivateRoutes';
 import UserProfile from './pages/UserProfile';
+import Favorites from './pages/Favorites';
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: '/profil',
         element: <UserProfile />,
+      },
+      {
+        path: '/favoris',
+        element: <Favorites />,
       },
     ],
   },

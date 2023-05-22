@@ -16,7 +16,7 @@ export const spotsApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Spots'],
+  tagTypes: ['Spots', 'Favorites'],
   endpoints: (builder) => ({
     getSpots: builder.query({
       query: () => ({

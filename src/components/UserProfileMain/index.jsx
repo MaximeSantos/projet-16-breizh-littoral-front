@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { useGetUserQuery } from '../../api/usersApi';
 import { getUserIdFromJWT } from '../../utils/JWT';
-import SpotCard from '../HomeMain/MainSpots/SpotCard';
 import './style.scss';
 
 function UserProfileMain() {
@@ -14,13 +13,13 @@ function UserProfileMain() {
   } = useGetUserQuery(userId.current);
   console.log(user);
 
-  let listOfFavSpots;
+  // let listOfFavSpots;
 
-  if (user.spot_fav) {
-    listOfFavSpots = user.spot_fav.map((spot) => (
-      <SpotCard key={spot.id} spot={spot} />
-    ));
-  }
+  // if (user.spot_fav) {
+  //   listOfFavSpots = user.spot_fav.map((spot) => (
+  //     <SpotCard key={spot.id} spot={spot} />
+  //   ));
+  // }
 
   return (
     <main className="user_profile">
@@ -72,12 +71,12 @@ function UserProfileMain() {
               </li>
             </ul>
           </div>
-          <div className="user_profile-favorites">
+          {/* <div className="user_profile-favorites">
             <h2>Vos spots favoris</h2>
             {listOfFavSpots}
             {!listOfFavSpots.length
             && <p>Pas de spot favoris pour le moment</p>}
-          </div>
+          </div> */}
           <div className="user_profile-spots">
             <h2>Vos spots ajoutés</h2>
             <p>Ici une liste bientôt, peut être jamais, des spots créés par VOUS</p>
