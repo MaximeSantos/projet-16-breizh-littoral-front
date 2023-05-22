@@ -19,7 +19,7 @@ export const commentsApi = createApi({
   endpoints: (builder) => ({
     getComments: builder.query({
       query: (spotId) => ({
-        url: `spots/${spotId}/comments?page=1&pageSize=5`,
+        url: `spots/${spotId}/comments`,
         method: 'GET',
       }),
     }),
@@ -33,10 +33,20 @@ export const commentsApi = createApi({
         };
       },
     }),
+    deleteComment: builder.mutation({
+      query: (data) => {
+        const { userId, spotId, commentId } = data;
+        return {
+          url: `users/${userId}/spots/${spotId}/comments/${commentId}`,
+          method: 'DELETE',
+        };
+      },
+    }),
   }),
 });
 
 export const {
+  useDeleteCommentMutation,
   useGetCommentsQuery,
   usePostNewCommentMutation,
 } = commentsApi;
