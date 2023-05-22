@@ -3,13 +3,23 @@ import './style.scss';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { useGetSpotQuery } from '../../api/spotsApi';
-import { usePostNewUserMutation } from '../../api/usersApi';
+import { useGetCommentsQuery, usePostNewCommentMutation } from '../../api/commentsApi';
 
 function Spot() {
   const { spotId } = useParams();
   const {
     data: spot,
   } = useGetSpotQuery(spotId);
+  const {
+    data: comments,
+  } = useGetCommentsQuery();
+
+  let listOfComments;
+  if (comments) {
+    listOfComments = comments.map((comment) => (
+      <option key={comment.id} value={comment.id}>{comment.name}</option>
+    ));
+  }
 
   const {
     register,
@@ -17,11 +27,11 @@ function Spot() {
   } = useForm();
 
   // Mutation de RTK Query pour permettre de gérer la requête en POST
-  const [postNewUser, {
+  const [postNewComment, {
     isSuccess,
-  }] = usePostNewUserMutation();
+  }] = usePostNewCommentMutation();
 
-  const onSubmit = (data) => postNewUser(JSON.stringify(data));
+  const onSubmit = (data) => postNewComment(JSON.stringify(data));
 
   return (
     <main>
@@ -42,7 +52,7 @@ function Spot() {
               {!isSuccess
         && (
         <form className="signup-form-comments" onSubmit={handleSubmit(onSubmit)}>
-          <input className="signup-form-comments" {...register('eaez')} type="textarea" />
+          <input className="signup-form-comments" {...register('content')} type="textarea" />
           <input className="signup-form-button" type="submit" value="Envoyer" />
         </form>
         )}
@@ -56,6 +66,7 @@ function Spot() {
         )}
             </div>
             <h1 className="spot-right-comments"> Tous les commentaires :  </h1>
+            {comments && listOfComments}
           </div>
         </div>
       )}
