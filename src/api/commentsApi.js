@@ -18,17 +18,20 @@ export const commentsApi = createApi({
   tagTypes: ['Comments'],
   endpoints: (builder) => ({
     getComments: builder.query({
-      query: () => ({
-        url: '/api/spots/{id}/comments',
+      query: (spotId) => ({
+        url: `spots/${spotId}/comments?page=1&pageSize=5`,
         method: 'GET',
       }),
     }),
     postNewComment: builder.mutation({
-      query: (newComment, userId, id) => ({
-        url: `/api/users/${userId}/spots/${id}/comments`,
-        method: 'POST',
-        body: newComment,
-      }),
+      query: (data) => {
+        const { userId, spotId, body } = data;
+        return {
+          url: `users/${userId}/spots/${spotId}/comments`,
+          method: 'POST',
+          body,
+        };
+      },
     }),
   }),
 });
