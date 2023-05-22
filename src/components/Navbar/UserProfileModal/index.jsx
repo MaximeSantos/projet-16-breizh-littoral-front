@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { setUserAsLoggedOut } from '../../../slices/authSlice';
 import { toggleDisplayProfileModal } from '../../../slices/profileModalSlice';
 
@@ -9,6 +9,7 @@ import './style.scss';
 
 function UserNavbar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
@@ -19,6 +20,8 @@ function UserNavbar() {
   const handleLogout = () => {
     localStorage.removeItem('BZLuserJWToken');
     dispatch(setUserAsLoggedOut());
+    dispatch(toggleDisplayProfileModal());
+    navigate('/');
   };
 
   return (
@@ -28,15 +31,15 @@ function UserNavbar() {
         {isLoggedIn
           && (
           <>
-            <NavLink className="profile_modal-navlink" to="/profil">Profil</NavLink>
-            <button type="button" className="profile_modal-navlink" onClick={handleLogout}>Déconnexion </button>
+            <NavLink onClick={handleDisplayProfileModal} className="profile_modal-navlink" to="/profil">Profil</NavLink>
+            <button onClick={handleLogout} className="profile_modal-navlink" type="button">Déconnexion </button>
           </>
           )}
         {!isLoggedIn
         && (
         <>
-          <NavLink className="profile_modal-navlink" to="/inscription">Inscription </NavLink>
-          <NavLink className="profile_modal-navlink" to="/connexion">Connexion</NavLink>
+          <NavLink onClick={handleDisplayProfileModal} className="profile_modal-navlink" to="/inscription">Inscription </NavLink>
+          <NavLink onClick={handleDisplayProfileModal} className="profile_modal-navlink" to="/connexion">Connexion</NavLink>
         </>
         )}
       </div>

@@ -6,15 +6,22 @@ export const usersApi = createApi({
   reducerPath: 'usersApi',
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
+    prepareHeaders: (headers, { getState }) => {
+      const { token } = getState().auth;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
   tagTypes: ['Users'],
   endpoints: (builder) => ({
-    // getUsers: builder.query({
-    //   query: () => ({
-    //     url: '/users',
-    //     method: 'GET',
-    //   }),
-    // }),
+    getUser: builder.query({
+      query: (userId) => ({
+        url: `/users/${userId}`,
+        method: 'GET',
+      }),
+    }),
     postNewUser: builder.mutation({
       query: (newUser) => ({
         url: '/users',
@@ -36,7 +43,7 @@ export const usersApi = createApi({
 });
 
 export const {
-  // useGetUserQuery,
+  useGetUserQuery,
   usePostNewUserMutation,
   usePostLoginMutation,
 } = usersApi;
