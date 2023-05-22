@@ -2,26 +2,54 @@
 import './style.scss';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useRef } from 'react';
 import { useGetSpotQuery } from '../../api/spotsApi';
-import { usePostNewUserMutation } from '../../api/usersApi';
+import { useGetCommentsQuery, usePostNewCommentMutation } from '../../api/commentsApi';
+import { getUserIdFromJWT } from '../../utils/JWT';
 
 function Spot() {
+  const userId = useRef(getUserIdFromJWT());
   const { spotId } = useParams();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   const {
     data: spot,
   } = useGetSpotQuery(spotId);
 
   const {
+    data: comments,
+  } = useGetCommentsQuery(spotId);
+
+  let listOfComments;
+  if (comments) {
+    console.log(comments);
+    listOfComments = comments.map((comment) => (
+      <div key={comment.id}>
+        <p>
+          {comment.user.username}
+        </p>
+        <p>
+          {comment.content}
+        </p>
+      </div>
+    ));
+  }
+  console.log(userId.current, spotId);
+  const [postNewComment, {
+    isSuccess,
+  }] = usePostNewCommentMutation();
+
+  const {
     register,
     handleSubmit,
   } = useForm();
-
-  // Mutation de RTK Query pour permettre de gérer la requête en POST
-  const [postNewUser, {
-    isSuccess,
-  }] = usePostNewUserMutation();
-
-  const onSubmit = (data) => postNewUser(JSON.stringify(data));
+  const onSubmit = (data) => {
+    console.log('data', data);
+    const dataToSend = { body: data, userId: userId.current, spotId };
+    console.log('dataToSend', dataToSend);
+    postNewComment(dataToSend);
+  };
 
   return (
     <main>
@@ -39,23 +67,30 @@ function Spot() {
           <div className="spot-right">
             <h1 className="spot-right-comments"> Commentaires </h1>
             <div>
-              {!isSuccess
-        && (
-        <form className="signup-form-comments" onSubmit={handleSubmit(onSubmit)}>
-          <input className="signup-form-comments" {...register('eaez')} type="textarea" />
-          <input className="signup-form-button" type="submit" value="Envoyer" />
-        </form>
-        )}
-
+              {isLoggedIn
+          && (
+            <div>
+              <form className="signup-form-comments" onSubmit={handleSubmit(onSubmit)}>
+                <input className="signup-form-comments" {...register('content')} type="textarea" />
+                <input className="signup-form-button" type="submit" value="Envoyer" />
+              </form>
+            </div>
+          )}
+              {!isLoggedIn
+            && (
+              <div>
+                Vous devez etre connecté pour publier un commentaire !
+              </div>
+            )}
               {isSuccess
         && (
-          <>
-            <p>Félicitation, vous êtes inscrit !</p>
-            Connectez-vous !
-          </>
+          <div>
+            <p>Votre commentaire a bien été envoyé !</p>
+          </div>
         )}
             </div>
             <h1 className="spot-right-comments"> Tous les commentaires :  </h1>
+            {comments && listOfComments}
           </div>
         </div>
       )}
