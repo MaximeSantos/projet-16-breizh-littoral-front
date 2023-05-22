@@ -10,6 +10,7 @@ import SportPage from './pages/SportPage';
 import AddNewSpot from './pages/AddNewSpot';
 import SpotPage from './pages/SpotPage';
 import PrivateRoutes from './utils/PrivateRoutes';
+import UserProfile from './pages/UserProfile';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: '/ajouter',
         element: <AddNewSpot />,
+      },
+      {
+        path: '/profil',
+        element: <UserProfile />,
       },
     ],
   },
