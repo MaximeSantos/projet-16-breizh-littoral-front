@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 
 import bzlLogoBlackBig from '../../assets/logos/BZL-logo_black.svg';
 import iconConseils from '../../assets/icons/navbarButton-conseils.svg';
-import iconDarkmode from '../../assets/icons/navbarButton-darkmode.svg';
 import iconFavoris from '../../assets/icons/navbarButton-favoris.svg';
-import iconMeteo from '../../assets/icons/navbarButton-meteo.svg';
 import iconSports from '../../assets/icons/navbarButton-sports.svg';
+import iconPlus from '../../assets/icons/navbarButton-plus.svg';
+import iconProfil from '../../assets/icons/navbarButton-profil.svg';
+// import iconDarkmode from '../../assets/icons/navbarButton-darkmode.svg';
+// import iconMeteo from '../../assets/icons/navbarButton-meteo.svg';
 
 import { toggleDisplayMainMapModal } from '../../slices/mainMapModalSlice';
 import { toggleDisplayProfileModal } from '../../slices/profileModalSlice';
@@ -40,25 +42,24 @@ function Navbar() {
       </div>
 
       <div className="navbar-container navbar-middle">
-        <Link to="/ajouter" className="navbar-middle-button">Ajouter</Link>
         <button onClick={handleDisplayMainMapModal} className="navbar-middle-button navbar-middle-button-map" type="button">Carte</button>
-        <button onClick={handleDisplayProfileModal} className="navbar-middle-button" type="button">Compte</button>
       </div>
 
       <div className="navbar-container navbar-right">
-        <div>
-          <NavbarButton className="navbar-button" route="/favoris" icon={iconFavoris} />
-        </div>
-        <div>
-          <NavbarButton className="navbar-button" route="/sports" icon={iconSports} />
-          <NavbarButton className="navbar-button" route="/meteo" icon={iconMeteo} />
-          <NavbarButton className="navbar-button" route="/conseils" icon={iconConseils} />
-        </div>
-        <div>
+        <button onClick={handleDisplayProfileModal} className={`navbar-button ${displayProfileModal ? 'active' : ''}`} type="button">
+          <img className="navbar-button" src={iconProfil} alt="Bouton profil" />
+          <p>compte</p>
+        </button>
+        <NavbarButton className="navbar-button" route="/favoris" icon={iconFavoris} />
+        <NavbarButton className="navbar-button" route="/ajouter" icon={iconPlus} />
+        <NavbarButton className="navbar-button" route="/sports" icon={iconSports} />
+        <NavbarButton className="navbar-button" route="/conseils" icon={iconConseils} />
+        {/* <NavbarButton className="navbar-button" route="/meteo" icon={iconMeteo} /> */}
+        {/* <div>
           <button type="button" className="navbar-button navbar-button--darkmode">
             <img src={iconDarkmode} alt="Bouton mode sombre/clair" />
           </button>
-        </div>
+        </div> */}
       </div>
 
       {displayProfileModal

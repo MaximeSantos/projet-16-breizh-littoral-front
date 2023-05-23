@@ -1,11 +1,13 @@
 import Navbar from '../components/Navbar';
-import HomeSport from '../components/HomeSport';
+import SportsMain from '../components/SportsMain';
+import Footer from '../components/Footer';
 
 function Sports() {
   return (
     <div>
       <Navbar />
-      <HomeSport />
+      <SportsMain />
+      <Footer />
     </div>
   );
 }

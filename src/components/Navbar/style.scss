@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 
 .active {
-  border-bottom: 5px solid vars.$highlight-color;
+  border-bottom: 3px solid vars.$highlight-color;
   filter:
   invert(0.5)
   sepia(1)
@@ -51,9 +51,8 @@
 
     &-button {
       background-color: vars.$secondary-color;
-      margin: 0 1rem;
       padding: 1rem;
-      border-radius: 10%;
+      border-radius: 10px;
 
       &:hover {
         background-color: vars.$highlight-color;
@@ -68,13 +67,21 @@
 
   &-right {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex: 1;
   }
 
   &-button {
     margin-right: 1rem;
+    display: flex;
+    flex-flow: column;
+
+    & p,
+    & img {
+      margin: 0;
+      align-self: center;
+    }
 
     &:hover {
       filter:
@@ -85,8 +92,5 @@
       brightness(1.2)
     }
   }
-
-  // &-darkmode_button {
-  // }
 }
 

@@ -1,30 +1,47 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { setUserAsLoggedOut } from '../../../slices/authSlice';
 import { toggleDisplayProfileModal } from '../../../slices/profileModalSlice';
 
 import './style.scss';
 
 function UserNavbar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const handleDisplayProfileModal = () => {
     dispatch(toggleDisplayProfileModal());
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('BZLuserJWToken');
+    dispatch(setUserAsLoggedOut());
+    dispatch(toggleDisplayProfileModal());
+    navigate('/');
   };
 
   return (
     <div className="modal profile_modal">
       <div onClick={handleDisplayProfileModal} className="modal-overlay profile_modal-overlay" />
       <div className="modal-content profile_modal-content">
-        {/* if user is logged in */}
-        <NavLink className="profile_modal-navlink" to="/profil">Profil</NavLink>
-        {/* Ceci ne sera pas un navlink quand le système d'auth sera mis en place */}
-        <NavLink className="profile_modal-navlink" to="/deconnexion">Déconnexion </NavLink>
-        {/* if user is an admin */}
-        <NavLink className="profile_modal-navlink" to="/admin">Back-Office </NavLink>
-        {/* if user is logged out */}
-        <NavLink className="profile_modal-navlink" to="/inscription">Inscription </NavLink>
+        {isLoggedIn
+          && (
+          <>
+            <NavLink onClick={handleDisplayProfileModal} className="profile_modal-navlink" to="/profil">Profil</NavLink>
+            <button onClick={handleLogout} className="profile_modal-navlink" type="button">Déconnexion </button>
+          </>
+          )}
+        {!isLoggedIn
+        && (
+        <>
+          <NavLink onClick={handleDisplayProfileModal} className="profile_modal-navlink" to="/inscription">Inscription </NavLink>
+          <NavLink onClick={handleDisplayProfileModal} className="profile_modal-navlink" to="/connexion">Connexion</NavLink>
+        </>
+        )}
       </div>
     </div>
   );

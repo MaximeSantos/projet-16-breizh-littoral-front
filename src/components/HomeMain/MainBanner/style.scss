@@ -2,17 +2,18 @@
 
 .banner {
   display: flex;
-  justify-content: space-evenly;
-  width: 100%;
+  justify-content: space-between;
+  width: 90vw;
 
   &-left {
-    max-width: 40%;
+    max-width: 35%;
     margin-right: 2rem;
   }
 
   &-right  {
     display: flex;
     flex-direction: column;
+    flex: 1;
   }
 
   &-title {
@@ -20,9 +21,16 @@
   }
     
   &-picture {
-    width: 700px;
+    width: 60vw;
     aspect-ratio: 16/9;
     background-color: vars.$stroke-color;
-    // box-shadow: 0 10px 30px 5px transparentize(vars.$stroke-color, 0.7);
+    border-radius: 10px;
+  }
+
+  &-link {
+    &:hover {
+      text-decoration: underline;
+      color: vars.$highlight-color;
+    }
   }
 };

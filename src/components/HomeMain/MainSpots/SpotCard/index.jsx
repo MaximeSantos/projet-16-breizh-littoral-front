@@ -1,22 +1,56 @@
 import PropTypes from 'prop-types';
+import { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
+import { useDeleteFavoriteMutation, usePostNewFavoriteMutation } from '../../../../api/favoritesApi';
 
-import iconFavoris from '../../../../assets/icons/navbarButton-favoris.svg';
+import iconFavorisAdd from '../../../../assets/icons/navbarButton-favoris-add.svg';
+import iconFavorisRemove from '../../../../assets/icons/navbarButton-favoris-remove.svg';
+import { getUserIdFromJWT } from '../../../../utils/JWT';
 
 import './style.scss';
 
 function SpotCard({ spot }) {
+  const [currentPage, setCurrentPage] = useState('');
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const userId = useRef(getUserIdFromJWT());
+
+  const location = useLocation();
+
+  const [postNewFavorite] = usePostNewFavoriteMutation();
+  const [deleteFavorite] = useDeleteFavoriteMutation();
+
+  useEffect(() => {
+    setCurrentPage(location.pathname);
+  }, [location]);
+
+  const handleAddFavorite = () => postNewFavorite({ userId: userId.current, spotId: spot.id });
+  const handleDeleteFavorite = () => deleteFavorite({ userId: userId.current, spotId: spot.id });
+
   return (
     <div className="card">
       <div className="card-header">
         <img className="card-header-picture" src={spot.picture} alt={`Spot ${spot.name}`} />
-        <button type="button" className="card-header-button">
-          <img src={iconFavoris} alt="Bouton ajouter aux favoris" />
+        {(isLoggedIn && (currentPage === '/'))
+        && (
+        <button onClick={handleAddFavorite} type="button" className="card-header-button">
+          <img src={iconFavorisAdd} alt="Bouton ajouter aux favoris" />
         </button>
+        )}
+        {(isLoggedIn && (currentPage === '/favoris'))
+        && (
+        <button onClick={handleDeleteFavorite} type="button" className="card-header-button">
+          <img src={iconFavorisRemove} alt="Bouton ajouter aux favoris" />
+        </button>
+        )}
       </div>
       <div className="card-main">
-        <h2 className="card-title">{spot.name}</h2>
+        <Link className="card-title" to={`/spot/${spot.id}`}>
+          <h2>{spot.name}</h2>
+        </Link>
         <p className="card-description">
-          {spot.description}
+          {(spot.description).replace(/^([\s\S]{200}[^\s]*)[\s\S]*/, '$1')}
+          {(spot.description).length > 200 && '...'}
         </p>
       </div>
     </div>
@@ -28,6 +62,7 @@ SpotCard.propTypes = {
     picture: PropTypes.string.isRequired,
     gps_coordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
     description: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
 };
 

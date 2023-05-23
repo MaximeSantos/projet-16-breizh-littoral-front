@@ -1,0 +1,21 @@
+@use 'src/styles/vars';
+
+.login {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  &-form {
+    &-button {
+      background-color: vars.$secondary-color;
+      border-radius: 10px;
+      padding: 0.5rem;
+      margin: 1rem 0;
+      font-size: 1.2rem;
+
+      &:hover {
+        background-color: vars.$highlight-color;
+      }
+    }
+  }
+}

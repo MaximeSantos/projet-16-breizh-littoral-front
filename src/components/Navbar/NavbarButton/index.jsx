@@ -5,6 +5,7 @@ function NavbarButton({ route, icon }) {
   return (
     <NavLink className="navbar-button" to={route}>
       <img src={icon} alt={`icone de lien vers la page ${route}`} />
+      <p>{route.substring(1)}</p>
     </NavLink>
   );
 }

@@ -1,0 +1,41 @@
+@use 'src/styles/vars';
+
+.signup {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  &-title {
+    text-align: center;
+  }
+
+  &-form_container {
+    margin: 1rem 0;
+  }
+
+  &-form {
+    &-button {
+      background-color: vars.$secondary-color;
+      border-radius: 10px;
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      align-self: center;
+
+      &:hover {
+        background-color: vars.$highlight-color;
+      }
+    }
+  }
+}
+
+.signup-success-connection {
+  background-color: vars.$secondary-color;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+
+  &:hover {
+    background-color: vars.$highlight-color;
+  }
+}

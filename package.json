@@ -8,17 +8,19 @@
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "dist": "echo breizh-littoral.surge.sh > dist/CNAME; cp dist/index.html dist/200.html; surge dist/"
+    "dist": "echo http://breizh-littoral.surge.sh > dist/CNAME; cp dist/index.html dist/200.html; surge dist/"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "add": "^2.0.6",
     "axios": "^1.4.0",
     "eslint": "^8.39.0",
+    "jwt-decode": "^3.1.2",
     "leaflet": "^1.9.3",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-leaflet": "^4.2.1",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.1",

@@ -17,6 +17,14 @@ body {
   line-height: 1.7rem;
 }
 
+h1,
+h2,
+p,
+button,
+a {
+  color: vars.$stroke-color;
+}
+
 #root {
   min-height: inherit;
   display: flex;
@@ -47,4 +55,38 @@ h1,
 h2,
 p {
   margin: 1rem 0;
+}
+
+input,
+select {
+  font-size: 1.2rem;
+  font-family: 'Andika', sans-serif;
+  background-color: transparentize(vars.$primary-color, 0.5);
+  border-radius: 10px;
+  padding: 0.5rem;
+
+  &:focus-visible {
+    outline: vars.$stroke-color auto 1px;
+    background-color:vars.$secondary-color;
+  }
+}
+
+button:focus-visible {
+  outline: vars.$stroke-color auto 1px;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+
+  & div {
+    display: flex;
+    flex-flow: column;
+
+    & input,
+    & select {
+      margin: 0.5rem 0; 
+    }
+  }
 }
