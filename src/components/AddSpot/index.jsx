@@ -61,40 +61,41 @@ function AddSpot() {
       {!isSuccess
       && (
       <>
-        <form className="spotAdd-form" onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="addSpot-title">
-            Création d&apos;un nouveau spot
-          </h1>
+        <h1 className="addSpot-title">
+          Création d&apos;un nouveau spot
+        </h1>
+        <div className="addSpot-map">
+          <MainMapLeaflet canPinCustomMarker />
+        </div>
+        <form className="addSpot-form" onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <h2> Nom </h2>
-            <input className="spotAdd-form-name" {...register('name')} placeholder="Nom" />
+            <label htmlFor="addSpot-name">Nom</label>
+            <input className="addSpot-form-name" {...register('name')} placeholder="Nom" id="addSpot-name" />
           </div>
           <div>
-            <h2> Localisation </h2>
-            <input className="spotAdd-form-localisation" {...register('location')} placeholder="Localisation" />
+            <label htmlFor="addSpot-location">Ville</label>
+            <input className="addSpot-form-location" {...register('location')} placeholder="Ville" id="addSpot-location" />
           </div>
           <div>
-            <select {...register('difficulty_id')} type="number">
+            <label htmlFor="addSpot-difficulty">Difficulté</label>
+            <select {...register('difficulty_id')} type="number" id="addSpot-difficulty">
               {difficulties && listOfDifficulties}
             </select>
           </div>
           <div>
-            <div className="spotAdd-description">
-              <h2> Description </h2>
-              <input className="spotAdd-form-description" {...register('description')} placeholder="Description" type="textarea" />
+            <div className="addSpot-description">
+              <label htmlFor="addSpot-description">Description</label>
+              <input className="addSpot-form-description" {...register('description')} placeholder="Description" type="textarea" id="addSpot-description" />
             </div>
           </div>
           <div>
-            <h2> Photo</h2>
-            <input className="spotAdd-form-photo" {...register('picture')} placeholder="photo" />
+            <label htmlFor="addSpot-picture">Photo principale du spot (URL)</label>
+            <input className="addSpot-form-photo" {...register('picture')} placeholder="Photo" id="addSpot-picture" />
           </div>
           <input className="signup-form-button" type="submit" value="Valider" />
           {isError
           && <p>Erreur lors de l&apos;ajout du spot</p>}
         </form>
-        <div className="addSpot-map">
-          <MainMapLeaflet canPinCustomMarker />
-        </div>
       </>
       )}
 
