@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "dist": "echo breizh-littoral.surge.sh > dist/CNAME; cp dist/index.html dist/200.html; surge dist/"
+    "dist": "echo http://breizh-littoral.surge.sh > dist/CNAME; cp dist/index.html dist/200.html; surge dist/"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
