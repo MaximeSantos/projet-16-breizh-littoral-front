@@ -22,7 +22,7 @@ function MainSpots() {
   }
 
   return (
-    <>
+    <div className="cards">
       <h2 className="cards-title">Liste des spots</h2>
       <div className="cards-container">
         {isFetching
@@ -37,7 +37,7 @@ function MainSpots() {
         {spots
         && listOfSpots}
       </div>
-    </>
+    </div>
 
   );
 }

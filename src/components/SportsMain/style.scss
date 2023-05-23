@@ -1,0 +1,13 @@
+.sports {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  &-container{
+    max-width: 90vw;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+}

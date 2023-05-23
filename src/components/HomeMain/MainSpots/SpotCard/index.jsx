@@ -49,7 +49,8 @@ function SpotCard({ spot }) {
           <h2>{spot.name}</h2>
         </Link>
         <p className="card-description">
-          {spot.description}
+          {(spot.description).replace(/^([\s\S]{200}[^\s]*)[\s\S]*/, '$1')}
+          {(spot.description).length > 200 && '...'}
         </p>
       </div>
     </div>

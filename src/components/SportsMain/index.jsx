@@ -1,8 +1,9 @@
+import { useGetSportsQuery } from '../../api/sportsApi';
 import SportCard from './SportCard';
-import './style.scss';
-import { useGetSportsQuery } from '../../../api/sportsApi';
 
-function MainSport() {
+import './style.scss';
+
+function SportsMain() {
   const {
     data: sports,
   } = useGetSportsQuery();
@@ -14,11 +15,14 @@ function MainSport() {
   }
 
   return (
-    <div className="sport-container">
-      {sports
-    && listOfSports}
-    </div>
+    <main className="sports">
+      <h1>Liste des sports</h1>
+      <div className="sports-container">
+        {sports
+      && listOfSports}
+      </div>
+    </main>
   );
 }
 
-export default MainSport;
+export default SportsMain;
