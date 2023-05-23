@@ -1,5 +1,5 @@
 import Footer from '../components/Footer';
-import Sport from '../components/HomeSport/Sport';
+import Sport from '../components/Sport';
 import Navbar from '../components/Navbar';
 
 function SportPage() {

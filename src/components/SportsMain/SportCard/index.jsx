@@ -9,7 +9,7 @@ function SportCard({ sport }) {
         <button type="button">
           <div className="sport-card">
             <img className="card-header-picture" src={sport.picture} alt={`Spot ${sport.name}`} />
-            <h1 className="sport-name">{sport.name}</h1>
+            <h2 className="sport-name">{sport.name}</h2>
           </div>
         </button>
       </div>

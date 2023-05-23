@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import Test from './pages/Test';
 import Error404 from './pages/Error404';
-import HomeSport from './components/HomeSport';
+import Sports from './pages/Sports';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import SportPage from './pages/SportPage';
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/sports',
-    element: <HomeSport />,
+    element: <Sports />,
   },
   {
     path: '/inscription',
