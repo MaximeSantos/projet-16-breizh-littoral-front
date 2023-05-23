@@ -1,6 +1,10 @@
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './style.scss';
 
 function MainBanner() {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   return (
     <div className="banner">
       <div className="banner-left">
@@ -12,9 +16,19 @@ function MainBanner() {
           des indications sur la localisation géographique et les moyens d&#39;accès, mais aussi sur
           les bonnes pratiques environnementales ou les conditions météos.
         </p>
+        {!isLoggedIn
+        && (
         <p>
-          Rejoignez-nous pour partager vos spots préférés !
+          <Link className="banner-link" to="/inscription">Rejoignez-nous</Link>
+          &nbsp;pour partager vos spots préférés !
         </p>
+        )}
+        {isLoggedIn
+        && (
+        <p>
+          <Link className="banner-link" to="/ajouter">Partagez vos spots préférés</Link>
+        </p>
+        )}
       </div>
       <div className="banner-right">
         <img className="banner-picture" src="https://cdn.pixabay.com/photo/2017/01/07/14/32/kite-surfing-1960536_1280.jpg" alt="Spot phare du mois" />

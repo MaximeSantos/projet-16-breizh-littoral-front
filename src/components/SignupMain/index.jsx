@@ -1,11 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link, Navigate } from 'react-router-dom';
 import { usePostNewUserMutation } from '../../api/usersApi';
 
 import './style.scss';
 
 function SignupMain() {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   // Hook de react-hook-form pour créer le formulaire
   const {
     register,
@@ -22,6 +25,10 @@ function SignupMain() {
 
   // Lorsque le formulaire est soumis, on déclenche l'appel API avec les données soumises
   const onSubmit = (data) => postNewUser(data);
+
+  if (isLoggedIn) {
+    return <Navigate replace to="/" />;
+  }
 
   return (
     <main className="signup">
