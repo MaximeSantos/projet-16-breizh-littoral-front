@@ -26,7 +26,7 @@ export const spotsApi = createApi({
     }),
     postNewSpot: builder.mutation({
       query: (newSpot) => ({
-        url: '/spots',
+        url: `/users/${newSpot.user_id}/spots`,
         method: 'POST',
         body: newSpot,
       }),
