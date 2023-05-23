@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable react/jsx-props-no-spreading */
 import './style.scss';
 import { useForm } from 'react-hook-form';
@@ -5,37 +6,48 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useRef } from 'react';
 import { useGetSpotQuery } from '../../api/spotsApi';
-import { useGetCommentsQuery, usePostNewCommentMutation } from '../../api/commentsApi';
+import { useDeleteCommentMutation, useGetCommentsQuery, usePostNewCommentMutation } from '../../api/commentsApi';
 import { getUserIdFromJWT } from '../../utils/JWT';
 
 function Spot() {
   const userId = useRef(getUserIdFromJWT());
   const { spotId } = useParams();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const [deleteComment] = useDeleteCommentMutation();
 
   const {
     data: spot,
   } = useGetSpotQuery(spotId);
-
   const {
     data: comments,
   } = useGetCommentsQuery(spotId);
 
+  console.log('comments', comments);
+
+  const handleDeleteComment = (commentId) => {
+    deleteComment({ commentId, userId: userId.current, spotId });
+  };
+
   let listOfComments;
   if (comments) {
-    console.log(comments);
-    listOfComments = comments.map((comment) => (
-      <div key={comment.id}>
-        <p>
-          {comment.user.username}
-        </p>
-        <p>
-          {comment.content}
-        </p>
-      </div>
-    ));
+    listOfComments = comments.map((comment) => {
+      console.log('Ici', comment.user.id, userId.current);
+      return (
+        <div key={comment.id}>
+          <p>
+            {comment.user.nickname}
+          </p>
+          <p className="comment-align">
+            {comment.content}
+            {userId.current == comment.user.id
+          && <button className="deleteButton" onClick={() => handleDeleteComment(comment.id)} type="button">Supprimer</button>}
+          </p>
+        </div>
+      );
+    });
   }
-  console.log(userId.current, spotId);
+
+  // console.log(userId.current, spotId);
   const [postNewComment, {
     isSuccess,
   }] = usePostNewCommentMutation();
