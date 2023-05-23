@@ -6,21 +6,6 @@
   align-items: center;
 
   &-form {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-
-    & div {
-      display: flex;
-      flex-flow: column;
-      margin: 0 0.5rem; 
-
-      & input {
-        margin: 0.5rem 0; 
-      }
-    }
-
-
     &-button {
       background-color: vars.$secondary-color;
       border-radius: 10px;

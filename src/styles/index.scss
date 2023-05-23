@@ -66,3 +66,18 @@ input {
 button:focus-visible {
   outline: vars.$stroke-color auto 1px;
 }
+
+form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+
+  & div {
+    display: flex;
+    flex-flow: column;
+
+    & input {
+      margin: 0.5rem 0; 
+    }
+  }
+}

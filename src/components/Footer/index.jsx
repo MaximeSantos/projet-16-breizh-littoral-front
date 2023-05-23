@@ -9,9 +9,7 @@ function Footer() {
         <h2 className="footer-title">Breizh Littoral</h2>
         <p className="footer-description">
           Site préparé avec &#128151;
-          &nbsp;par des amateurs de sports nautiques &#127754;
-          <br />
-          et de développement web &#128187;
+          &nbsp;par des amateurs de sports nautiques &#127754; et de développement web &#128187;
         </p>
       </div>
       <div className="footer-right">
