@@ -9,7 +9,7 @@ function FavoritesMain() {
 
   const {
     data: spots,
-    isFetching,
+    isLoading,
     isError,
     error,
   } = useGetFavoritesQuery(userId.current);
@@ -26,7 +26,7 @@ function FavoritesMain() {
     <main className="favorites">
       <div className="favorites-container">
         <h1>Vos spots favoris</h1>
-        {isFetching
+        {isLoading
         && <p>Loading...</p>}
         {isError
         && (

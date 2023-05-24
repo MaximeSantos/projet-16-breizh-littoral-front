@@ -14,14 +14,17 @@ export const usersApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Users'],
+  tagTypes: ['User'],
   endpoints: (builder) => ({
+    // Infos d'un utilisateur
     getUser: builder.query({
       query: (userId) => ({
         url: `/users/${userId}`,
         method: 'GET',
       }),
+      providesTags: ['User'],
     }),
+    // Signup & Login
     postNewUser: builder.mutation({
       query: (newUser) => ({
         url: '/users',

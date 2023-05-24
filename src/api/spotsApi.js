@@ -16,13 +16,14 @@ export const spotsApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Spots', 'Favorites'],
+  tagTypes: ['Spots', 'Spot'],
   endpoints: (builder) => ({
     getSpots: builder.query({
       query: () => ({
         url: '/spots',
         method: 'GET',
       }),
+      providesTags: ['Spots'],
     }),
     postNewSpot: builder.mutation({
       query: (newSpot) => ({
@@ -30,12 +31,14 @@ export const spotsApi = createApi({
         method: 'POST',
         body: newSpot,
       }),
+      providesTags: ['Spots'],
     }),
     GetSpot: builder.query({
       query: (spotId) => ({
         url: `/spots/${spotId}`,
         method: 'GET',
       }),
+      providesTags: ['Spot'],
     }),
   }),
 });
