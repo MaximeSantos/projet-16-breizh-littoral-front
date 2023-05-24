@@ -22,6 +22,7 @@ export const commentsApi = createApi({
         url: `spots/${spotId}/comments`,
         method: 'GET',
       }),
+      providesTags: ['Comments'],
     }),
     postNewComment: builder.mutation({
       query: (data) => {
@@ -32,6 +33,7 @@ export const commentsApi = createApi({
           body,
         };
       },
+      invalidatesTags: ['Comments'],
     }),
     deleteComment: builder.mutation({
       query: (data) => {
@@ -41,6 +43,7 @@ export const commentsApi = createApi({
           method: 'DELETE',
         };
       },
+      invalidatesTags: ['Comments'],
     }),
   }),
 });

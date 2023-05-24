@@ -14,25 +14,28 @@ export const favoritesApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Favorites', 'Spots'],
+  tagTypes: ['Favorites'],
   endpoints: (builder) => ({
     getFavorites: builder.query({
       query: (userId) => ({
         url: `/users/${userId}/favorites`,
         method: 'GET',
       }),
+      providesTags: ['Favorites'],
     }),
     postNewFavorite: builder.mutation({
       query: ({ userId, spotId }) => ({
         url: `/users/${userId}/favorites/${spotId}`,
         method: 'POST',
       }),
+      invalidatesTags: ['Favorites'],
     }),
     deleteFavorite: builder.mutation({
       query: ({ userId, spotId }) => ({
         url: `/users/${userId}/favorites/${spotId}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['Favorites'],
     }),
     // postLogin: builder.mutation({
     //   query: (user) => ({
