@@ -12,6 +12,7 @@ import SpotPage from './pages/SpotPage';
 import PrivateRoutes from './utils/PrivateRoutes';
 import UserProfile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
+import Nous from './pages/Nous';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: '/spot/:spotId',
     element: <SpotPage />,
+  },
+  {
+    path: '/nous',
+    element: <Nous />,
   },
   {
     path: '*',
