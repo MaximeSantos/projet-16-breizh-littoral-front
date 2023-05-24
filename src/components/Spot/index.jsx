@@ -6,14 +6,14 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useRef } from 'react';
 import { useGetSpotQuery } from '../../api/spotsApi';
-import { useDeleteCommentMutation, useGetCommentsQuery, usePostNewCommentMutation } from '../../api/commentsApi';
+import { useGetCommentsQuery, usePostNewCommentMutation } from '../../api/commentsApi';
 import { getUserIdFromJWT } from '../../utils/JWT';
+import Comment from './putComment';
 
 function Spot() {
   const userId = useRef(getUserIdFromJWT());
   const { spotId } = useParams();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const [deleteComment] = useDeleteCommentMutation();
 
   const {
     data: spot,
@@ -23,30 +23,20 @@ function Spot() {
   } = useGetCommentsQuery(spotId);
 
   console.log('comments', comments);
-
-  const handleDeleteComment = (commentId) => {
-    deleteComment({ commentId, userId: userId.current, spotId });
-  };
-
   let listOfComments;
   if (comments) {
     listOfComments = comments.map((comment) => {
       console.log('Ici', comment.user.id, userId.current);
       return (
-        <div key={comment.id}>
-          <p>
-            {comment.user.nickname}
-          </p>
-          <p className="comment-align">
-            {comment.content}
-            {userId.current == comment.user.id
-          && <button className="deleteButton" onClick={() => handleDeleteComment(comment.id)} type="button">Supprimer</button>}
-          </p>
-        </div>
+        <Comment
+          key={comment.id}
+          comment={comment}
+          userId={userId.current}
+          spotId={Number(spotId)}
+        />
       );
     });
   }
-
   // console.log(userId.current, spotId);
   const [postNewComment, {
     isSuccess,
@@ -73,7 +63,7 @@ function Spot() {
             <h1 className="spot-left-description"> Description </h1>
             <p>{spot.description}</p>
             <h1 className="spot-left-location">Location </h1>
-            <p>{spot.location}</p>
+            <p>{spot.MainMapModallocation}</p>
             <p>{spot.gps_coordinates}</p>
           </div>
           <div className="spot-right">

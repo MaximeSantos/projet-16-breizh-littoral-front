@@ -42,11 +42,27 @@ export const commentsApi = createApi({
         };
       },
     }),
+    patchComment: builder.mutation({
+      query: (dataFromMutation) => {
+        const {
+          userId,
+          spotId,
+          commentId,
+          data,
+        } = dataFromMutation;
+        return {
+          url: `users/${userId}/spots/${spotId}/comments/${commentId}`,
+          method: 'PATCH',
+          body: { content: data.content },
+        };
+      },
+    }),
   }),
 });
 
 export const {
   useDeleteCommentMutation,
+  usePatchCommentMutation,
   useGetCommentsQuery,
   usePostNewCommentMutation,
 } = commentsApi;
