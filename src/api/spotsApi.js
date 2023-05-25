@@ -40,10 +40,26 @@ export const spotsApi = createApi({
       }),
       providesTags: ['Spot'],
     }),
+    patchSpot: builder.mutation({
+      query: (dataFromMutation) => {
+        const {
+          userId,
+          spotId,
+          data,
+        } = dataFromMutation;
+        return {
+          url: `users/${userId}/spots/${spotId}`,
+          method: 'PATCH',
+          body: { ...data },
+        };
+      },
+      providesTags: ['Spot'],
+    }),
   }),
 });
 
 export const {
+  usePatchSpotMutation,
   useGetSpotsQuery,
   useGetSpotQuery,
   usePostNewSpotMutation,
