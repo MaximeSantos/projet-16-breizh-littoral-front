@@ -92,7 +92,7 @@ function AddSpot() {
             <label htmlFor="addSpot-picture">Photo principale du spot (URL)</label>
             <input className="addSpot-form-photo" {...register('picture')} placeholder="Photo" id="addSpot-picture" />
           </div>
-          <input className="signup-form-button" type="submit" value="Valider" />
+          <input className="button-basic" type="submit" value="Valider" />
           {isError
           && <p>Erreur lors de l&apos;ajout du spot</p>}
         </form>

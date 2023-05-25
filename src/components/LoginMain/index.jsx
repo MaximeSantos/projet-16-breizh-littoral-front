@@ -54,11 +54,11 @@ function LoginMain() {
             <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <label htmlFor="login-email">Email</label>
-                <input {...register('username')} type="email" placeholder="Email" id="login-email" />
+                <input {...register('username', { required: true, maxLength: 180 })} type="email" placeholder="Email" id="login-email" />
               </div>
               <div>
                 <label htmlFor="login-password">Password</label>
-                <input {...register('password')} type="password" placeholder="Mot de passe" id="login-password" />
+                <input {...register('password', { required: true, maxLength: 1024 })} type="password" placeholder="Mot de passe" id="login-password" />
               </div>
               <div>
                 <input className="login-form-button" type="submit" value="Se connecter" />
@@ -72,7 +72,9 @@ function LoginMain() {
         && (
         <p>
           Erreur&nbsp;
-          {error.originalStatus}
+          {/* error.data.code */}
+          <br />
+          {error.data.message}
           <br />
           Veuillez réessayer
         </p>

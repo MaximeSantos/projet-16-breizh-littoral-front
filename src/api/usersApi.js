@@ -24,6 +24,14 @@ export const usersApi = createApi({
       }),
       providesTags: ['User'],
     }),
+    patchUser: builder.mutation({
+      query: ({ userId, data }) => ({
+        url: `/users/${userId}`,
+        method: 'PATCH',
+        body: { ...data },
+      }),
+      invalidatesTags: ['User'],
+    }),
     // Signup & Login
     postNewUser: builder.mutation({
       query: (newUser) => ({
@@ -47,6 +55,7 @@ export const usersApi = createApi({
 
 export const {
   useGetUserQuery,
+  usePatchUserMutation,
   usePostNewUserMutation,
   usePostLoginMutation,
 } = usersApi;
