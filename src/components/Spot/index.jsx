@@ -74,7 +74,7 @@ function Spot() {
             <div>
               <form className="signup-form-comments" onSubmit={handleSubmit(onSubmit)}>
                 <input className="signup-form-comments" {...register('content')} type="textarea" />
-                <input className="signup-form-button" type="submit" value="Envoyer" />
+                <input className="basic-button" type="submit" value="Envoyer" />
               </form>
             </div>
           )}
