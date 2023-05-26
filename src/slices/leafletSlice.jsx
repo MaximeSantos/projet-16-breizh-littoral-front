@@ -2,19 +2,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  customMarkerCoordinates: null,
+  addNewSpotCustomMarkerCoordinates: null,
+  editSpotCustomMarkerCoordinates: null,
 };
 
 export const leafletSlice = createSlice({
   name: 'leaflet',
   initialState,
   reducers: {
-    setCustomMarkerCoordinates: (state, action) => {
-      state.customMarkerCoordinates = action.payload;
+    setAddNewSpotCustomMarkerCoordinates: (state, action) => {
+      state.addNewSpotCustomMarkerCoordinates = action.payload;
+    },
+    setEditSpotCustomMarkerCoordinates: (state, action) => {
+      state.editSpotCustomMarkerCoordinates = action.payload;
     },
   },
 });
 
-export const { setCustomMarkerCoordinates } = leafletSlice.actions;
+export const {
+  setAddNewSpotCustomMarkerCoordinates,
+  setEditSpotCustomMarkerCoordinates,
+} = leafletSlice.actions;
 
 export default leafletSlice.reducer;

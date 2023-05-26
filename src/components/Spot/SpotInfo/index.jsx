@@ -3,91 +3,131 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { usePatchSpotMutation } from '../../../api/spotsApi';
-import './style.scss';
+import MainMapLeaflet from '../../Leaflet/MainMapLeaflet';
 
-function SpotInfo({ spot, userId, spotId }) {
-  const [isModifying, setIsModifying] = useState(false);
-
+function SpotInfo({
+  spot,
+  userId,
+  spotId,
+  isModifying,
+  setIsModifying,
+}) {
   const [descriptionValue, setDescriptionValue] = useState(spot.description);
   const [nameValue, setNameValue] = useState(spot.name);
-  const [pictureValue, setPictureValue] = useState(spot.name);
-
-  const [patchSpot] = usePatchSpotMutation();
-
-  const handleEditSpot = () => {
-    setIsModifying(!isModifying);
-  };
-
-  const handleChangeDescription = (e) => {
-    setDescriptionValue(e);
-  };
-
-  const handleChangeName = (e) => {
-    setNameValue(e);
-  };
-  const handleChangePicture = (e) => {
-    setPictureValue(e);
-  };
-
-  const onSubmit = (data) => {
-    patchSpot({
-      userId,
-      spotId,
-      data,
-    });
-    setIsModifying(false);
-  };
+  const [pictureValue, setPictureValue] = useState(spot.picture);
+  const [locationValue, setLocationValue] = useState(spot.location);
+  const [gpsValue, setGpsValue] = useState(spot.gps_coordinates);
 
   const {
     register,
     handleSubmit,
   } = useForm();
 
+  const [patchSpot, { isError, error }] = usePatchSpotMutation();
+
+  const handleEditSpot = () => {
+    setIsModifying(!isModifying);
+  };
+
+  const onSubmit = (data) => {
+    const dataToSend = { ...data, gps_coordinates: gpsValue };
+    patchSpot({
+      userId,
+      spotId,
+      dataToSend,
+    });
+    setIsModifying(false);
+  };
+
   return (
-    <div className="spot">
+    <div className="spot-info">
+      <h1 className="spot-info-title">
+        {spot.name}
+        {userId === spot.user?.id
+        && <button className="button-minimalist" onClick={() => handleEditSpot()} type="button">{isModifying ? 'Annuler' : 'Modifier'}</button>}
+      </h1>
+
       {!isModifying && (
-      <div className="spot-top">
-        <h1 className="spot-top-text">{spot.name}</h1>
-        <img className="spot-top-banner" src={spot.picture} alt={`Spot ${spot.name}`} />
-        <h2 className="spot-left-description"> Description </h2>
-        <p>{spot.description}</p>
-        <h2 className="spot-left-location">Location </h2>
-        <p>{spot.MainMapModallocation}</p>
-        <p>{spot.gps_coordinates}</p>
-      </div>
+        <>
+          <img className="spot-info-picture" src={spot.picture} alt={`Spot ${spot.name}`} />
+          <h2>Ville</h2>
+          <p>{spot.location}</p>
+          <h2> Description </h2>
+          <p>{spot.description}</p>
+        </>
       )}
       {isModifying
       && (
-      <form onSubmit={handleSubmit(onSubmit)} className="comment-align">
-        <h2> Nom du spot :</h2>
-        <input className="signup-form-spot" {...register('name')} type="textarea" value={nameValue} onChange={(e) => handleChangeName(e.target.value)} />
-        <h2> Photo :</h2>
-        <input className="signup-form-spot" {...register('picture')} type="textarea" value={pictureValue} onChange={(e) => handleChangePicture(e.target.value)} />
-        <h2> Description :</h2>
-        <input className="signup-form-spot" {...register('description')} type="textarea" value={descriptionValue} onChange={(e) => handleChangeDescription(e.target.value)} />
-        <input type="submit" className="signup-submit-spot" value="Valider" />
-      </form>
+      <>
+        <div className="addSpot-map">
+          <MainMapLeaflet
+            canPinCustomMarker
+            customMarkerCoordinates={gpsValue}
+            setCustomMarkerCoordinates={setGpsValue}
+          />
+        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="comment-align">
+          <div>
+            <label htmlFor="spot-form-name">Nom du spot</label>
+            <input
+              {...register('name')}
+              value={nameValue}
+              onChange={(e) => setNameValue(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="spot-form-picture">Photo</label>
+            <input
+              {...register('picture')}
+              value={pictureValue}
+              onChange={(e) => setPictureValue(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="spot-form-location">Ville</label>
+            <input
+              {...register('location')}
+              value={locationValue}
+              onChange={(e) => setLocationValue(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="spot-form-description">Description</label>
+            <input
+              {...register('description')}
+              type="textarea"
+              value={descriptionValue}
+              onChange={(e) => setDescriptionValue(e.target.value)}
+            />
+          </div>
+          <div>
+            <input className="button-basic" type="submit" value="Valider" />
+          </div>
+        </form>
+        {isError
+        && <p>{error.data.message}</p>}
+      </>
       )}
-      {userId === spot.user.id
-      && <button className="editButton" onClick={() => handleEditSpot(spot.user.id)} type="button">Modifier</button>}
     </div>
   );
 }
 
 SpotInfo.propTypes = {
-  spot: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      gps_coordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
-      description: PropTypes.string.isRequired,
-      picture: PropTypes.string.isRequired,
+  spot: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
+    gps_coordinates: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+    id: PropTypes.number.isRequired,
+    user: PropTypes.shape({
       id: PropTypes.number.isRequired,
     }),
-  ),
+  }).isRequired,
   userId: PropTypes.number.isRequired,
   spotId: PropTypes.number.isRequired,
+  isModifying: PropTypes.bool.isRequired,
+  setIsModifying: PropTypes.func.isRequired,
 };
-SpotInfo.defaultProps = {
-  spot: [],
-};
+
 export default SpotInfo;

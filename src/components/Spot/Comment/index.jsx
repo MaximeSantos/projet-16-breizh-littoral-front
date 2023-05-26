@@ -6,7 +6,7 @@ import { useDeleteCommentMutation, usePatchCommentMutation } from '../../../api/
 
 function Comment({ comment, userId, spotId }) {
   const [isModifying, setIsModifying] = useState(false);
-  const [contentValue, setContentValue] = useState(comment.content);
+  const [commentValue, setCommentValue] = useState(comment.content);
 
   const {
     register,
@@ -22,16 +22,6 @@ function Comment({ comment, userId, spotId }) {
     deleteComment({ commentId, userId, spotId });
   };
 
-  // Nous permet d'afficher ou non le formulaire de modification d'un spot
-  const handleEditComment = () => {
-    setIsModifying(!isModifying);
-  };
-
-  // Champ controlé pour modifier le contenu de l'input
-  const handleChangeContent = (e) => {
-    setContentValue(e);
-  };
-
   const onSubmit = (data) => {
     patchComment({
       commentId: comment.id,
@@ -43,9 +33,10 @@ function Comment({ comment, userId, spotId }) {
   };
 
   return (
-    <div>
+    <div className="comment">
       <p>
         {comment.user.nickname}
+        &nbsp;:
       </p>
       {!isModifying
       && (
@@ -56,14 +47,18 @@ function Comment({ comment, userId, spotId }) {
       {isModifying
       && (
       <form onSubmit={handleSubmit(onSubmit)} className="comment-align">
-        <input className="signup-form-comments" {...register('content')} type="textarea" value={contentValue} onChange={(e) => handleChangeContent(e.target.value)} />
-        <input type="submit" value="Valider" />
+        <div>
+          <input {...register('content')} type="textarea" value={commentValue} onChange={(e) => setCommentValue(e.target.value)} />
+        </div>
+        <div>
+          <input className="button-basic" type="submit" value="Valider" />
+        </div>
       </form>
       )}
       {userId === comment.user.id
-      && <button className="deleteButton" onClick={() => handleDeleteComment(comment.id)} type="button">Supprimer</button>}
+      && <button className="button-minimalist" onClick={() => setIsModifying(!isModifying)} type="button">Modifier</button>}
       {userId === comment.user.id
-      && <button className="editButton" onClick={() => handleEditComment()} type="button">Modifier</button>}
+      && <button className="button-minimalist" onClick={() => handleDeleteComment(comment.id)} type="button">Supprimer</button>}
     </div>
   );
 }

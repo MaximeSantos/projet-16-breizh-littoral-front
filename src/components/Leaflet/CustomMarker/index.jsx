@@ -1,11 +1,9 @@
+import PropTypes from 'prop-types';
 import { Marker, Popup, useMapEvents } from 'react-leaflet';
-import { useDispatch, useSelector } from 'react-redux';
-import { setCustomMarkerCoordinates } from '../../../slices/leafletSlice';
+import { useDispatch } from 'react-redux';
 
-function CustomMarker() {
+function CustomMarker({ customMarkerCoordinates, setCustomMarkerCoordinates }) {
   const dispatch = useDispatch();
-
-  const customMarkerCoordinates = useSelector((state) => state.leaflet.customMarkerCoordinates);
 
   useMapEvents({
     click(e) {
@@ -27,5 +25,14 @@ function CustomMarker() {
     </Marker>
   );
 }
+
+CustomMarker.propTypes = {
+  customMarkerCoordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
+  setCustomMarkerCoordinates: PropTypes.func.isRequired,
+};
+
+CustomMarker.defaultProps = {
+  customMarkerCoordinates: null,
+};
 
 export default CustomMarker;

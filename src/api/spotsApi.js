@@ -16,7 +16,7 @@ export const spotsApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Spots', 'Spot'],
+  tagTypes: ['Spots'],
   endpoints: (builder) => ({
     getSpots: builder.query({
       query: () => ({
@@ -38,22 +38,15 @@ export const spotsApi = createApi({
         url: `/spots/${spotId}`,
         method: 'GET',
       }),
-      providesTags: ['Spot'],
+      providesTags: ['Spots'],
     }),
     patchSpot: builder.mutation({
-      query: (dataFromMutation) => {
-        const {
-          userId,
-          spotId,
-          data,
-        } = dataFromMutation;
-        return {
-          url: `users/${userId}/spots/${spotId}`,
-          method: 'PATCH',
-          body: { ...data },
-        };
-      },
-      providesTags: ['Spot'],
+      query: ({ userId, spotId, dataToSend }) => ({
+        url: `users/${userId}/spots/${spotId}`,
+        method: 'PATCH',
+        body: { ...dataToSend },
+      }),
+      invalidatesTags: ['Spots'],
     }),
   }),
 });

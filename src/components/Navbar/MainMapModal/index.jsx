@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useGetSpotsQuery } from '../../../api/spotsApi';
 import { toggleDisplayMainMapModal } from '../../../slices/mainMapModalSlice';
 
-import MainMapLeaflet from './MainMapLeaflet';
+import MainMapLeaflet from '../../Leaflet/MainMapLeaflet';
 
 import './style.scss';
 

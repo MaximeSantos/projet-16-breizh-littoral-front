@@ -9,7 +9,8 @@ import { usePostNewSpotMutation } from '../../api/spotsApi';
 import { useGetDifficultesQuery } from '../../api/difficultesApi';
 import './style.scss';
 import { getUserIdFromJWT } from '../../utils/JWT';
-import MainMapLeaflet from '../Navbar/MainMapModal/MainMapLeaflet';
+import MainMapLeaflet from '../Leaflet/MainMapLeaflet';
+import { setAddNewSpotCustomMarkerCoordinates } from '../../slices/leafletSlice';
 
 function AddSpot() {
   // const {
@@ -22,7 +23,7 @@ function AddSpot() {
   //   ));
   // }
 
-  const gps_coordinates = useSelector((state) => state.leaflet.customMarkerCoordinates);
+  const gps_coordinates = useSelector((state) => state.leaflet.addNewSpotCustomMarkerCoordinates);
 
   const {
     data: difficulties,
@@ -65,7 +66,11 @@ function AddSpot() {
           Création d&apos;un nouveau spot
         </h1>
         <div className="addSpot-map">
-          <MainMapLeaflet canPinCustomMarker />
+          <MainMapLeaflet
+            canPinCustomMarker
+            customMarkerCoordinates={gps_coordinates}
+            setCustomMarkerCoordinates={setAddNewSpotCustomMarkerCoordinates}
+          />
         </div>
         <form className="addSpot-form" onSubmit={handleSubmit(onSubmit)}>
           <div>

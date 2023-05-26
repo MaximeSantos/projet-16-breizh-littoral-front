@@ -1,34 +1,43 @@
 @use 'src/styles/vars';
 
 .spot {
-display: flex;
-    &-top {
-        width: 50%;
-        &-banner {
-            margin-top: 2rem;
-            width: 50rem;
-            aspect-ratio: 16/8;
-        }
-        
+  display: flex;
+  justify-content: center;
+
+    &-info {
+      display: flex;
+      flex-flow: column;
+      width: 100%;
+
+      &-picture {
+        width: 100%;
+        overflow: hidden;
+        align-self: center;
+      }
+
+      &-title {
+        text-align: center;
+        padding-bottom: 1rem;
+      }
     }
-
-    &-right {
-        display: flex;
-        flex-direction: column;
-        &-comments {
-
-        }
+    
+    &-container {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      max-width: 50vw;
+    }
+    
+    &-info,
+    &-comments {
+      width: 100%;
     }
 }
 
-.deleteButton {
-    border: solid 0.1em rgb(0, 0, 0);
-    border-radius: 10px;
-    padding: 0.5em;
-    margin-left: 2em;
-}
+.comment {
+  display: flex;
 
-.comment-align {
-    display: flex;
-    margin-left: 2em;
+  & p:first-child {
+    margin-right: 1rem;
+  }
 }
