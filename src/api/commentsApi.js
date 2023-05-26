@@ -26,9 +26,9 @@ export const commentsApi = createApi({
     }),
     postNewComment: builder.mutation({
       query: (data) => {
-        const { userId, spotId, body } = data;
+        const { spotId, body } = data;
         return {
-          url: `users/${userId}/spots/${spotId}/comments`,
+          url: `/spots/${spotId}/comments`,
           method: 'POST',
           body,
         };
@@ -36,25 +36,20 @@ export const commentsApi = createApi({
       invalidatesTags: ['Comments'],
     }),
     deleteComment: builder.mutation({
-      query: (data) => {
-        const { userId, spotId, commentId } = data;
-        return {
-          url: `users/${userId}/spots/${spotId}/comments/${commentId}`,
-          method: 'DELETE',
-        };
-      },
+      query: (commentId) => ({
+        url: `/comments/${commentId}`,
+        method: 'DELETE',
+      }),
       invalidatesTags: ['Comments'],
     }),
     patchComment: builder.mutation({
       query: (dataFromMutation) => {
         const {
-          userId,
-          spotId,
           commentId,
           data,
         } = dataFromMutation;
         return {
-          url: `users/${userId}/spots/${spotId}/comments/${commentId}`,
+          url: `/comments/${commentId}`,
           method: 'PUT',
           body: { ...data },
         };
