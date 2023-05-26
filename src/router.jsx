@@ -13,6 +13,7 @@ import PrivateRoutes from './utils/PrivateRoutes';
 import UserProfile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
 import Nous from './pages/Nous';
+import SecuPage from './pages/SecuPage';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: '/nous',
     element: <Nous />,
+  },
+  {
+    path: '/conseils',
+    element: <SecuPage />,
   },
   {
     path: '*',
