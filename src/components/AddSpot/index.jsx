@@ -2,17 +2,19 @@
 /* eslint-disable camelcase */
 // Nous avons besoin de désactiver cette règle pour react-hook-form
 /* eslint-disable react/jsx-props-no-spreading */
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { usePostNewSpotMutation } from '../../api/spotsApi';
-// import { useGetSportsQuery } from '../../api/sportsApi';
 import { useGetDifficultesQuery } from '../../api/difficultesApi';
-import './style.scss';
-import { getUserIdFromJWT } from '../../utils/JWT';
-import MainMapLeaflet from '../Leaflet/MainMapLeaflet';
 import { setAddNewSpotCustomMarkerCoordinates } from '../../slices/leafletSlice';
 
+import MainMapLeaflet from '../Leaflet/MainMapLeaflet';
+
+import './style.scss';
+
 function AddSpot() {
+  const dispatch = useDispatch();
+
   // const {
   //   data: sports,
   // } = useGetSportsQuery();
@@ -43,18 +45,18 @@ function AddSpot() {
   const [postNewSpot, {
     isSuccess,
     isError,
+    error,
   }] = usePostNewSpotMutation();
 
   const onSubmit = (data) => {
     const dataToSend = {
       ...data,
-      user_id: getUserIdFromJWT(),
       gps_coordinates,
       // sport_id: parseInt(data.sport_id, 10),
       difficulty_id: Number(data.difficulty_id),
     };
-
     postNewSpot(dataToSend);
+    dispatch(setAddNewSpotCustomMarkerCoordinates(null));
   };
 
   return (
@@ -74,23 +76,23 @@ function AddSpot() {
         </div>
         <form className="addSpot-form" onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <label htmlFor="addSpot-name">Nom</label>
-            <input className="addSpot-form-name" {...register('name')} placeholder="Nom" id="addSpot-name" />
+            <label htmlFor="addSpot-name">Nom *</label>
+            <input className="addSpot-form-name" {...register('name', { required: true })} placeholder="Nom" id="addSpot-name" />
           </div>
           <div>
-            <label htmlFor="addSpot-location">Ville</label>
-            <input className="addSpot-form-location" {...register('location')} placeholder="Ville" id="addSpot-location" />
+            <label htmlFor="addSpot-location">Ville *</label>
+            <input className="addSpot-form-location" {...register('location', { required: true })} placeholder="Ville" id="addSpot-location" />
           </div>
           <div>
-            <label htmlFor="addSpot-difficulty">Difficulté</label>
+            <label htmlFor="addSpot-difficulty">Difficulté *</label>
             <select {...register('difficulty_id')} type="number" id="addSpot-difficulty">
               {difficulties && listOfDifficulties}
             </select>
           </div>
           <div>
             <div className="addSpot-description">
-              <label htmlFor="addSpot-description">Description</label>
-              <input className="addSpot-form-description" {...register('description')} placeholder="Description" type="textarea" id="addSpot-description" />
+              <label htmlFor="addSpot-description">Description *</label>
+              <input className="addSpot-form-description" {...register('description', { required: true, minLength: 5 })} placeholder="Description" type="textarea" id="addSpot-description" />
             </div>
           </div>
           <div>
@@ -99,7 +101,12 @@ function AddSpot() {
           </div>
           <input className="button-basic" type="submit" value="Valider" />
           {isError
-          && <p>Erreur lors de l&apos;ajout du spot</p>}
+          && (
+          <p>
+            Erreur lors de l&apos;ajout d&apos;un spot.
+            {error.data.message}
+          </p>
+          )}
         </form>
       </>
       )}

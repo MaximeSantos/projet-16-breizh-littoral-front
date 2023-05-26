@@ -27,7 +27,7 @@ export const spotsApi = createApi({
     }),
     postNewSpot: builder.mutation({
       query: (newSpot) => ({
-        url: `/users/${newSpot.user_id}/spots`,
+        url: '/spots',
         method: 'POST',
         body: newSpot,
       }),
@@ -41,8 +41,8 @@ export const spotsApi = createApi({
       providesTags: ['Spots'],
     }),
     patchSpot: builder.mutation({
-      query: ({ userId, spotId, dataToSend }) => ({
-        url: `users/${userId}/spots/${spotId}`,
+      query: ({ spotId, dataToSend }) => ({
+        url: `/spots/${spotId}`,
         method: 'PATCH',
         body: { ...dataToSend },
       }),

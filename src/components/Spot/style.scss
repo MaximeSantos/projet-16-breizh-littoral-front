@@ -11,8 +11,10 @@
 
       &-picture {
         width: 100%;
+        min-width: 100%;
         overflow: hidden;
         align-self: center;
+        background-color: vars.$stroke-color;
       }
 
       &-title {

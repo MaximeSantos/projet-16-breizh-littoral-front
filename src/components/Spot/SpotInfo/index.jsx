@@ -32,7 +32,6 @@ function SpotInfo({
   const onSubmit = (data) => {
     const dataToSend = { ...data, gps_coordinates: gpsValue };
     patchSpot({
-      userId,
       spotId,
       dataToSend,
     });
@@ -68,9 +67,9 @@ function SpotInfo({
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="comment-align">
           <div>
-            <label htmlFor="spot-form-name">Nom du spot</label>
+            <label htmlFor="spot-form-name">Nom du spot *</label>
             <input
-              {...register('name')}
+              {...register('name', { required: true })}
               value={nameValue}
               onChange={(e) => setNameValue(e.target.value)}
             />
@@ -84,9 +83,9 @@ function SpotInfo({
             />
           </div>
           <div>
-            <label htmlFor="spot-form-location">Ville</label>
+            <label htmlFor="spot-form-location">Ville *</label>
             <input
-              {...register('location')}
+              {...register('location', { required: true })}
               value={locationValue}
               onChange={(e) => setLocationValue(e.target.value)}
             />
@@ -94,7 +93,7 @@ function SpotInfo({
           <div>
             <label htmlFor="spot-form-description">Description</label>
             <input
-              {...register('description')}
+              {...register('description', { required: true, minLength: 5 })}
               type="textarea"
               value={descriptionValue}
               onChange={(e) => setDescriptionValue(e.target.value)}
