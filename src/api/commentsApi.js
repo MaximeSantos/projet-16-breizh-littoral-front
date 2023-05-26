@@ -55,10 +55,11 @@ export const commentsApi = createApi({
         } = dataFromMutation;
         return {
           url: `users/${userId}/spots/${spotId}/comments/${commentId}`,
-          method: 'PATCH',
-          body: { content: data.content },
+          method: 'PUT',
+          body: { ...data },
         };
       },
+      invalidatesTags: ['Comments'],
     }),
   }),
 });

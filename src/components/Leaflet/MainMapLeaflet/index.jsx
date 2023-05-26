@@ -7,12 +7,17 @@ import {
   TileLayer,
 } from 'react-leaflet';
 
-import { startPosition } from '../../../../utils/mapData';
-import CustomMarker from '../../../Leaflet/CustomMarker';
+import { startPosition } from '../../../utils/mapData';
+import CustomMarker from '../CustomMarker';
 
 import './style.scss';
 
-function MainMapLeaflet({ spots, canPinCustomMarker }) {
+function MainMapLeaflet({
+  spots,
+  canPinCustomMarker,
+  customMarkerCoordinates,
+  setCustomMarkerCoordinates,
+}) {
   let listOfSpots;
   if (spots) {
     listOfSpots = spots.map((spot) => (
@@ -45,7 +50,12 @@ function MainMapLeaflet({ spots, canPinCustomMarker }) {
       />
       {listOfSpots}
       {canPinCustomMarker
-      && <CustomMarker />}
+      && (
+      <CustomMarker
+        customMarkerCoordinates={customMarkerCoordinates}
+        setCustomMarkerCoordinates={setCustomMarkerCoordinates}
+      />
+      )}
     </MapContainer>
   );
 }
@@ -60,10 +70,14 @@ MainMapLeaflet.propTypes = {
     }),
   ),
   canPinCustomMarker: PropTypes.bool.isRequired,
+  customMarkerCoordinates: PropTypes.arrayOf(PropTypes.number.isRequired),
+  setCustomMarkerCoordinates: PropTypes.func,
 };
 
 MainMapLeaflet.defaultProps = {
   spots: [],
+  customMarkerCoordinates: null,
+  setCustomMarkerCoordinates: null,
 };
 
 export default MainMapLeaflet;
