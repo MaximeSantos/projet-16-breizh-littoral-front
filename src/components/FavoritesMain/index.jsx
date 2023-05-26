@@ -1,18 +1,14 @@
-import { useRef } from 'react';
 import { useGetFavoritesQuery } from '../../api/favoritesApi';
-import { getUserIdFromJWT } from '../../utils/JWT';
 import SpotCard from '../HomeMain/MainSpots/SpotCard';
 import './style.scss';
 
 function FavoritesMain() {
-  const userId = useRef(getUserIdFromJWT());
-
   const {
     data: spots,
     isLoading,
     isError,
     error,
-  } = useGetFavoritesQuery(userId.current);
+  } = useGetFavoritesQuery();
 
   let listOfSpots;
 

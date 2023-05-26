@@ -40,7 +40,6 @@ function Spot() {
         key={comment.id}
         comment={comment}
         userId={userId.current}
-        spotId={Number(spotId)}
       />
     ));
   }

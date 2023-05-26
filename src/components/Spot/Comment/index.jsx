@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDeleteCommentMutation, usePatchCommentMutation } from '../../../api/commentsApi';
 
-function Comment({ comment, userId, spotId }) {
+function Comment({ comment, userId }) {
   const [isModifying, setIsModifying] = useState(false);
   const [commentValue, setCommentValue] = useState(comment.content);
 
@@ -18,15 +18,10 @@ function Comment({ comment, userId, spotId }) {
 
   // Envoie la requête de suppression d'un commentaire
   const [deleteComment] = useDeleteCommentMutation();
-  const handleDeleteComment = (commentId) => {
-    deleteComment({ commentId, userId, spotId });
-  };
 
   const onSubmit = (data) => {
     patchComment({
       commentId: comment.id,
-      userId,
-      spotId,
       data,
     });
     setIsModifying(false);
@@ -58,7 +53,7 @@ function Comment({ comment, userId, spotId }) {
       {userId === comment.user.id
       && <button className="button-minimalist" onClick={() => setIsModifying(!isModifying)} type="button">Modifier</button>}
       {userId === comment.user.id
-      && <button className="button-minimalist" onClick={() => handleDeleteComment(comment.id)} type="button">Supprimer</button>}
+      && <button className="button-minimalist" onClick={() => deleteComment(comment.id)} type="button">Supprimer</button>}
     </div>
   );
 }
@@ -73,7 +68,6 @@ Comment.propTypes = {
     content: PropTypes.string.isRequired,
   }).isRequired,
   userId: PropTypes.number.isRequired,
-  spotId: PropTypes.number.isRequired,
 };
 
 export default Comment;
