@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { usePostLoginMutation } from '../../api/usersApi';
 import { setUserAsLoggedIn } from '../../slices/authSlice';
 
@@ -51,19 +51,27 @@ function LoginMain() {
         <div className="login-container">
           {!isSuccess
           && (
-            <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-              <div>
-                <label htmlFor="login-email">Email</label>
-                <input {...register('username', { required: true, maxLength: 180 })} type="email" placeholder="Email" id="login-email" />
-              </div>
-              <div>
-                <label htmlFor="login-password">Mot de passe</label>
-                <input {...register('password', { required: true, maxLength: 1024 })} type="password" placeholder="Mot de passe" id="login-password" />
-              </div>
-              <div>
-                <input className="login-form-button" type="submit" value="Se connecter" />
-              </div>
-            </form>
+            <>
+              <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+                <div>
+                  <label htmlFor="login-email">Email</label>
+                  <input {...register('username', { required: true, maxLength: 180 })} type="email" placeholder="Email" id="login-email" />
+                </div>
+                <div>
+                  <label htmlFor="login-password">Mot de passe</label>
+                  <input {...register('password', { required: true, maxLength: 1024 })} type="password" placeholder="Mot de passe" id="login-password" />
+                </div>
+                <div>
+                  <input className="login-form-button" type="submit" value="Se connecter" />
+                </div>
+              </form>
+              <h2>
+                Si vous n&apos;êtes pas encore inscrit ...&nbsp;
+                <Link className="link-basic" to="/inscription">
+                  inscrivez-vous !
+                </Link>
+              </h2>
+            </>
           )}
         </div>
         {isLoading
