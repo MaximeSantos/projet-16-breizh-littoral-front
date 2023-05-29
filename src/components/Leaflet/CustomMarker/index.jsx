@@ -12,15 +12,18 @@ function CustomMarker({ customMarkerCoordinates, setCustomMarkerCoordinates }) {
   });
 
   return customMarkerCoordinates === null ? null : (
-    <Marker position={customMarkerCoordinates}>
+    <Marker style={{ filter: 'hue-rotate(120deg)' }} position={customMarkerCoordinates}>
       <Popup>
-        You clicked here :
-        <br />
-        latitude&nbsp;
-        {customMarkerCoordinates[0]}
-        <br />
-        longitude&nbsp;
-        {customMarkerCoordinates[1]}
+        <p className="popup-description">
+          Coordonnées :
+        </p>
+        <p>
+          latitude&nbsp;
+          {customMarkerCoordinates[0]}
+          <br />
+          longitude&nbsp;
+          {customMarkerCoordinates[1]}
+        </p>
       </Popup>
     </Marker>
   );
