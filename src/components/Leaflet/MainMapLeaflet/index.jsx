@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+// import { divIcon } from 'leaflet';
 import {
   MapContainer,
   Marker,
@@ -7,6 +8,9 @@ import {
   TileLayer,
 } from 'react-leaflet';
 
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { toggleDisplayMainMapModal } from '../../../slices/modalSlice';
 import { startPosition } from '../../../utils/mapData';
 import CustomMarker from '../CustomMarker';
 
@@ -18,18 +22,24 @@ function MainMapLeaflet({
   customMarkerCoordinates,
   setCustomMarkerCoordinates,
 }) {
+  const dispatch = useDispatch();
+
+  // const markerIcon = divIcon({
+  //   html: iconMarkup,
+  // });
+
   let listOfSpots;
   if (spots) {
     listOfSpots = spots.map((spot) => (
-      <Marker key={spot.id} position={spot.gps_coordinates}>
+      <Marker
+        key={spot.id}
+        position={spot.gps_coordinates}
+        // icon={markerIcon}
+      >
         <Popup>
-          {spot.name}
-          <br />
-          {spot.gps_coordinates[0]}
-          <br />
-          {spot.gps_coordinates[1]}
-          <br />
-          {spot.description}
+          <h2 className="popup-title">{spot.name}</h2>
+          <p className="popup-description">{spot.description}</p>
+          <Link className="link-basic popup-link" onClick={() => dispatch(toggleDisplayMainMapModal())} to={`/spot/${spot.id}`}>Vers le spot !</Link>
         </Popup>
       </Marker>
     ));

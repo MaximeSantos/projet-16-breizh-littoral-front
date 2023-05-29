@@ -1,0 +1,19 @@
+.sport_page {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  &-picture {
+    align-self: center;
+    width: 100%
+  }
+
+  &-info {
+    display: flex;
+    flex-flow: column;
+    width: 50vw;
+    @media screen and (max-width: 1024px) {
+      width: 90vw;
+    }
+  }
+}

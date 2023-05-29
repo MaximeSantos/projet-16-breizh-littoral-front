@@ -34,6 +34,8 @@ function FavoritesMain() {
         <div className="cards-container">
           {spots
           && listOfSpots}
+          {(listOfSpots === undefined || listOfSpots.length === 0)
+          && <p>Vous n&apos;avez pas encore de spots favoris !</p>}
         </div>
       </div>
     </main>

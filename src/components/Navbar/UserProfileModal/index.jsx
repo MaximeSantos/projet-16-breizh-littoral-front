@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { setUserAsLoggedOut } from '../../../slices/authSlice';
-import { toggleDisplayProfileModal } from '../../../slices/profileModalSlice';
+import { toggleDisplayProfileModal } from '../../../slices/modalSlice';
 
 import './style.scss';
 
@@ -39,7 +39,7 @@ function UserNavbar() {
         && (
         <>
           <NavLink onClick={handleDisplayProfileModal} className="profile_modal-navlink" to="/inscription">Inscription </NavLink>
-          <NavLink onClick={handleDisplayProfileModal} className="profile_modal-navlink" to="/connexion">Connexion</NavLink>
+          <Link onClick={handleDisplayProfileModal} className="profile_modal-navlink" to="/connexion">Connexion</Link>
         </>
         )}
       </div>

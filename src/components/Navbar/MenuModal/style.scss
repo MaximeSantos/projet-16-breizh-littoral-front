@@ -1,23 +1,24 @@
 @use 'src/styles/vars';
 
-.modal.profile_modal {
+.modal.menu_modal {
   position: fixed;
   align-items: center;
 }
 
-.modal-content.profile_modal-content {
+.modal-content.menu_modal-content {
   width: 100vw;
-  height: 20%;
-  top: 24vh;
+  height: 90vh;
+  top: 59%;
+  justify-content: space-evenly;
   padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  gap: 1rem;
   align-items: center;
   box-shadow: 0 10px 10px 5px transparentize(vars.$stroke-color, 0.95);
 }
 
-.profile_modal-navlink {
+.menu_modal-navlink {
   font-size: 1.5em;
   font-weight: bold;
 
@@ -26,7 +27,7 @@
   }
 }
 
-.modal-overlay.profile_modal-overlay {
+.modal-overlay.menu_modal-overlay {
   opacity: 0;
 } 
 

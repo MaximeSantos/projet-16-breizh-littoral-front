@@ -12,7 +12,7 @@ import MainMapLeaflet from '../Leaflet/MainMapLeaflet';
 
 import './style.scss';
 
-function AddSpot() {
+function AddSpotMain() {
   const dispatch = useDispatch();
 
   // const {
@@ -73,6 +73,7 @@ function AddSpot() {
             customMarkerCoordinates={gps_coordinates}
             setCustomMarkerCoordinates={setAddNewSpotCustomMarkerCoordinates}
           />
+          <h2>Indiquez l&apos;emplacement de votre spot en cliquant sur la carte !</h2>
         </div>
         <form className="addSpot-form" onSubmit={handleSubmit(onSubmit)}>
           <div>
@@ -92,7 +93,7 @@ function AddSpot() {
           <div>
             <div className="addSpot-description">
               <label htmlFor="addSpot-description">Description *</label>
-              <input className="addSpot-form-description" {...register('description', { required: true, minLength: 5 })} placeholder="Description" type="textarea" id="addSpot-description" />
+              <textarea className="addSpot-form-description" {...register('description', { required: true, minLength: 5 })} placeholder="Description" id="addSpot-description" maxLength={1024} />
             </div>
           </div>
           <div>
@@ -117,4 +118,4 @@ function AddSpot() {
   );
 }
 
-export default AddSpot;
+export default AddSpotMain;

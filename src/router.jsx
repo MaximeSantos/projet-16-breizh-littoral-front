@@ -6,14 +6,14 @@ import Error404 from './pages/Error404';
 import Sports from './pages/Sports';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import SportPage from './pages/SportPage';
-import AddNewSpot from './pages/AddNewSpot';
-import SpotPage from './pages/SpotPage';
+import Sport from './pages/Sport';
+import AddSpot from './pages/AddSpot';
+import SpotPage from './pages/Spot';
 import PrivateRoutes from './utils/PrivateRoutes';
 import UserProfile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
 import Nous from './pages/Nous';
-import SecuPage from './pages/SecuPage';
+import Advices from './pages/Advices';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/sports/:sportId',
-    element: <SportPage />,
+    element: <Sport />,
   },
   {
     path: '/spot/:spotId',
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/conseils',
-    element: <SecuPage />,
+    element: <Advices />,
   },
   {
     path: '*',
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/ajouter',
-        element: <AddNewSpot />,
+        element: <AddSpot />,
       },
       {
         path: '/profil',
