@@ -62,6 +62,27 @@
 
     &-button {
       display: none;
+
+      @media (pointer: coarse) and (hover: none) {
+        display: inline;
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+    
+        filter:
+        invert(1)
+        saturate(10)
+        brightness(1.2);
+  
+        &:hover {
+          filter:
+          invert(0.5)
+          sepia(1)
+          hue-rotate(10deg)
+          saturate(10)
+          brightness(1.2);
+        }
+      }
     }
 
     &-picture {
