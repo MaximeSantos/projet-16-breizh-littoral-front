@@ -5,15 +5,27 @@
   justify-content: space-between;
   width: 90vw;
 
+  @media screen and (max-width: 1024px) {
+    flex-flow: column;
+  }
+
   &-welcome {
     max-width: 35%;
     margin-right: 2rem;
+
+    @media screen and (max-width: 1024px) {
+      max-width: 90%;
+    }
   }
     
   &-picture {
-    width: 60vw;
+    max-width: 60vw;
     aspect-ratio: 16/9;
     overflow: hidden;
     background-color: vars.$stroke-color;
+
+    @media screen and (max-width: 1024px) {
+      max-width: 90%;
+    }
   }
 };
