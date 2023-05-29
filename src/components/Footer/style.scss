@@ -17,6 +17,14 @@
     padding: 1rem 0;
   }
 
+  &-title,
+  &-description,
+  .footer-links_container li {
+    @media screen and (max-width:1024px) {
+      text-align: center;
+    }
+  }
+
   &-description_container {
     width: 25%;
     display: flex;

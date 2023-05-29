@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Navigate, NavLink } from 'react-router-dom';
+import { Link, useNavigate, NavLink } from 'react-router-dom';
 import { setUserAsLoggedOut } from '../../../slices/authSlice';
 import { toggleDisplayMenuModal } from '../../../slices/modalSlice';
 
@@ -11,6 +11,7 @@ import './style.scss';
 function MenuModal() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleDisplayMenuModal = () => {
@@ -21,7 +22,7 @@ function MenuModal() {
     localStorage.removeItem('BZLuserJWToken');
     dispatch(setUserAsLoggedOut());
     dispatch(toggleDisplayMenuModal());
-    Navigate('/');
+    navigate('/');
   };
 
   return (
