@@ -1,8 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import dummyReducer from '../slices/dummySlice';
-import mainMapModalReducer from '../slices/mainMapModalSlice';
+import modalReducer from '../slices/modalSlice';
 import leafletReducer from '../slices/leafletSlice';
-import profileModalReducer from '../slices/profileModalSlice';
 import authReducer from '../slices/authSlice';
 import { spotsApi } from '../api/spotsApi';
 import { usersApi } from '../api/usersApi';
@@ -14,9 +13,8 @@ import { commentsApi } from '../api/commentsApi';
 const store = configureStore({
   reducer: {
     dummy: dummyReducer,
-    mainMapModal: mainMapModalReducer,
+    modal: modalReducer,
     leaflet: leafletReducer,
-    profileModal: profileModalReducer,
     auth: authReducer,
     [spotsApi.reducerPath]: spotsApi.reducer,
     [usersApi.reducerPath]: usersApi.reducer,

@@ -7,31 +7,29 @@ import iconFavoris from '../../assets/icons/navbarButton-favoris.svg';
 import iconSports from '../../assets/icons/navbarButton-sports.svg';
 import iconPlus from '../../assets/icons/navbarButton-plus.svg';
 import iconProfil from '../../assets/icons/navbarButton-profil.svg';
+import iconMenu from '../../assets/icons/navbarButton-menu.svg';
 // import iconDarkmode from '../../assets/icons/navbarButton-darkmode.svg';
 // import iconMeteo from '../../assets/icons/navbarButton-meteo.svg';
 
-import { toggleDisplayMainMapModal } from '../../slices/mainMapModalSlice';
-import { toggleDisplayProfileModal } from '../../slices/profileModalSlice';
+import {
+  toggleDisplayMainMapModal,
+  toggleDisplayProfileModal,
+  toggleDisplayMenuModal,
+} from '../../slices/modalSlice';
 
 import UserProfileModal from './UserProfileModal';
 import NavbarButton from './NavbarButton';
 import MainMapModal from './MainMapModal';
 
 import './style.scss';
+import MenuModal from './MenuModal';
 
 function Navbar() {
   const dispatch = useDispatch();
 
-  const displayMainMapModal = useSelector((state) => state.mainMapModal.displayMainMapModal);
-  const displayProfileModal = useSelector((state) => state.profileModal.displayProfileModal);
-
-  const handleDisplayMainMapModal = () => {
-    dispatch(toggleDisplayMainMapModal());
-  };
-
-  const handleDisplayProfileModal = () => {
-    dispatch(toggleDisplayProfileModal());
-  };
+  const displayMainMapModal = useSelector((state) => state.modal.displayMainMapModal);
+  const displayProfileModal = useSelector((state) => state.modal.displayProfileModal);
+  const displayMenuModal = useSelector((state) => state.modal.displayMenuModal);
 
   return (
     <header className="navbar">
@@ -42,24 +40,25 @@ function Navbar() {
       </div>
 
       <div className="navbar-container navbar-middle">
-        <button onClick={handleDisplayMainMapModal} className="navbar-middle-button navbar-middle-button-map" type="button">Carte</button>
+        <button onClick={() => dispatch(toggleDisplayMainMapModal())} className="navbar-middle-button navbar-middle-button-map" type="button">Carte</button>
       </div>
 
       <div className="navbar-container navbar-right">
-        <button onClick={handleDisplayProfileModal} className={`navbar-button ${displayProfileModal ? 'active' : ''}`} type="button">
+        <button onClick={() => dispatch(toggleDisplayProfileModal())} className={`navbar-button bs ${displayProfileModal ? 'active' : ''}`} type="button">
           <img className="navbar-button" src={iconProfil} alt="Bouton profil" />
           <p>compte</p>
         </button>
-        <NavbarButton className="navbar-button" route="/favoris" icon={iconFavoris} />
-        <NavbarButton className="navbar-button" route="/ajouter" icon={iconPlus} />
-        <NavbarButton className="navbar-button" route="/sports" icon={iconSports} />
-        <NavbarButton className="navbar-button" route="/conseils" icon={iconConseils} />
+        {/* Only displays on big screens */}
+        <NavbarButton className="navbar-button bs" route="/favoris" icon={iconFavoris} />
+        <NavbarButton className="navbar-button bs" route="/ajouter" icon={iconPlus} />
+        <NavbarButton className="navbar-button bs" route="/sports" icon={iconSports} />
+        <NavbarButton className="navbar-button bs" route="/conseils" icon={iconConseils} />
+        {/* Only displays on small screens */}
+        <button onClick={() => dispatch(toggleDisplayMenuModal())} className={`navbar-button ss ${displayMenuModal ? 'active' : ''}`} type="button">
+          <img className="navbar-button" src={iconMenu} alt="Bouton menu" />
+          <p>menu</p>
+        </button>
         {/* <NavbarButton className="navbar-button" route="/meteo" icon={iconMeteo} /> */}
-        {/* <div>
-          <button type="button" className="navbar-button navbar-button--darkmode">
-            <img src={iconDarkmode} alt="Bouton mode sombre/clair" />
-          </button>
-        </div> */}
       </div>
 
       {displayProfileModal
@@ -67,6 +66,9 @@ function Navbar() {
 
       {displayMainMapModal
       && <MainMapModal />}
+
+      {displayMenuModal
+      && <MenuModal />}
     </header>
   );
 }

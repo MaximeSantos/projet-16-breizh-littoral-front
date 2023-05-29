@@ -10,7 +10,7 @@ import {
 
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { toggleDisplayMainMapModal } from '../../../slices/mainMapModalSlice';
+import { toggleDisplayMainMapModal } from '../../../slices/modalSlice';
 import { startPosition } from '../../../utils/mapData';
 import CustomMarker from '../CustomMarker';
 
