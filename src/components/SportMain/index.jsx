@@ -18,15 +18,15 @@ function SportMain() {
             {sport.name}
           </h1>
           <img className="sport_page-picture" src={sport.picture} alt={`Spot ${sport.name}`} />
-          <h2> Description </h2>
+          <h2 className="sport_page-info-title"> Description </h2>
           <p>
             {sport.description}
           </p>
-          <h2> Equipement </h2>
+          <h2 className="sport_page-info-title"> Equipement </h2>
           <p>
             {sport.equipment}
           </p>
-          <h2>Conseils</h2>
+          <h2 className="sport_page-info-title">Conseils</h2>
           <p>
             {sport.advices}
           </p>
