@@ -14,64 +14,70 @@ import UserProfile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
 import Nous from './pages/Nous';
 import Advices from './pages/Advices';
+import ScrollToTop from './utils/ScrollToTop';
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Home />,
-  },
-  {
-    path: '/sports',
-    element: <Sports />,
-  },
-  {
-    path: '/inscription',
-    element: <Signup />,
-  },
-  {
-    path: '/connexion',
-    element: <Login />,
-  },
-  {
-    path: '/sports/:sportId',
-    element: <Sport />,
-  },
-  {
-    path: '/spot/:spotId',
-    element: <SpotPage />,
-  },
-  {
-    path: '/nous',
-    element: <Nous />,
-  },
-  {
-    path: '/conseils',
-    element: <Advices />,
-  },
-  {
-    path: '*',
-    element: <Error404 />,
-  },
-  // On ne pourra accéder à ces routes que si l'on est connecté,
-  // Sinon on est renvoyé vers une page de connexion
-  {
-    element: <PrivateRoutes />,
+    element: <ScrollToTop />,
     children: [
       {
-        path: '/test',
-        element: <Test />,
+        path: '/',
+        element: <Home />,
       },
       {
-        path: '/ajouter',
-        element: <AddSpot />,
+        path: '/sports',
+        element: <Sports />,
       },
       {
-        path: '/profil',
-        element: <UserProfile />,
+        path: '/inscription',
+        element: <Signup />,
       },
       {
-        path: '/favoris',
-        element: <Favorites />,
+        path: '/connexion',
+        element: <Login />,
+      },
+      {
+        path: '/sports/:sportId',
+        element: <Sport />,
+      },
+      {
+        path: '/spot/:spotId',
+        element: <SpotPage />,
+      },
+      {
+        path: '/nous',
+        element: <Nous />,
+      },
+      {
+        path: '/conseils',
+        element: <Advices />,
+      },
+      {
+        path: '*',
+        element: <Error404 />,
+      },
+      // On ne pourra accéder à ces routes que si l'on est connecté,
+      // Sinon on est renvoyé vers une page de connexion
+      {
+        element: <PrivateRoutes />,
+        children: [
+          {
+            path: '/test',
+            element: <Test />,
+          },
+          {
+            path: '/ajouter',
+            element: <AddSpot />,
+          },
+          {
+            path: '/profil',
+            element: <UserProfile />,
+          },
+          {
+            path: '/favoris',
+            element: <Favorites />,
+          },
+        ],
       },
     ],
   },
