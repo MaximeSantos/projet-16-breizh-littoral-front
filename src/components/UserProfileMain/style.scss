@@ -5,6 +5,12 @@
   flex-flow: column;
   align-items: center;
 
+    &-container {
+      @media screen and (min-width: 1024px) {
+        max-width: 40vw;
+      }
+    }
+
     &-information {
       display: flex;
       flex-flow: column;

@@ -57,7 +57,7 @@ function LoginMain() {
                 <input {...register('username', { required: true, maxLength: 180 })} type="email" placeholder="Email" id="login-email" />
               </div>
               <div>
-                <label htmlFor="login-password">Password</label>
+                <label htmlFor="login-password">Mot de passe</label>
                 <input {...register('password', { required: true, maxLength: 1024 })} type="password" placeholder="Mot de passe" id="login-password" />
               </div>
               <div>

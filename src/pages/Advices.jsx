@@ -1,15 +1,15 @@
 import Footer from '../components/Footer';
-import Sport from '../components/Sport';
 import Navbar from '../components/Navbar';
+import AdvicesMain from '../components/AdvicesMain';
 
-function SportPage() {
+function Advices() {
   return (
-    <div>
+    <>
       <Navbar />
-      <Sport />
+      <AdvicesMain />
       <Footer />
-    </div>
+    </>
   );
 }
 
-export default SportPage;
+export default Advices;

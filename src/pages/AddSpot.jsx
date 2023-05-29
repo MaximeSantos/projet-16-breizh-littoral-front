@@ -1,15 +1,15 @@
-import AddSpot from '../components/AddSpot';
+import AddSpotMain from '../components/AddSpotMain';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-function AddNewSpot() {
+function AddSpot() {
   return (
-    <div>
+    <>
       <Navbar />
-      <AddSpot />
+      <AddSpotMain />
       <Footer />
-    </div>
+    </>
   );
 }
 
-export default AddNewSpot;
+export default AddSpot;

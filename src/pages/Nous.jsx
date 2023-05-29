@@ -1,12 +1,12 @@
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import NousPage from '../components/Nous';
+import NousMain from '../components/NousMain';
 
 function Nous() {
   return (
     <>
       <Navbar />
-      <NousPage />
+      <NousMain />
       <Footer />
     </>
   );

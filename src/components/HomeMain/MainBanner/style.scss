@@ -5,32 +5,15 @@
   justify-content: space-between;
   width: 90vw;
 
-  &-left {
+  &-welcome {
     max-width: 35%;
     margin-right: 2rem;
-  }
-
-  &-right  {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  &-title {
-    align-self: flex-end;
   }
     
   &-picture {
     width: 60vw;
     aspect-ratio: 16/9;
+    overflow: hidden;
     background-color: vars.$stroke-color;
-    border-radius: 10px;
-  }
-
-  &-link {
-    &:hover {
-      text-decoration: underline;
-      color: vars.$highlight-color;
-    }
   }
 };

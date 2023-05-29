@@ -22,23 +22,20 @@ function SpotCard({ spot }) {
     setCurrentPage(location.pathname);
   }, [location]);
 
-  const handleAddFavorite = () => postNewFavorite({ spotId: spot.id });
-  const handleDeleteFavorite = () => deleteFavorite({ spotId: spot.id });
-
   return (
     <div className="card">
       <div className="card-header">
         <img className="card-header-picture" src={spot.picture} alt={`Spot ${spot.name}`} />
         {(isLoggedIn && (currentPage === '/'))
         && (
-        <button onClick={handleAddFavorite} type="button" className="card-header-button">
-          <img src={iconFavorisAdd} alt="Bouton ajouter aux favoris" />
+        <button onClick={() => postNewFavorite({ spotId: spot.id })} type="button" className="card-header-button">
+          <img src={iconFavorisAdd} alt="Bouton ajouter favoris" />
         </button>
         )}
         {(isLoggedIn && (currentPage === '/favoris'))
         && (
-        <button onClick={handleDeleteFavorite} type="button" className="card-header-button">
-          <img src={iconFavorisRemove} alt="Bouton ajouter aux favoris" />
+        <button onClick={() => deleteFavorite({ spotId: spot.id })} type="button" className="card-header-button">
+          <img src={iconFavorisRemove} alt="Bouton supprimer favoris" />
         </button>
         )}
       </div>

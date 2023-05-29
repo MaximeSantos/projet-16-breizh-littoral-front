@@ -1,15 +1,15 @@
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import Spot from '../components/Spot';
+import SpotMain from '../components/SpotMain';
 
-function SpotPage() {
+function Spot() {
   return (
     <>
       <Navbar />
-      <Spot />
+      <SpotMain />
       <Footer />
     </>
   );
 }
 
-export default SpotPage;
+export default Spot;

@@ -35,25 +35,34 @@ function Comment({ comment, userId }) {
       </p>
       {!isModifying
       && (
-      <p className="comment-align">
-        {comment.content}
-      </p>
+      <div className="comment-container">
+        <p className="comment-content">{comment.content}</p>
+        {userId === comment.user.id
+        && (
+          <div>
+            <button className="button-minimalist" onClick={() => setIsModifying(!isModifying)} type="button">{isModifying ? 'Annuler' : 'Modifer'}</button>
+            <button className="button-minimalist" onClick={() => deleteComment(comment.id)} type="button">Supprimer</button>
+          </div>
+        )}
+      </div>
       )}
       {isModifying
       && (
-      <form onSubmit={handleSubmit(onSubmit)} className="comment-align">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <input {...register('content')} type="textarea" value={commentValue} onChange={(e) => setCommentValue(e.target.value)} />
+          <input {...register('content')} value={commentValue} onChange={(e) => setCommentValue(e.target.value)} />
         </div>
         <div>
           <input className="button-basic" type="submit" value="Valider" />
         </div>
       </form>
       )}
+      {/* {userId === comment.user.id
+      && <button className="button-minimalist" onClick={() => setIsModifying(!isModifying)}
+      type="button">{isModifying ? 'Annuler' : 'Modifer'}</button>}
       {userId === comment.user.id
-      && <button className="button-minimalist" onClick={() => setIsModifying(!isModifying)} type="button">Modifier</button>}
-      {userId === comment.user.id
-      && <button className="button-minimalist" onClick={() => deleteComment(comment.id)} type="button">Supprimer</button>}
+      && <button className="button-minimalist" onClick={() => deleteComment(comment.id)}
+      type="button">Supprimer</button>} */}
     </div>
   );
 }

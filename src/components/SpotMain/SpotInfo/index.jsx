@@ -1,9 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { usePatchSpotMutation } from '../../../api/spotsApi';
+import { usePostNewFavoriteMutation } from '../../../api/favoritesApi';
+
 import MainMapLeaflet from '../../Leaflet/MainMapLeaflet';
+
+import iconFavorisAdd from '../../../assets/icons/navbarButton-favoris-add.svg';
 
 function SpotInfo({
   spot,
@@ -18,12 +23,15 @@ function SpotInfo({
   const [locationValue, setLocationValue] = useState(spot.location);
   const [gpsValue, setGpsValue] = useState(spot.gps_coordinates);
 
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   const {
     register,
     handleSubmit,
   } = useForm();
 
   const [patchSpot, { isError, error }] = usePatchSpotMutation();
+  const [postNewFavorite] = usePostNewFavoriteMutation();
 
   const handleEditSpot = () => {
     setIsModifying(!isModifying);
@@ -48,7 +56,19 @@ function SpotInfo({
 
       {!isModifying && (
         <>
-          <img className="spot-info-picture" src={spot.picture} alt={`Spot ${spot.name}`} />
+          <div className="spot-info-picture_container">
+            <img className="spot-info-picture" src={spot.picture} alt={`Spot ${spot.name}`} />
+            {isLoggedIn
+            && (
+              <button onClick={() => postNewFavorite({ spotId: spot.id })} type="button" className="spot-info-picture-button">
+                <img src={iconFavorisAdd} alt="Bouton ajouter favoris" />
+              </button>
+            )}
+            {/* <p className="spot-info-creator">
+              Spot créé par&nbsp;
+              {spot.user.name}
+            </p> */}
+          </div>
           <h2>Ville</h2>
           <p>{spot.location}</p>
           <h2> Description </h2>
@@ -92,7 +112,7 @@ function SpotInfo({
           </div>
           <div>
             <label htmlFor="spot-form-description">Description</label>
-            <input
+            <textarea
               {...register('description', { required: true, minLength: 5 })}
               type="textarea"
               value={descriptionValue}

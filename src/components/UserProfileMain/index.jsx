@@ -32,7 +32,7 @@ function UserProfileMain() {
         && (
         <>
           <UserProfileInfo user={user} />
-          <div className="user_profile-sports">
+          {/* <div className="user_profile-sports">
             <h2>Sports pratiqués</h2>
             <ul>
               <li>
@@ -45,17 +45,17 @@ function UserProfileMain() {
                 - Luge bordelaise
               </li>
             </ul>
-          </div>
+          </div> */}
           {/* <div className="user_profile-favorites">
             <h2>Vos spots favoris</h2>
             {listOfFavSpots}
             {!listOfFavSpots.length
             && <p>Pas de spot favoris pour le moment</p>}
           </div> */}
-          <div className="user_profile-spots">
+          {/* <div className="user_profile-spots">
             <h2>Spots ajoutés</h2>
             <p>Ici bientôt une liste des spots que VOUS avez ajoutés</p>
-          </div>
+          </div> */}
         </>
         )}
       </div>

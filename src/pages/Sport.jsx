@@ -1,15 +1,15 @@
 import Footer from '../components/Footer';
+import SportMain from '../components/SportMain';
 import Navbar from '../components/Navbar';
-import Secu from '../components/Secu';
 
-function SecuPage() {
+function Sport() {
   return (
     <>
       <Navbar />
-      <Secu />
+      <SportMain />
       <Footer />
     </>
   );
 }
 
-export default SecuPage;
+export default Sport;
