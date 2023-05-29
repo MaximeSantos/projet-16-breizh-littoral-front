@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import bzlLogoBlackBig from '../../assets/logos/BZL-logo_black.svg';
+import bzlLogoBlackSmall from '../../assets/logos/BZL-logo-sec_black2.png';
 import iconConseils from '../../assets/icons/navbarButton-conseils.svg';
 import iconFavoris from '../../assets/icons/navbarButton-favoris.svg';
 import iconSports from '../../assets/icons/navbarButton-sports.svg';
@@ -34,8 +35,11 @@ function Navbar() {
   return (
     <header className="navbar">
       <div className="navbar-container navbar-left">
-        <Link className="navbar-logo" to="/">
+        <Link className="navbar-logo bs" to="/">
           <img className="navbar-logo-image" src={bzlLogoBlackBig} alt="Logo principal Breizh Littoral" />
+        </Link>
+        <Link className="navbar-logo ss" to="/">
+          <img className="navbar-logo-image" src={bzlLogoBlackSmall} alt="Logo principal Breizh Littoral" />
         </Link>
       </div>
 
