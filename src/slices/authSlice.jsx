@@ -2,10 +2,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { checkIfLoggedIn, getJWTFromLocalStorage } from '../utils/JWT';
 
-const isJWTInLocalStorage = checkIfLoggedIn();
-
 const initialState = {
-  isLoggedIn: isJWTInLocalStorage,
+  isLoggedIn: checkIfLoggedIn(),
   token: getJWTFromLocalStorage(),
 };
 
