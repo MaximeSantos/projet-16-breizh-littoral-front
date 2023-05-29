@@ -10,10 +10,6 @@
       flex-flow: column;
       width: 100%;
 
-      // &-creator {
-      //   display: none;
-      // }
-
       &-picture_container {
         position: relative;
         &:hover {
@@ -37,13 +33,6 @@
               brightness(1.2);
             }
           }
-          // .spot-info-creator {
-          //   display: inline;
-          //   color: vars.$main-color;
-          //   position: absolute;
-          //   top: 0;
-          //   left: 1rem;
-          // }
         }
       }
 
@@ -76,25 +65,35 @@
 .comment {
   display: flex;
 
-  & p:first-child {
+  &-title {
     margin-right: 1rem;
+    font-size: 1rem;
   }
 
   &-content {
     max-width: 50vw;
     overflow: auto;
+    flex: 1;
+    max-height: 20vh;
     @media screen and (max-width: 768px) {
-      max-width: 100%
+      max-width: 70vw;
     }
   }
   
   &-container {
     display: flex;
     flex-flow: row;
-    align-items: center;
+    align-items: start;
 
     @media screen and (max-width: 768px) {
       flex-flow: column;
     }
+  }
+
+  &-title,
+  &-content,
+  &container {
+    align-self: flex-start;
+    margin-top: 0;
   }
 }
