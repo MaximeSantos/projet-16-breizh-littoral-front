@@ -52,7 +52,7 @@ function LoginMain() {
           {!isSuccess
           && (
             <>
-              <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                   <label htmlFor="login-email">Email</label>
                   <input {...register('username', { required: true, maxLength: 180 })} type="email" placeholder="Email" id="login-email" />
@@ -62,10 +62,10 @@ function LoginMain() {
                   <input {...register('password', { required: true, maxLength: 1024 })} type="password" placeholder="Mot de passe" id="login-password" />
                 </div>
                 <div>
-                  <input className="login-form-button" type="submit" value="Se connecter" />
+                  <input className="button-basic" type="submit" value="Se connecter" />
                 </div>
               </form>
-              <h2>
+              <h2 className="login-title">
                 Si vous n&apos;êtes pas encore inscrit ...&nbsp;
                 <Link className="link-basic" to="/inscription">
                   inscrivez-vous !
