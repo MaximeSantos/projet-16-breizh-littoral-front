@@ -39,7 +39,9 @@ main {
 h1 {
   font-size: 3rem;
   font-weight: bold;
+  line-height: 3rem;
   font-family: 'Fraiche', sans-serif;
+  text-align: center;
 }
 
 h2 {
@@ -49,10 +51,6 @@ h2 {
 
 p {
   font-size: 1rem;
-}
-
-h1 {
-  line-height: 3rem;
 }
 
 h1,
