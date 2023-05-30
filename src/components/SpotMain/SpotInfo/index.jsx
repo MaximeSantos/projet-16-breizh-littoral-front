@@ -77,8 +77,13 @@ function SpotInfo({
               </button>
             )}
           </div>
-          <h2>Difficulté</h2>
-          <p>{spot.difficulty.name}</p>
+          {spot.difficulty?.name
+          && (
+            <>
+              <h2>Difficulté</h2>
+              <p>{spot.difficulty.name}</p>
+            </>
+          )}
           <h2>Ville</h2>
           <p>{spot.location}</p>
           <h2> Description </h2>
@@ -158,7 +163,7 @@ SpotInfo.propTypes = {
     id: PropTypes.number.isRequired,
     difficulty: PropTypes.shape({
       name: PropTypes.string.isRequired,
-    }).isRequired,
+    }),
     user: PropTypes.shape({
       id: PropTypes.number.isRequired,
     }),
