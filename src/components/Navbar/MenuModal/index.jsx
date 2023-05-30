@@ -30,12 +30,9 @@ function MenuModal() {
       <div onClick={handleDisplayMenuModal} className="modal-overlay menu_modal-overlay" />
       <div className="modal-content menu_modal-content">
         {isLoggedIn
-          && (
-          <>
-            <NavLink onClick={handleDisplayMenuModal} className="menu_modal-navlink" to="/profil">Profil</NavLink>
-            <button onClick={handleLogout} className="menu_modal-navlink" type="button">Déconnexion </button>
-          </>
-          )}
+        && (
+          <NavLink onClick={handleDisplayMenuModal} className="menu_modal-navlink" to="/profil">Profil</NavLink>
+        )}
         {!isLoggedIn
         && (
         <>
@@ -44,9 +41,13 @@ function MenuModal() {
         </>
         )}
         <Link onClick={handleDisplayMenuModal} className="menu_modal-navlink" to="/favoris">Favoris</Link>
-        <Link onClick={handleDisplayMenuModal} className="menu_modal-navlink" to="/ajouter">Ajouter</Link>
+        <Link onClick={handleDisplayMenuModal} className="menu_modal-navlink" to="/ajouter">Ajouter un spot</Link>
         <Link onClick={handleDisplayMenuModal} className="menu_modal-navlink" to="/sports">Sports</Link>
         <Link onClick={handleDisplayMenuModal} className="menu_modal-navlink" to="/conseils">Conseils</Link>
+        {isLoggedIn
+        && (
+          <button onClick={handleLogout} className="menu_modal-navlink" type="button">Déconnexion </button>
+        )}
       </div>
     </div>
   );

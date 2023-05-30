@@ -98,7 +98,8 @@ form {
     flex-flow: column;
 
     & input,
-    & select {
+    & select,
+    & textarea {
       margin: 0.5rem 0; 
     }
   }

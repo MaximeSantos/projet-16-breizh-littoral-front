@@ -10,23 +10,28 @@ function MainBanner() {
       <div className="banner-welcome">
         <h2> Bienvenue sur Breizh Littoral </h2>
         <p>
-          Que vous soyez adepte de surf, paddle, bodyboard, longboard, wakeboard, kitesurf,
-          planche à voile, longe-côte, chasse sous-marine ou simplement de passage en bord de mer,
-          Breizh Littoral recense les spots de sports nautiques en Bretagne, en apportant
-          des indications sur la localisation géographique et les moyens d&#39;accès, mais aussi sur
-          les bonnes pratiques environnementales ou les conditions météos.
+          Que vous soyez adepte de surf, de paddle, de bodyboard, wakeboard, planche à voile,
+          longe-côte, ou simplement de passage en bord de mer, Breizh Littoral recense les spots de
+          sports nautiques en Bretagne, en apportant des indications sur la localisation
+          géographique et les  moyens d&apos;accès, mais aussi sur les bonnes pratiques
+          environnementales.
         </p>
         {!isLoggedIn
         && (
         <p>
-          <Link className="link-basic" to="/inscription">Rejoignez-nous</Link>
-          &nbsp;pour partager vos spots préférés !
+          Découvrez l&apos;emplacement de nombreux spots grâce
+          à notre carte interactive et n&apos;hésitez pas à vous&nbsp;
+          <Link className="link-basic" to="/inscription">inscrire</Link>
+          &nbsp;afin de l&apos;enrichir en ajoutant vous-même vos spots préférés !
         </p>
         )}
         {isLoggedIn
         && (
         <p>
-          <Link className="link-basic" to="/ajouter">Partagez vos spots préférés !</Link>
+          Découvrez l&apos;emplacement de nombreux spots grâce à notre carte interactive
+          et n&apos;hésitez pas à l&apos;enrichir en&nbsp;
+          <Link className="link-basic" to="/ajouter">ajoutant vous-même</Link>
+          &nbsp;vos spots préférés !
         </p>
         )}
       </div>

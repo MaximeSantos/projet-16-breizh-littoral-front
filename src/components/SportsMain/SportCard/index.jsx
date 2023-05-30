@@ -5,13 +5,9 @@ import PropTypes from 'prop-types';
 function SportCard({ sport }) {
   return (
     <Link to={`${sport.id}`}>
-      <div className="sport">
-        <button type="button">
-          <div className="sport-card">
-            <img className="card-header-picture" src={sport.picture} alt={`Spot ${sport.name}`} />
-            <h2 className="sport-name">{sport.name}</h2>
-          </div>
-        </button>
+      <div className="sport_card">
+        <img className="sport_card-picture" src={sport.picture} alt={`Spot ${sport.name}`} />
+        <h2 className="sport_card-title">{sport.name}</h2>
       </div>
     </Link>
   );

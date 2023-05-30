@@ -50,7 +50,7 @@ function MainMapLeaflet({
       className="main_map-container"
       center={startPosition}
       zoom={8}
-      minZoom={8}
+      minZoom={7}
       maxBounds={[[50, -8.5], [46.5, 2]]}
       maxBoundsViscosity={0.9}
     >

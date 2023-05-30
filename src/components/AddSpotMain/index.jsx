@@ -27,6 +27,7 @@ function AddSpotMain() {
 
   const gps_coordinates = useSelector((state) => state.leaflet.addNewSpotCustomMarkerCoordinates);
 
+  // On récupère la liste de toutes les difficultés pour les afficher dans le formulaire
   const {
     data: difficulties,
   } = useGetDifficultesQuery();
@@ -97,7 +98,7 @@ function AddSpotMain() {
             </div>
           </div>
           <div>
-            <label htmlFor="addSpot-picture">Photo principale du spot (URL)</label>
+            <label htmlFor="addSpot-picture">Photo principale du spot (URL uniquement)</label>
             <input className="addSpot-form-photo" {...register('picture')} placeholder="Photo" id="addSpot-picture" />
           </div>
           <input className="button-basic" type="submit" value="Valider" />

@@ -11,7 +11,9 @@ function Comment({ comment, userId }) {
   const {
     register,
     handleSubmit,
-  } = useForm();
+  } = useForm({
+    register: { },
+  });
 
   // Mutation de modification d'un commentaire
   const [patchComment] = usePatchCommentMutation();
@@ -35,34 +37,27 @@ function Comment({ comment, userId }) {
       </h2>
       {!isModifying
       && (
-      <>
         <p className="comment-content">{comment.content}</p>
-        {userId === comment.user.id
-        && (
-          <div className="comment-container">
-            <button className="button-minimalist" onClick={() => setIsModifying(!isModifying)} type="button">{isModifying ? 'Annuler' : 'Modifer'}</button>
-            <button className="button-minimalist" onClick={() => deleteComment(comment.id)} type="button">Supprimer</button>
-          </div>
-        )}
-      </>
       )}
+
       {isModifying
       && (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <input {...register('content')} value={commentValue} onChange={(e) => setCommentValue(e.target.value)} />
-        </div>
-        <div>
-          <input className="button-basic" type="submit" value="Valider" />
-        </div>
-      </form>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <input {...register('content', { isRequired: true })} value={commentValue} onChange={(e) => setCommentValue(e.target.value)} />
+          </div>
+          <div>
+            <input className="button-basic" type="submit" value="Valider" />
+          </div>
+        </form>
       )}
-      {/* {userId === comment.user.id
-      && <button className="button-minimalist" onClick={() => setIsModifying(!isModifying)}
-      type="button">{isModifying ? 'Annuler' : 'Modifer'}</button>}
       {userId === comment.user.id
-      && <button className="button-minimalist" onClick={() => deleteComment(comment.id)}
-      type="button">Supprimer</button>} */}
+      && (
+        <div className="comment-container">
+          <button className="button-minimalist" onClick={() => setIsModifying(!isModifying)} type="button">{isModifying ? 'Annuler' : 'Modifer'}</button>
+          <button className="button-minimalist" onClick={() => deleteComment(comment.id)} type="button">Supprimer</button>
+        </div>
+      )}
     </div>
   );
 }

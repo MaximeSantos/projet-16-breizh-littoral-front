@@ -36,5 +36,8 @@
       max-width: 90%;
       align-self: center;
     }
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
   }
 };
