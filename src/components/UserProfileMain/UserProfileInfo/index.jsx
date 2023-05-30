@@ -64,7 +64,7 @@ function UserProfileInfo({ user }) {
       && (
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="user_profile-form-picture">
-            <label htmlFor="user_profile-picture">Photo de profil (URL)</label>
+            <label htmlFor="user_profile-picture">Photo de profil (URL uniquement)</label>
             <input
               {...register('profil_picture', { maxLength: 1024 })}
               placeholder="Photo de profil"

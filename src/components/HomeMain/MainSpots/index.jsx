@@ -41,9 +41,6 @@ function MainSpots() {
         && listOfSpots}
       </div>
       <div>
-        {/* <h2 className="cards-title">
-          Si ça vous a plu, n&apos;hésitez plus et inscrivez vous pour vos spots préférés !
-        </h2> */}
         {!isLoggedIn
         && (
         <h2 className="cards-title">
@@ -55,7 +52,7 @@ function MainSpots() {
         {isLoggedIn
         && (
         <h2 className="cards-title">
-          Si ça vous a plu,&nbsp;
+          Si ça vous a plu, prenez un instant pour&nbsp;
           <Link className="link-basic" to="/ajouter">partagez avec nous</Link>
           &nbsp;vos spots préférés !
         </h2>

@@ -53,7 +53,11 @@ function SpotMain() {
   } = useForm();
 
   const onSubmit = (data) => {
-    const dataToSend = { body: data, userId: userId.current, spotId };
+    const dataToSend = {
+      ...data,
+      spotId,
+      content: newCommentValue,
+    };
     postNewComment(dataToSend);
     setNewCommentValue('');
   };
@@ -79,7 +83,7 @@ function SpotMain() {
             <div>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
-                  <input {...register('content')} type="textarea" value={newCommentValue} onChange={(e) => setNewCommentValue(e.target.value)} />
+                  <input {...register('content', { required: true })} value={newCommentValue} onChange={(e) => setNewCommentValue(e.target.value)} />
                 </div>
                 <div>
                   <input className="button-basic" type="submit" value="Envoyer" />

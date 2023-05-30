@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { usePatchSpotMutation } from '../../../api/spotsApi';
 import { usePostNewFavoriteMutation } from '../../../api/favoritesApi';
+// import { useGetDifficultesQuery } from '../../../api/difficultesApi';
 
 import MainMapLeaflet from '../../Leaflet/MainMapLeaflet';
 
@@ -25,12 +26,23 @@ function SpotInfo({
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
+  // On récupère la liste de toutes les difficultés pour les afficher dans le formulaire
+  // const {
+  //   data: difficulties,
+  // } = useGetDifficultesQuery();
+  // let listOfDifficulties;
+  // if (difficulties) {
+  //   listOfDifficulties = difficulties.map((difficulty) => (
+  //     <option key={difficulty.id} value={difficulty.id}>{difficulty.name}</option>
+  //   ));
+  // }
+
   const {
     register,
     handleSubmit,
   } = useForm();
 
-  const [patchSpot, { isError, error }] = usePatchSpotMutation();
+  const [patchSpot, { isError }] = usePatchSpotMutation();
   const [postNewFavorite] = usePostNewFavoriteMutation();
 
   const handleEditSpot = () => {
@@ -64,11 +76,9 @@ function SpotInfo({
                 <img src={iconFavorisAdd} alt="Bouton ajouter favoris" />
               </button>
             )}
-            {/* <p className="spot-info-creator">
-              Spot créé par&nbsp;
-              {spot.user.name}
-            </p> */}
           </div>
+          <h2>Difficulté</h2>
+          <p>{spot.difficulty.name}</p>
           <h2>Ville</h2>
           <p>{spot.location}</p>
           <h2> Description </h2>
@@ -77,55 +87,62 @@ function SpotInfo({
       )}
       {isModifying
       && (
-      <>
-        <div className="addSpot-map">
-          <MainMapLeaflet
-            canPinCustomMarker
-            customMarkerCoordinates={gpsValue}
-            setCustomMarkerCoordinates={setGpsValue}
-          />
-        </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="comment-align">
-          <div>
-            <label htmlFor="spot-form-name">Nom du spot *</label>
-            <input
-              {...register('name', { required: true })}
-              value={nameValue}
-              onChange={(e) => setNameValue(e.target.value)}
+        <>
+          <div className="addSpot-map">
+            <MainMapLeaflet
+              canPinCustomMarker
+              customMarkerCoordinates={gpsValue}
+              setCustomMarkerCoordinates={setGpsValue}
             />
           </div>
-          <div>
-            <label htmlFor="spot-form-picture">Photo</label>
-            <input
-              {...register('picture')}
-              value={pictureValue}
-              onChange={(e) => setPictureValue(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="spot-form-location">Ville *</label>
-            <input
-              {...register('location', { required: true })}
-              value={locationValue}
-              onChange={(e) => setLocationValue(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="spot-form-description">Description</label>
-            <textarea
-              {...register('description', { required: true, minLength: 5 })}
-              type="textarea"
-              value={descriptionValue}
-              onChange={(e) => setDescriptionValue(e.target.value)}
-            />
-          </div>
-          <div>
-            <input className="button-basic" type="submit" value="Valider" />
-          </div>
-        </form>
-        {isError
-        && <p>{error.data.message}</p>}
-      </>
+          <form onSubmit={handleSubmit(onSubmit)} className="comment-align">
+            <div>
+              <label htmlFor="spot-form-name">Nom du spot *</label>
+              <input
+                {...register('name', { required: true })}
+                value={nameValue}
+                onChange={(e) => setNameValue(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="spot-form-picture">Photo</label>
+              <input
+                {...register('picture')}
+                value={pictureValue}
+                onChange={(e) => setPictureValue(e.target.value)}
+              />
+            </div>
+            {/* Route patch pas adapté pour changer la difficulté d'un spot
+            <div>
+              <label htmlFor="addSpot-difficulty">Difficulté *</label>
+              <select {...register('difficulty_id')} type="number" id="addSpot-difficulty">
+                {difficulties && listOfDifficulties}
+              </select>
+            </div> */}
+            <div>
+              <label htmlFor="spot-form-location">Ville *</label>
+              <input
+                {...register('location', { required: true })}
+                value={locationValue}
+                onChange={(e) => setLocationValue(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="spot-form-description">Description</label>
+              <textarea
+                {...register('description', { required: true, minLength: 5 })}
+                type="textarea"
+                value={descriptionValue}
+                onChange={(e) => setDescriptionValue(e.target.value)}
+              />
+            </div>
+            <div>
+              <input className="button-basic" type="submit" value="Valider" />
+            </div>
+          </form>
+          {isError
+          && <p>Il y a eu une erreur, veuillez réessayer</p>}
+        </>
       )}
     </div>
   );
@@ -139,6 +156,9 @@ SpotInfo.propTypes = {
     picture: PropTypes.string.isRequired,
     gps_coordinates: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
     id: PropTypes.number.isRequired,
+    difficulty: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
     user: PropTypes.shape({
       id: PropTypes.number.isRequired,
     }),

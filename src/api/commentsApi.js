@@ -26,11 +26,13 @@ export const commentsApi = createApi({
     }),
     postNewComment: builder.mutation({
       query: (data) => {
-        const { spotId, body } = data;
+        const { spotId, content } = data;
         return {
           url: `/spots/${spotId}/comments`,
           method: 'POST',
-          body,
+          body: {
+            content,
+          },
         };
       },
       invalidatesTags: ['Comments'],

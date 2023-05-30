@@ -10,12 +10,10 @@
       flex-flow: column;
       width: 100%;
 
-      // &-creator {
-      //   display: none;
-      // }
-
       &-picture_container {
+        width: 100%;
         position: relative;
+
         &:hover {
           .spot-info-picture-button {
             display: inline;
@@ -37,24 +35,40 @@
               brightness(1.2);
             }
           }
-          // .spot-info-creator {
-          //   display: inline;
-          //   color: vars.$main-color;
-          //   position: absolute;
-          //   top: 0;
-          //   left: 1rem;
-          // }
         }
       }
 
       &-picture {
+        min-width: 100%;
         max-width: 100%;
+        min-height: 200px;
         overflow: hidden;
         align-self: center;
         background-color: vars.$stroke-color;
 
         &-button {
           display: none;
+
+          @media (pointer: coarse) and (hover: none) {
+            display: inline;
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+        
+            filter:
+            invert(1)
+            saturate(10)
+            brightness(1.2);
+      
+            &:hover {
+              filter:
+              invert(0.5)
+              sepia(1)
+              hue-rotate(10deg)
+              saturate(10)
+              brightness(1.2);
+            }
+          }
         }
       }
 
@@ -75,26 +89,41 @@
 
 .comment {
   display: flex;
+  margin-bottom: 1rem;
 
-  & p:first-child {
+  @media screen and (max-width: 768px) {
+    flex-flow: wrap;
+  }
+
+  &-title {
     margin-right: 1rem;
+    font-size: 1rem;
   }
 
   &-content {
     max-width: 50vw;
     overflow: auto;
+    flex: 1;
+    max-height: 20vh;
     @media screen and (max-width: 768px) {
-      max-width: 100%
+      max-width: 70vw;
     }
   }
   
   &-container {
     display: flex;
     flex-flow: row;
-    align-items: center;
+    align-items: start;
 
     @media screen and (max-width: 768px) {
       flex-flow: column;
     }
+  }
+
+  &-title,
+  &-content,
+  &container {
+    align-self: flex-start;
+    margin-top: 0;
   }
 }

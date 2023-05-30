@@ -56,7 +56,7 @@ function SpotCard({ spot }) {
         <h2>{spot.name}</h2>
         <p className="card-description">
           {/* permet de limiter à 200 caractères et de ne pas couper au milieu d'un mot */}
-          {(spot.description).replace(/^([\s\S]{200}[^\s]*)[\s\S]*/, '$1')}
+          {(spot.description).replace(/^([\s\S]{175}[^\s]*)[\s\S]*/, '$1')}
           {(spot.description).length > 200 && '...'}
         </p>
       </div>

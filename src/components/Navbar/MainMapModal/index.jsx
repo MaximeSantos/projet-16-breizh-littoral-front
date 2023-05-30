@@ -26,7 +26,7 @@ function MainMapModal() {
     <div className="modal">
       <div onClick={handleDisplayMainMapModal} className="modal-overlay" />
       <div className="modal-content">
-        <h2 className="modal-title">Carte des spots</h2>
+        <h2 className="modal-title">Carte interactive</h2>
         {isFetching
         && <p>Loading...</p>}
         {isError

@@ -52,7 +52,7 @@ function SignupMain() {
               <input {...register('password', { required: true })} type="password" placeholder="Mot de passe" id="signup-password" />
             </div>
             <div className="signup-form-picture">
-              <label htmlFor="signup-picture">Photo de profil (URL)</label>
+              <label htmlFor="signup-picture">Photo de profil (URL uniquement)</label>
               <input {...register('profil_picture')} placeholder="Photo de profil" id="signup-picture" />
             </div>
             <div className="signup-form-description">
