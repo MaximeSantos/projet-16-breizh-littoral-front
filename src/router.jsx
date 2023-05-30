@@ -1,21 +1,22 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import Home from './pages/Home';
-import Test from './pages/Test';
+import ScrollToTop from './utils/ScrollToTop';
+import PrivateRoutes from './utils/PrivateRoutes';
 import Error404 from './pages/Error404';
+import Test from './pages/Test';
+import Home from './pages/Home';
 import Sports from './pages/Sports';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Sport from './pages/Sport';
 import AddSpot from './pages/AddSpot';
 import SpotPage from './pages/Spot';
-import PrivateRoutes from './utils/PrivateRoutes';
 import UserProfile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
 import Nous from './pages/Nous';
 import Advices from './pages/Advices';
-import ScrollToTop from './utils/ScrollToTop';
 import ContactPage from './pages/ContactPage';
+import Admin from './pages/Admin';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <ContactPage />,
+      },
+      {
+        path: '/admin',
+        element: <Admin />,
       },
       {
         path: '*',
