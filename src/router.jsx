@@ -15,6 +15,7 @@ import Favorites from './pages/Favorites';
 import Nous from './pages/Nous';
 import Advices from './pages/Advices';
 import ScrollToTop from './utils/ScrollToTop';
+import ContactPage from './pages/ContactPage';
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: '/conseils',
         element: <Advices />,
+      },
+      {
+        path: '/contact',
+        element: <ContactPage />,
       },
       {
         path: '*',
