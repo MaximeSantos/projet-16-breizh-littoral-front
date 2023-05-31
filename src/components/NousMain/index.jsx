@@ -18,7 +18,7 @@ function NousMain() {
         Notre objectif ?
       </h2>
       <p>
-        Nous avons souhaité nous dépasser et prouver que même en partant de zéro, nous sommes capables d&apos;évaluer les besoins d&apos;un tel projet, d&apos;élaborer un cahier des charges, de travailler en équipe dans un environnement professionnel afin de vous offrir un site clair, épuré et accessible.
+        Nous avons souhaité nous dépasser et prouver qu&apos;en partant de zéro, nous sommes capables d&apos;évaluer les besoins d&apos;un nouveau projet, d&apos;élaborer un cahier des charges et de travailler en équipe dans un environnement professionnel, le tout afin de proposer un site clair, épuré et accessible.
       </p>
       <p>
         Nous éprouvons beaucoup de fierté pour le travail que nous avons accompli.

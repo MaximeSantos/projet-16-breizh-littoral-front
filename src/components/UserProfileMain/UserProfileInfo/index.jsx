@@ -40,23 +40,35 @@ function UserProfileInfo({ user }) {
       && (
         <>
           {(user.profil_picture && user.profil_picture.length !== 0)
-          // eslint-disable-next-line jsx-a11y/img-redundant-alt
-          && <img className="user_profile-information-picture" src={user.profil_picture} alt="Photo de Profil" />}
-          <p>
-            Nom d&apos;utilisateur :
-            <br />
-            {user.nickname}
-          </p>
-          <p>
-            Email :
-            <br />
-            {user.email}
-          </p>
-          <p>
-            Description :
-            <br />
-            {user.description}
-          </p>
+          && (
+            <div className="user_profile-information-content--picture">
+              <img className="user_profile-information-picture" src={user.profil_picture} alt="de Profil" />
+            </div>
+          )}
+          <div className="user_profile-information-content">
+            <h3>
+              Nom d&apos;utilisateur :
+            </h3>
+            <p>
+              {user.nickname}
+            </p>
+          </div>
+          <div className="user_profile-information-content">
+            <h3>
+              Email :
+            </h3>
+            <p>
+              {user.email}
+            </p>
+          </div>
+          <div className="user_profile-information-content">
+            <h3>
+              Description :
+            </h3>
+            <p>
+              {user.description}
+            </p>
+          </div>
         </>
       )}
 
@@ -97,7 +109,7 @@ function UserProfileInfo({ user }) {
           </div>
           <div>
             <label htmlFor="user_profile-description">Description</label>
-            <input
+            <textarea
               className="user_profile-form-description"
               {...register('description', { maxLength: 1024 })}
               type="description"
