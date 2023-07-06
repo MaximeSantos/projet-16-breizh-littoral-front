@@ -1,21 +1,22 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import PropTypes from 'prop-types';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useDeleteFavoriteMutation, usePostNewFavoriteMutation } from '../../../../api/favoritesApi';
 
 import iconFavorisAdd from '../../../../assets/icons/navbarButton-favoris-add.svg';
 import iconFavorisRemove from '../../../../assets/icons/navbarButton-favoris-remove.svg';
-import { getUserIdFromJWT } from '../../../../utils/JWT';
 
 import './style.scss';
 
 function SpotCard({ spot }) {
   const [currentPage, setCurrentPage] = useState('');
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const userId = useRef(getUserIdFromJWT());
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [postNewFavorite] = usePostNewFavoriteMutation();
   const [deleteFavorite] = useDeleteFavoriteMutation();
@@ -24,32 +25,38 @@ function SpotCard({ spot }) {
     setCurrentPage(location.pathname);
   }, [location]);
 
-  const handleAddFavorite = () => postNewFavorite({ userId: userId.current, spotId: spot.id });
-  const handleDeleteFavorite = () => deleteFavorite({ userId: userId.current, spotId: spot.id });
+  const handleAddFavorite = (e) => {
+    e.stopPropagation();
+    postNewFavorite({ spotId: spot.id });
+  };
+
+  const handleRemoveFavorite = (e) => {
+    e.stopPropagation();
+    deleteFavorite({ spotId: spot.id });
+  };
 
   return (
-    <div className="card">
+    <div onClick={() => navigate(`/spot/${spot.id}`)} className="card">
       <div className="card-header">
         <img className="card-header-picture" src={spot.picture} alt={`Spot ${spot.name}`} />
         {(isLoggedIn && (currentPage === '/'))
         && (
         <button onClick={handleAddFavorite} type="button" className="card-header-button">
-          <img src={iconFavorisAdd} alt="Bouton ajouter aux favoris" />
+          <img src={iconFavorisAdd} alt="Bouton ajouter favoris" />
         </button>
         )}
         {(isLoggedIn && (currentPage === '/favoris'))
         && (
-        <button onClick={handleDeleteFavorite} type="button" className="card-header-button">
-          <img src={iconFavorisRemove} alt="Bouton ajouter aux favoris" />
+        <button onClick={handleRemoveFavorite} type="button" className="card-header-button">
+          <img src={iconFavorisRemove} alt="Bouton supprimer favoris" />
         </button>
         )}
       </div>
       <div className="card-main">
-        <Link className="card-title" to={`/spot/${spot.id}`}>
-          <h2>{spot.name}</h2>
-        </Link>
+        <h2>{spot.name}</h2>
         <p className="card-description">
-          {(spot.description).replace(/^([\s\S]{200}[^\s]*)[\s\S]*/, '$1')}
+          {/* permet de limiter à 200 caractères et de ne pas couper au milieu d'un mot */}
+          {(spot.description).replace(/^([\s\S]{175}[^\s]*)[\s\S]*/, '$1')}
           {(spot.description).length > 200 && '...'}
         </p>
       </div>

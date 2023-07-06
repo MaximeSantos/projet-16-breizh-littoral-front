@@ -14,14 +14,25 @@ export const usersApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Users'],
+  tagTypes: ['User'],
   endpoints: (builder) => ({
+    // Infos d'un utilisateur
     getUser: builder.query({
       query: (userId) => ({
         url: `/users/${userId}`,
         method: 'GET',
       }),
+      providesTags: ['User'],
     }),
+    patchUser: builder.mutation({
+      query: ({ userId, data }) => ({
+        url: `/users/${userId}`,
+        method: 'PATCH',
+        body: { ...data },
+      }),
+      invalidatesTags: ['User'],
+    }),
+    // Signup & Login
     postNewUser: builder.mutation({
       query: (newUser) => ({
         url: '/users',
@@ -44,6 +55,7 @@ export const usersApi = createApi({
 
 export const {
   useGetUserQuery,
+  usePatchUserMutation,
   usePostNewUserMutation,
   usePostLoginMutation,
 } = usersApi;

@@ -1,0 +1,13 @@
+.nous {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    
+  & img {
+    max-width: 200px;
+  }
+
+  & p {
+    max-width: 600px;
+  }
+}

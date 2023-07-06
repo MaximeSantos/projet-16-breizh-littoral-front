@@ -2,4 +2,8 @@
   display: flex;
   flex-flow: column;
   align-items: center;
+
+  &-title {
+    padding-top: 1rem;
+  }
 }

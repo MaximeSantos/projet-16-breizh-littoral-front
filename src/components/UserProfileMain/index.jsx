@@ -3,13 +3,14 @@ import { useRef } from 'react';
 import { useGetUserQuery } from '../../api/usersApi';
 import { getUserIdFromJWT } from '../../utils/JWT';
 import './style.scss';
+import UserProfileInfo from './UserProfileInfo';
 
 function UserProfileMain() {
   const userId = useRef(getUserIdFromJWT());
 
   const {
     data: user,
-    isFetching,
+    isLoading,
     isError,
     error,
   } = useGetUserQuery(userId.current);
@@ -24,29 +25,14 @@ function UserProfileMain() {
             {error.status}
           </p>
           )}
-        {isFetching
+        {isLoading
         && <p>Chargement ...</p>}
 
-        {!isFetching && !isError
+        {!isLoading && !isError
         && (
         <>
-          <div className="user_profile-information">
-            <h2>Informations personnelles</h2>
-
-            {(user.profil_picture && user.profil_picture.length !== 0)
-            && <img className="user_profile-information-picture" src={user.profil_picture} alt="Photo de Profil" />}
-            <p>
-              Nom d&apos;utilisateur :
-              <br />
-              {user.nickname}
-            </p>
-            <p>
-              Email :
-              <br />
-              {user.email}
-            </p>
-          </div>
-          <div className="user_profile-sports">
+          <UserProfileInfo user={user} />
+          {/* <div className="user_profile-sports">
             <h2>Sports pratiqués</h2>
             <ul>
               <li>
@@ -59,17 +45,17 @@ function UserProfileMain() {
                 - Luge bordelaise
               </li>
             </ul>
-          </div>
+          </div> */}
           {/* <div className="user_profile-favorites">
             <h2>Vos spots favoris</h2>
             {listOfFavSpots}
             {!listOfFavSpots.length
             && <p>Pas de spot favoris pour le moment</p>}
           </div> */}
-          <div className="user_profile-spots">
+          {/* <div className="user_profile-spots">
             <h2>Spots ajoutés</h2>
             <p>Ici bientôt une liste des spots que VOUS avez ajoutés</p>
-          </div>
+          </div> */}
         </>
         )}
       </div>

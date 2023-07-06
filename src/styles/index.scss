@@ -39,7 +39,9 @@ main {
 h1 {
   font-size: 3rem;
   font-weight: bold;
+  line-height: 3rem;
   font-family: 'Fraiche', sans-serif;
+  text-align: center;
 }
 
 h2 {
@@ -47,18 +49,29 @@ h2 {
   font-weight: bold;
 }
 
-p {
+h3 {
+  font-weight: bold;
+}
+
+p,
+h3 {
   font-size: 1rem;
 }
 
 h1,
 h2,
+h3,
 p {
   margin: 1rem 0;
 }
 
+img {
+  border-radius: 10px;
+}
+
 input,
-select {
+select,
+textarea {
   font-size: 1.2rem;
   font-family: 'Andika', sans-serif;
   background-color: transparentize(vars.$primary-color, 0.5);
@@ -69,6 +82,12 @@ select {
     outline: vars.$stroke-color auto 1px;
     background-color:vars.$secondary-color;
   }
+}
+
+textarea {
+  resize: none;
+  height: 200px;
+  border: none;
 }
 
 button:focus-visible {
@@ -85,8 +104,45 @@ form {
     flex-flow: column;
 
     & input,
-    & select {
+    & select,
+    & textarea {
       margin: 0.5rem 0; 
     }
   }
 }
+
+.button-basic {
+  background-color: vars.$secondary-color;
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  align-self: center;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: vars.$highlight-color;
+  }
+}
+
+.button-minimalist {
+  font-family: 'Andika', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 1rem;
+  text-decoration: underline;
+  &:hover {
+    color: vars.$highlight-color;
+  }
+}
+
+.link-basic {
+  text-decoration: underline;
+  &:hover {
+    color: vars.$highlight-color;
+  }
+}
+
+.leaflet-div-icon {
+  background: transparent;
+  border: none;
+}  

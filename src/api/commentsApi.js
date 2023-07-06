@@ -22,31 +22,48 @@ export const commentsApi = createApi({
         url: `spots/${spotId}/comments`,
         method: 'GET',
       }),
+      providesTags: ['Comments'],
     }),
     postNewComment: builder.mutation({
       query: (data) => {
-        const { userId, spotId, body } = data;
+        const { spotId, content } = data;
         return {
-          url: `users/${userId}/spots/${spotId}/comments`,
+          url: `/spots/${spotId}/comments`,
           method: 'POST',
-          body,
+          body: {
+            content,
+          },
         };
       },
+      invalidatesTags: ['Comments'],
     }),
     deleteComment: builder.mutation({
-      query: (data) => {
-        const { userId, spotId, commentId } = data;
+      query: (commentId) => ({
+        url: `/comments/${commentId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Comments'],
+    }),
+    patchComment: builder.mutation({
+      query: (dataFromMutation) => {
+        const {
+          commentId,
+          data,
+        } = dataFromMutation;
         return {
-          url: `users/${userId}/spots/${spotId}/comments/${commentId}`,
-          method: 'DELETE',
+          url: `/comments/${commentId}`,
+          method: 'PUT',
+          body: { ...data },
         };
       },
+      invalidatesTags: ['Comments'],
     }),
   }),
 });
 
 export const {
   useDeleteCommentMutation,
+  usePatchCommentMutation,
   useGetCommentsQuery,
   usePostNewCommentMutation,
 } = commentsApi;

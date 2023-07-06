@@ -10,4 +10,4 @@ export const spots = [
   { name: 'Plage de Lestrevet', position: [48.182191380353416, -4.296473047317105] },
 ];
 
-export const startPosition = [48.1, -3];
+export const startPosition = [48.246637798319746, -4.31591033935547];

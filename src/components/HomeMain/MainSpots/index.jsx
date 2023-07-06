@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useGetSpotsQuery } from '../../../api/spotsApi';
 
 import SpotCard from './SpotCard';
@@ -5,6 +7,8 @@ import SpotCard from './SpotCard';
 import './style.scss';
 
 function MainSpots() {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   const {
     data: spots,
     isFetching,
@@ -12,7 +16,6 @@ function MainSpots() {
     error,
   } = useGetSpotsQuery();
 
-  // console.log(spots, isFetching, isError);
   let listOfSpots;
 
   if (spots) {
@@ -36,6 +39,24 @@ function MainSpots() {
         )}
         {spots
         && listOfSpots}
+      </div>
+      <div>
+        {!isLoggedIn
+        && (
+        <h2 className="cards-title">
+          Si ça vous a plu, n&apos;hésitez plus et&nbsp;
+          <Link className="link-basic" to="/inscription">inscrivez-vous</Link>
+          &nbsp;pour partager vos spots préférés !
+        </h2>
+        )}
+        {isLoggedIn
+        && (
+        <h2 className="cards-title">
+          Si ça vous a plu, prenez un instant pour&nbsp;
+          <Link className="link-basic" to="/ajouter">partagez avec nous</Link>
+          &nbsp;vos spots préférés !
+        </h2>
+        )}
       </div>
     </div>
 

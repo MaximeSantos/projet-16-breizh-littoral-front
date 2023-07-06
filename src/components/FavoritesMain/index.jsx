@@ -1,18 +1,14 @@
-import { useRef } from 'react';
 import { useGetFavoritesQuery } from '../../api/favoritesApi';
-import { getUserIdFromJWT } from '../../utils/JWT';
 import SpotCard from '../HomeMain/MainSpots/SpotCard';
 import './style.scss';
 
 function FavoritesMain() {
-  const userId = useRef(getUserIdFromJWT());
-
   const {
     data: spots,
-    isFetching,
+    isLoading,
     isError,
     error,
-  } = useGetFavoritesQuery(userId.current);
+  } = useGetFavoritesQuery();
 
   let listOfSpots;
 
@@ -26,7 +22,7 @@ function FavoritesMain() {
     <main className="favorites">
       <div className="favorites-container">
         <h1>Vos spots favoris</h1>
-        {isFetching
+        {isLoading
         && <p>Loading...</p>}
         {isError
         && (
@@ -38,6 +34,8 @@ function FavoritesMain() {
         <div className="cards-container">
           {spots
           && listOfSpots}
+          {(listOfSpots === undefined || listOfSpots.length === 0)
+          && <p>Vous n&apos;avez pas encore de spots favoris !</p>}
         </div>
       </div>
     </main>

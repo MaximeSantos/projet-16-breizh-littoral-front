@@ -2,9 +2,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useDispatch } from 'react-redux';
 import { useGetSpotsQuery } from '../../../api/spotsApi';
-import { toggleDisplayMainMapModal } from '../../../slices/mainMapModalSlice';
+import { toggleDisplayMainMapModal } from '../../../slices/modalSlice';
 
-import MainMapLeaflet from './MainMapLeaflet';
+import MainMapLeaflet from '../../Leaflet/MainMapLeaflet';
 
 import './style.scss';
 
@@ -26,7 +26,7 @@ function MainMapModal() {
     <div className="modal">
       <div onClick={handleDisplayMainMapModal} className="modal-overlay" />
       <div className="modal-content">
-        <h2 className="modal-title">Carte des spots</h2>
+        <h2 className="modal-title">Carte interactive</h2>
         {isFetching
         && <p>Loading...</p>}
         {isError

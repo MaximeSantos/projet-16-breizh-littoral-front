@@ -12,6 +12,16 @@
   box-shadow: 0 10px 30px 5px transparentize(vars.$stroke-color, 0.7);
   transition: all 0.1s;
 
+  @media screen and (max-width: 1400px) {
+    width: 25vw;
+  }
+  @media screen and (max-width: 1024px) {
+    width: 40vw;
+  }
+  @media screen and (max-width: 768px) {
+    width: 80vw;
+  }
+
   &:hover {
     translate: -2px -2px;
     
@@ -25,6 +35,13 @@
       invert(1)
       saturate(10)
       brightness(1.2);
+
+      // &:active {
+      //   animation: 0.5s linear click;
+      // }
+      // &:not(:active) {
+      //   transition: scale 1s step-end;
+      // }
       
       &:hover {
         filter:
@@ -45,18 +62,40 @@
 
     &-button {
       display: none;
+
+      @media (pointer: coarse) and (hover: none) {
+        display: inline;
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+    
+        filter:
+        invert(1)
+        saturate(10)
+        brightness(1.2);
+  
+        &:hover {
+          filter:
+          invert(0.5)
+          sepia(1)
+          hue-rotate(10deg)
+          saturate(10)
+          brightness(1.2);
+        }
+      }
     }
 
     &-picture {
       width: 100%;
       height: 100%;
+      border-radius: 0;
     }
   }
 
   &-main {
+    height: 50%;
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
     margin: 0 1rem;
   }
 
@@ -64,3 +103,15 @@
     margin: 0;
   }
 }
+
+// @keyframes click {
+//   0% {
+//     transform: scale(1);
+//   }
+//   50% {
+//     transform: scale(1.4);
+//   }
+//   100% {
+//     transform: scale(1);
+//   }
+// }

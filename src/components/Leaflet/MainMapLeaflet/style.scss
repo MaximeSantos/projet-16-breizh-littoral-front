@@ -1,0 +1,32 @@
+@use 'src/styles/vars';
+
+.main_map-container {
+  height: 90%;
+  width: 100%;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.leaflet-popup-content {
+  color: vars.$stroke-color;
+  font-family: sans-serif;
+}
+
+.popup {
+  &-title {
+    margin-bottom: 0;
+  }
+
+  &-description {
+    margin: 0.5rem 0 !important;
+  }
+
+  &-link {
+    font-size: 1rem;
+    color: vars.$stroke-color !important;
+
+    &:hover {
+      color: vars.$highlight-color !important;
+    }
+  }
+}

@@ -16,31 +16,43 @@ export const spotsApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Spots', 'Favorites'],
+  tagTypes: ['Spots'],
   endpoints: (builder) => ({
     getSpots: builder.query({
       query: () => ({
         url: '/spots',
         method: 'GET',
       }),
+      providesTags: ['Spots'],
     }),
     postNewSpot: builder.mutation({
       query: (newSpot) => ({
-        url: `/users/${newSpot.user_id}/spots`,
+        url: '/spots',
         method: 'POST',
         body: newSpot,
       }),
+      providesTags: ['Spots'],
     }),
     GetSpot: builder.query({
       query: (spotId) => ({
         url: `/spots/${spotId}`,
         method: 'GET',
       }),
+      providesTags: ['Spots'],
+    }),
+    patchSpot: builder.mutation({
+      query: ({ spotId, dataToSend }) => ({
+        url: `/spots/${spotId}`,
+        method: 'PATCH',
+        body: { ...dataToSend },
+      }),
+      invalidatesTags: ['Spots'],
     }),
   }),
 });
 
 export const {
+  usePatchSpotMutation,
   useGetSpotsQuery,
   useGetSpotQuery,
   usePostNewSpotMutation,

@@ -4,11 +4,11 @@ import Footer from '../components/Footer';
 
 function Sports() {
   return (
-    <div>
+    <>
       <Navbar />
       <SportsMain />
       <Footer />
-    </div>
+    </>
   );
 }
 

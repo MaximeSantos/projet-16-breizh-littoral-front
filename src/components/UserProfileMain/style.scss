@@ -1,14 +1,30 @@
+@use 'src/styles/vars';
+
 .user_profile {
   display: flex;
   flex-flow: column;
   align-items: center;
 
-    &-information {
-      display: flex;
-      flex-flow: column;
-      &-picture {
-        height: 200px;
-        align-self: center;
+  &-container {
+    @media screen and (min-width: 1024px) {
+      max-width: 40vw;
     }
   }
-}
+
+  &-information {
+    display: flex;
+    flex-flow: column;
+
+    &-content {
+      &--picture {
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    &-picture {
+      height: 200px;
+      margin-bottom: 2rem;
+    }
+  }
+} 

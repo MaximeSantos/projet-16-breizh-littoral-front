@@ -9,7 +9,7 @@ import './style.scss';
 function SignupMain() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  // Hook de react-hook-form pour créer le formulaire
+  // Hook de react-hook-form pour nous aider à gérer le formulaire
   const {
     register,
     handleSubmit,
@@ -20,7 +20,7 @@ function SignupMain() {
     isLoading,
     isError,
     isSuccess,
-    result,
+    error,
   }] = usePostNewUserMutation();
 
   // Lorsque le formulaire est soumis, on déclenche l'appel API avec les données soumises
@@ -41,25 +41,25 @@ function SignupMain() {
           <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
             <div className="signup-form-username">
               <label htmlFor="signup-nickname">Nom d&apos;utilisateur *</label>
-              <input {...register('nickname')} placeholder="Nom d'utilisateur" id="signup-nickname" />
+              <input {...register('nickname', { required: true })} placeholder="Nom d'utilisateur" id="signup-nickname" />
             </div>
             <div>
               <label htmlFor="signup-email">Email *</label>
-              <input className="signup-form-email" {...register('email')} type="email" placeholder="Email" id="signup-email" />
+              <input className="signup-form-email" {...register('email', { required: true })} type="email" placeholder="Email" id="signup-email" />
             </div>
             <div className="signup-form-password">
               <label htmlFor="signup-password">Mot de passe *</label>
-              <input {...register('password')} type="password" placeholder="Mot de passe" id="signup-password" />
+              <input {...register('password', { required: true })} type="password" placeholder="Mot de passe" id="signup-password" />
             </div>
             <div className="signup-form-picture">
-              <label htmlFor="signup-picture">Photo de profil (URL)</label>
+              <label htmlFor="signup-picture">Photo de profil (URL uniquement)</label>
               <input {...register('profil_picture')} placeholder="Photo de profil" id="signup-picture" />
             </div>
             <div className="signup-form-description">
               <label htmlFor="signup-description">Description</label>
               <input {...register('description')} type="textarea" placeholder="Description" id="signup-description" />
             </div>
-            <input className="signup-form-button" type="submit" value="S'inscrire" />
+            <input className="button-basic" type="submit" value="S'inscrire" />
           </form>
         )}
 
@@ -67,9 +67,16 @@ function SignupMain() {
         && <p>Loading ...</p>}
 
         {isError
-        && <p>Erreur lors de l&apos;inscription</p>}
-
-        {result}
+        && (
+        <p>
+          Erreur&nbsp;
+          {error.data.code}
+          <br />
+          {error.data.message}
+          <br />
+          Veuillez réessayer
+        </p>
+        )}
 
         {isSuccess
         && (
